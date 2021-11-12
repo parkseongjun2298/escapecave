@@ -13,10 +13,42 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\00.Main">
+      <UniqueIdentifier>{111adb32-7181-47b4-872c-4dc58b5c854e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Net">
+      <UniqueIdentifier>{3ca4ef0b-b4e0-483f-8e6f-25d0d91d39dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Default">
+      <UniqueIdentifier>{665edaeb-528e-4dfd-afa3-808333e2a6cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Default\RecvThread">
+      <UniqueIdentifier>{793637be-3120-4c00-868d-ce696de234f3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="server.cpp">
-      <Filter>소스 파일</Filter>
+    <ClInclude Include="Server.h">
+      <Filter>소스 파일\01.Net</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>소스 파일\99.Default</Filter>
+    </ClInclude>
+    <ClInclude Include="RecvThread.h">
+      <Filter>소스 파일\99.Default\RecvThread</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Server.cpp">
+      <Filter>소스 파일\01.Net</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>소스 파일\99.Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>소스 파일\00.Main</Filter>
+    </ClCompile>
+    <ClCompile Include="RecvThread.cpp">
+      <Filter>소스 파일\99.Default\RecvThread</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

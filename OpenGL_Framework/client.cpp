@@ -57,21 +57,36 @@ void Client::InitClient() {
 	retval = connect(recv_socket, (SOCKADDR *)&serveraddr, sizeof(serveraddr));
 	if (retval == SOCKET_ERROR) err_quit("connect()");
 	// 4. 스레드 생성
-	Thread hThread(recv_socket);
+	HANDLE thread = CreateThread(NULL, 0, Recv_Thread,
+		(LPVOID)recv_socket, 0, NULL);
+	if (thread == NULL) { closesocket(recv_socket); }
+	else { CloseHandle(thread); }
 
+}
+
+void Client::Recv_Initialize() {
+	retval = recv(recv_socket, (char*)&datainfo, sizeof(DataInfo), 0);
+	if (retval == SOCKET_ERROR)
+		err_display("recv()");
+	else if (retval == 0)
+		return;
+	printf("오브젝트 초기화 요청 수신\n");
 }
 
 void Client::Send_GameStart() {
 	datainfo.infoindex = 'a';
 	datainfo.datasize = 'a';
 
-;	// 통신용 구조체 송신
+	// 통신용 구조체 송신
 	retval = send(recv_socket, (char*)&datainfo, sizeof(DataInfo), 0);
 	if (retval == SOCKET_ERROR) {
 		err_display("send()");
 		return;
 	}
+	Recv_Initialize();
 }
+
+
 
 void Client::Close_Connect() {
 	// 4. 소켓 닫음
