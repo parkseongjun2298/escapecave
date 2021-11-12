@@ -1,0 +1,6 @@
+﻿  server.cpp
+C:\Users\박성준\Desktop\escapecave\net_server\server.cpp(16,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'DataInfo' 왼쪽은 무시됩니다.
+C:\Users\박성준\Desktop\escapecave\net_server\server.cpp(101,18): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\박성준\Desktop\escapecave\net_server\server.cpp(97,7): warning C4101: 'buf' :참조되지 않은 지역 변수입니다.
+C:\Users\박성준\Desktop\escapecave\net_server\server.cpp(192,22): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  net_server.vcxproj -> C:\Users\박성준\Desktop\escapecave\net_server\x64\Debug\net_server.exe

@@ -1,0 +1,2 @@
+C:\Users\박성준\Desktop\escapecave\net_server\x64\Debug\net_server.exe
+C:\Users\박성준\Desktop\escapecave\net_server\x64\Debug\net_server.pdb

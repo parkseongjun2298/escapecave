@@ -3,9 +3,12 @@
 #include <winsock2.h>
 #include <stdlib.h>
 #include <stdio.h>
-
+#include <Windows.h>
 #define SERVERPORT 9000
 #define BUFSIZE    4096
+
+void err_quit(char* msg);
+void err_display(const char* msg);
 
 typedef struct DataInfo {
 	char infoindex;	// 패킷 타입
@@ -19,17 +22,17 @@ int startnum = 0;
 HANDLE hCursorEvent;
 
 // 소켓 함수 오류 출력 후 종료
-void err_quit(const char *msg)
+void err_quit(char* msg)
 {
 	LPVOID lpMsgBuf;
-	FormatMessage(
-		FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
-		NULL, WSAGetLastError(),
-		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-		(LPTSTR)&lpMsgBuf, 0, NULL);
-	MessageBox(NULL, (LPCTSTR)lpMsgBuf, msg, MB_ICONERROR);
-	LocalFree(lpMsgBuf);
-	exit(1);
+    FormatMessage(
+        FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM,
+        NULL, WSAGetLastError(),
+        MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+        (LPTSTR)&lpMsgBuf, 0, NULL);
+   // MessageBox(NULL, (LPCTSTR)lpMsgBuf, msg, MB_ICONERROR);
+    LocalFree(lpMsgBuf);
+    exit(1);
 }
 
 // 소켓 함수 오류 출력
@@ -156,7 +159,7 @@ int main(int argc, char *argv[])
 
 	// 2. 소켓 생성
 	SOCKET listen_sock = socket(AF_INET, SOCK_STREAM, 0);
-	if (listen_sock == INVALID_SOCKET) err_quit("socket()");
+	if (listen_sock == INVALID_SOCKET) err_quit((char*)"socket()");
 
 	// 바인딩
 	SOCKADDR_IN serveraddr;
@@ -165,11 +168,11 @@ int main(int argc, char *argv[])
 	serveraddr.sin_addr.s_addr = htonl(INADDR_ANY);
 	serveraddr.sin_port = htons(SERVERPORT);
 	retval = bind(listen_sock, (SOCKADDR *)&serveraddr, sizeof(serveraddr));
-	if (retval == SOCKET_ERROR) err_quit("bind()");
+	if (retval == SOCKET_ERROR) err_quit((char*)"bind()");
 
 	// 3. 클라이언트의 접속 요청을 기다림(listen 함수)
 	retval = listen(listen_sock, SOMAXCONN);
-	if (retval == SOCKET_ERROR) err_quit("listen()");
+	if (retval == SOCKET_ERROR) err_quit((char*)"listen()");
 
 	// 통신에 사용할 변수 선언
 	SOCKET client_sock;
