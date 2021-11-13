@@ -56,13 +56,6 @@ void Server::RunServer() {
 	return;
 };
 
-void Server::Recv_GameStart() {
-	startnum++;
-	printf("게임시작요청 %d인", startnum);
-	if (startnum == 1)
-		RunServer();
-}
-
 void Server::InitServer() {
 	// 1. 윈속 초기화
 	WSADATA wsa;
@@ -71,8 +64,8 @@ void Server::InitServer() {
 		exit(1);
 
 	// 2. 소켓 생성
-	listen_sock = socket(AF_INET, SOCK_STREAM, 0);
-	if (listen_sock == INVALID_SOCKET) err_quit("socket()");
+	sock = socket(AF_INET, SOCK_STREAM, 0);
+	if (sock == INVALID_SOCKET) err_quit("socket()");
 
 	// 바인딩
 	SOCKADDR_IN serveraddr;
@@ -80,11 +73,11 @@ void Server::InitServer() {
 	serveraddr.sin_family = AF_INET;
 	serveraddr.sin_addr.s_addr = htonl(INADDR_ANY);
 	serveraddr.sin_port = htons(SERVERPORT);
-	retval = bind(listen_sock, (SOCKADDR *)&serveraddr, sizeof(serveraddr));
+	retval = bind(sock, (SOCKADDR *)&serveraddr, sizeof(serveraddr));
 	if (retval == SOCKET_ERROR) err_quit("bind()");
 
 	// 3. 클라이언트의 접속 요청을 기다림(listen 함수)
-	retval = listen(listen_sock, SOMAXCONN);
+	retval = listen(sock, SOMAXCONN);
 	if (retval == SOCKET_ERROR) err_quit("listen()");
 
 	// 통신에 사용할 변수 선언
@@ -100,7 +93,7 @@ void Server::InitServer() {
 		if (hCursorEvent == NULL) break;
 		// accept()
 		addrlen = sizeof(clientaddr);
-		client_sock[i] = accept(listen_sock, (SOCKADDR*)&clientaddr, &addrlen);
+		client_sock[i] = accept(sock, (SOCKADDR*)&clientaddr, &addrlen);
 		if (client_sock[i] == INVALID_SOCKET) {
 			err_display("accept()");
 			SetEvent(hCursorEvent);
@@ -120,7 +113,7 @@ void Server::InitServer() {
 void Server::Close_Connect() {
 	CloseHandle(hCursorEvent);
 	// 4. 소켓 닫음
-	closesocket(listen_sock);
+	closesocket(sock);
 
 	// 5. 윈속 종료
 	WSACleanup();

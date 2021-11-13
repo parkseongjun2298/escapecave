@@ -13,10 +13,12 @@ class Client
 {
 	int retval;
 	DataInfo datainfo;
-	SOCKET recv_socket;
+	static SOCKET sock;
 	void err_quit(const char *msg);
 	void err_display(const char *msg);
 public:
+	void set_datainfo(char a, char b);
+	void Send_Input(char b);
 	void InitClient();
 	void Send_GameStart();
 	void Recv_Initialize();

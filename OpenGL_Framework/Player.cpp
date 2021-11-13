@@ -5,7 +5,7 @@
 #include "TimeMgr.h"
 #include "Player_Bullet.h"
 #include "Bomb.h"
-
+#include "Client.h"
 CPlayer::CPlayer(GLuint* _shader_program)
 	:CObj(_shader_program)
 {
@@ -57,23 +57,28 @@ int CPlayer::Update()
 			Double_Bullet();
 
 	}
+	Client client;
 	if(CKeyMgr::Get_Instance()->Key_Pressing(KEY_LEFT))
 	{
+		client.Send_Input('a');
 		object.model_transform.Translate.x -= m_fSpeed;
 		MoveSize.x = -m_fSpeed;
 	}
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_RIGHT))
 	{
+		client.Send_Input('d');
 		object.model_transform.Translate.x += m_fSpeed ;
 		MoveSize.x = m_fSpeed;
 	}
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_UP))
 	{
+		client.Send_Input('w');
 		object.model_transform.Translate.z -= m_fSpeed ;
 		MoveSize.z = -m_fSpeed;
 	}
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_DOWN))
 	{
+		client.Send_Input('s');
 		object.model_transform.Translate.z += m_fSpeed ;
 		MoveSize.z = -m_fSpeed;
 	}

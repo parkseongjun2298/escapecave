@@ -16,6 +16,7 @@ bool CKeyMgr::Key_Down(int _key)
 {
 	if (!m_bKeyState[_key] && (GetAsyncKeyState(_key) & 0x8000))
 	{
+		printf("asdf");
 		m_bKeyState[_key] = !m_bKeyState[_key];
 		return true;
 	}

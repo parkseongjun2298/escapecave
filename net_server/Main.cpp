@@ -96,12 +96,14 @@ DWORD WINAPI Recv_Thread(LPVOID arg)
 int main(int argc, char *argv[])
 {
 	Server server;
-	//클라이언트 3명 올 때까지 대기 -> 스레드 3개 생성
+	//클라이언트 3명 연결 될 때까지 대기 -> 스레드 3개 생성되면 함수 종료됨
 	server.InitServer();
 	// 클라이언트 3명에게 오브젝트 초기화 요청 송신
 	server.RunServer();
 	printf("끝");
+	while (1) {
 
+	}
 	server.Close_Connect();
 	return 0;
 }
