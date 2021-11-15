@@ -7,7 +7,7 @@
 #ifndef PCH_H
 #define PCH_H
 #include <iostream>
-/*
+
 // 여기에 미리 컴파일하려는 헤더 추가
 #include <iostream>
 #include <gl/glew.h>
@@ -18,10 +18,10 @@
 #include <glm/glm/glm.hpp>
 #include <glm/glm/ext.hpp>
 #include <glm/glm/gtc/matrix_transform.hpp>
-
-
-#include <time.h>
 #include <list>
+/*
+#include <time.h>
+
 #include <vector>
 #include <algorithm>
 #include <functional>

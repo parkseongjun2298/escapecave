@@ -50,6 +50,7 @@ void Client::Send_Input(char b) {
 		return;
 	}
 }
+
 void Client::InitClient() {
 	// 1. 윈속 초기화
 	WSADATA wsa;
@@ -97,7 +98,6 @@ void Client::Send_GameStart() {
 	}
 	Recv_Initialize();
 }
-
 
 void Client::Close_Connect() {
 	// 4. 소켓 닫음

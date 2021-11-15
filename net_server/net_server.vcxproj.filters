@@ -25,6 +25,9 @@
     <Filter Include="소스 파일\01.Net\RecvThread">
       <UniqueIdentifier>{793637be-3120-4c00-868d-ce696de234f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02.Obj">
+      <UniqueIdentifier>{0d905f0e-5144-429b-9640-7f513502c4e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Server.h">
@@ -37,6 +40,24 @@
       <Filter>소스 파일\01.Net\RecvThread</Filter>
     </ClInclude>
     <ClInclude Include="struct.h">
+      <Filter>소스 파일\99.Default</Filter>
+    </ClInclude>
+    <ClInclude Include="enum.h">
+      <Filter>소스 파일\99.Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>소스 파일\02.Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>소스 파일\02.Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="NetShare.h">
+      <Filter>소스 파일\01.Net</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticList.h">
+      <Filter>소스 파일\02.Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Function.h">
       <Filter>소스 파일\99.Default</Filter>
     </ClInclude>
   </ItemGroup>
@@ -52,6 +73,18 @@
     </ClCompile>
     <ClCompile Include="RecvThread.cpp">
       <Filter>소스 파일\01.Net\RecvThread</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj.cpp">
+      <Filter>소스 파일\02.Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>소스 파일\02.Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Function.cpp">
+      <Filter>소스 파일\99.Default</Filter>
+    </ClCompile>
+    <ClCompile Include="NetShare.cpp">
+      <Filter>소스 파일\01.Net</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,16 +1,12 @@
 #pragma once
 #include <winsock2.h>
 #include "struct.h"
+#include "NetShare.h"
 DWORD WINAPI Recv_Thread(LPVOID arg);
 
-class Thread
+class Thread : public NetShare
 {
-	int retval;
+	void Update_PlayerInfo();
 public:
-	static int thread_num;
-	int num;
-	HANDLE hCursorEvent;
-	DataInfo datainfo;
-	SOCKET sock;
 	void Recv_Input();
 };

@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "Server.h"
-
+#include "Function.h"
 
 // 데이터 수신 함수
 int recvn(SOCKET s, char *buf, int len, int flags)
@@ -102,7 +102,7 @@ int main(int argc, char *argv[])
 	server.RunServer();
 	printf("끝");
 	while (1) {
-
+		server.Update();
 	}
 	server.Close_Connect();
 	return 0;

@@ -2,10 +2,23 @@
 #include "pch.h"
 #include "Server.h"
 #include "RecvThread.h"
+#include "struct.h"
+#include "player.h"
+#include "enum.h"
+#include "StaticList.h"
+#include "Function.h"
 
+using namespace std;
 #pragma comment(lib, "ws2_32.lib")
 #define SERVERPORT 9000
 #define BUFSIZE    4096
+
+template <typename T>
+void Server::Safe_Delete(T& _obj) {
+	delete _obj;
+	_obj = nullptr;
+}
+
 void Server::err_quit(const char *msg)
 {
 	LPVOID lpMsgBuf;
@@ -52,6 +65,7 @@ void Server::Send_Initialize() {
 
 void Server::RunServer() {
 	Send_Initialize();
+
 	printf("게임시작");
 	return;
 };
@@ -107,6 +121,31 @@ void Server::InitServer() {
 		if (hThread == NULL) { closesocket(client_sock[--i]); }
 		else { CloseHandle(hThread); }
 		printf("%d\n", i);
+	}
+}
+
+void Server::Update()
+{
+	OBJECT_LIST::iterator iter_begin = m_ObjectList[OBJID::PLAYER].begin();
+	OBJECT_LIST::iterator iter_end = m_ObjectList[OBJID::PLAYER].end();
+	for (int i = 0; i < OBJID::END; ++i)
+	{	// 달라야하는데 왜 둘이같음
+		OBJECT_LIST::iterator iter_begin = m_ObjectList[i].begin();
+		OBJECT_LIST::iterator iter_end = m_ObjectList[i].end();
+
+		for (; iter_begin != iter_end;)
+		{
+			//Update() 함수는 hp값 반환하고 0이면 제거
+			int iEvent = 0;
+			iEvent = (*iter_begin)->Update();
+			if (!iEvent)
+			{
+				Safe_Delete(*iter_begin);
+				iter_begin = m_ObjectList[i].erase(iter_begin);
+			}
+			else
+				++iter_begin;
+		}
 	}
 }
 
