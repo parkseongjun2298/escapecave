@@ -67,7 +67,7 @@ void CObjectMgr::Update()
     CCollisionMgr::Get_Instance()->Collision_BulletToPlayer(m_ObjectList[OBJID::MONSTER_BULLET], m_ObjectList[OBJID::PLAYER]);
     CCollisionMgr::Get_Instance()->Collision_BulletToBullet(m_ObjectList[OBJID::MONSTER_BULLET], m_ObjectList[OBJID::PLAYER_BULLET]);
     CCollisionMgr::Get_Instance()->Collision_BossToPlayerBullet(m_ObjectList[OBJID::BOSS], m_ObjectList[OBJID::PLAYER_BULLET]);
-
+    
 }
 
 void CObjectMgr::LateUpdate()

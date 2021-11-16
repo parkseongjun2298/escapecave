@@ -17,13 +17,15 @@ CMainGame maingame;
 
 glm::vec3 background = {0.0,0.0,0.0};
 
-
+Client client;
 int main(int argc, char** argv)
 {
-	Client client;
+	
 	client.InitClient();	// 클라이언트로써 서버와 연결하는 함수
 	client.Send_GameStart();	// 서버에게 게임 시작 요청
 	
+
+
 	srand(unsigned int(time(NULL)));
 
 	glutInit(&argc, argv);		// GLUT openGL 환경 초기화
@@ -64,6 +66,7 @@ int main(int argc, char** argv)
 	glutMainLoop(); // 이벤트 처리 시작 중요!!!!!!! 종료하라는 명령어 들어올때까지 실행한다
 	//glutLeaveMainLoop(); // 이벤트 프로세싱을 종료(프로그램 종료)
 
+
 }
 GLvoid Brighter()
 {
@@ -84,6 +87,9 @@ GLvoid drawScene(GLvoid)
 	maingame.Update_MainGame();
 	maingame.Draw_MainGame();
 	maingame.Late_Update();
+
+	client.Send_Bullet_Info();
+	client.Send_Monster_Bullet_Info();
 
 	glutPostRedisplay();
 

@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <Windows.h>
+#include<iostream>
+using namespace std;
+
 #define SERVERPORT 9000
 #define BUFSIZE    4096
 
@@ -13,7 +16,15 @@ void err_display(const char* msg);
 typedef struct DataInfo {
 	char infoindex;	// 패킷 타입
 	char datasize;	// 패킷 크기
+
+	float m_fx;
+	float m_fy;
+	float m_fz;
+
 };
+
+
+
 
 //  cmd창 num번째 줄에 문자열 출력
 int num = 0;
@@ -86,6 +97,11 @@ void Recv_GameStart() {
 	if (startnum == 3)
 		RunServer();
 }
+void Recv_Bullet_Info() {
+	
+	
+}
+
 
 // 스레드. 클라이언트와 데이터 통신
 DWORD WINAPI Recv_Thread(LPVOID arg)
@@ -100,6 +116,7 @@ DWORD WINAPI Recv_Thread(LPVOID arg)
 	int number = num++;
 	COORD pos = { 0,number };
 	DataInfo datainfo;
+	
 	int current_received_size = 0;
 
 	// 클라이언트 정보 얻기
@@ -114,13 +131,30 @@ DWORD WINAPI Recv_Thread(LPVOID arg)
 			err_display("recv()");
 			break;
 		}
+		
+
 		else if (retval == 0) {
 			break;
 		}
-		switch (datainfo.infoindex) {
+		switch (datainfo.infoindex) 
+		{
 		case 'a':
 			Recv_GameStart();
+			
 			break;
+		case 'b':
+			//Recv_Bullet_Info();
+			cout << "플레이어총알위치:" << datainfo.m_fx <<","<< datainfo.m_fy << "," << datainfo.m_fz << endl;
+
+			break;
+		
+		case 'c':
+			//Recv_Bullet_Info();
+			cout << "몬스터총알위치:" << datainfo.m_fx << "," << datainfo.m_fy << "," << datainfo.m_fz << endl;
+
+			break;
+			
+
 		}
 		/*
 		// 데이터 받기(가변 길이)
@@ -190,6 +224,7 @@ int main(int argc, char *argv[])
 		addrlen = sizeof(clientaddr);
 		client_sock = accept(listen_sock, (SOCKADDR*)&clientaddr, &addrlen);
 		COORD pos = { 0,num++ };
+
 		if (client_sock == INVALID_SOCKET) {
 			set_cursor(pos);
 			err_display("accept()");

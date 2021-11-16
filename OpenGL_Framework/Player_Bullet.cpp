@@ -41,6 +41,9 @@ int CPlayer_Bullet::Update()
 		return DEAD_OBJ;
 
 	object.model_transform.Translate += m_fSpeed*m_vDir;
+
+
+
 	return 0;
 }
 
