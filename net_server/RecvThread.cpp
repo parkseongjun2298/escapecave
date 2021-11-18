@@ -37,6 +37,9 @@ DWORD WINAPI Recv_Thread(LPVOID arg) {
 			//err_display("recv()");
 		else if (retval == 0)
 			break;
+		retval = WaitForSingleObject(thread.hSynchro, INFINITE);
+		if (retval != WAIT_OBJECT_0)
+			break;
 		switch (thread.datainfo.infoindex) {
 		case 'a':
 			thread.Recv_Input();

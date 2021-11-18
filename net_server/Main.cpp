@@ -103,6 +103,7 @@ int main(int argc, char *argv[])
 	printf("³¡");
 	while (1) {
 		server.Update();
+		server.Send_ObjectInfo();
 	}
 	server.Close_Connect();
 	return 0;

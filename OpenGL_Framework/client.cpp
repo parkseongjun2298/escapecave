@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Client.h"
-#include "RecvThread.h"
 
 #pragma comment(lib, "ws2_32.lib")
 #define SERVERIP   "127.0.0.1"
@@ -8,6 +7,44 @@
 #define BUFSIZE    50
 
 SOCKET Client::sock = NULL;
+
+void Client::Recv_ObjectInfo() {
+	retval = recv(Client::sock, (char*)&datainfo, sizeof(DataInfo), 0);
+
+	if (retval == SOCKET_ERROR)
+		err_display("recv()");
+	else if (retval == 0)
+		return;
+	printf("%c", datainfo.datasize);
+
+}
+
+DWORD WINAPI Client::Recv_Thread(LPVOID arg) {
+	SOCKET client_sock = (SOCKET)arg;
+	printf("Therad_initialized\n");
+	DataInfo datainfo;
+	while (1) {
+		// 수신하고
+		int retval = recv(Client::sock, (char*)&datainfo, sizeof(DataInfo), 0);
+		if (retval == SOCKET_ERROR)
+			;
+			//err_display("recv()");
+		else if (retval == 0)
+			return 0;
+		switch (datainfo.infoindex) {
+		case 'b':
+			printf("%c", datainfo.datasize);
+		}
+		// 이벤트 true까지 대기하고
+		//int retval = WaitForSingleObject(hSynchro, INFINITE);
+		//if (retval != WAIT_OBJECT_0) exit(1);
+		// 오브젝트 업뎃 한 뒤에
+		//update();
+		//오브젝트 화면에 그린다.
+		//SetEvent(client.hSynchro);
+	}
+	return 0;
+};
 void Client::err_quit(const char *msg)
 {
 	LPVOID lpMsgBuf;
@@ -75,7 +112,7 @@ void Client::InitClient() {
 		(LPVOID)Client::sock, 0, NULL);
 	if (thread == NULL) { closesocket(Client::sock); }
 	else { CloseHandle(thread); }
-
+	hSynchro = CreateEvent(NULL, FALSE, TRUE, NULL);
 }
 
 void Client::Recv_Initialize() {

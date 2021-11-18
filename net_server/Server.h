@@ -22,5 +22,6 @@ public:
 	void InitServer();
 	void Send_Initialize();
 	void Close_Connect();
+	void Send_ObjectInfo();
 };
 #endif // !__MAINGAME_H__

@@ -11,11 +11,10 @@ class NetShare
 protected:
 	int retval;
 public:
-
 	static OBJECT_LIST m_ObjectList[OBJID::END];
 	static int thread_num;
 	int num;
-	HANDLE hCursorEvent;
+	static HANDLE hSynchro;
 	DataInfo datainfo;
 	SOCKET sock;
 };

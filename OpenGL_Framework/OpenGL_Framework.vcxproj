@@ -174,7 +174,6 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Player_Bullet.cpp" />
     <ClCompile Include="Player_front.cpp" />
-    <ClCompile Include="RecvThread.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShiledMonster.cpp" />
     <ClCompile Include="SoundMgr.cpp" />
@@ -200,6 +199,7 @@
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MonsterBullet.h" />
+    <ClInclude Include="NetObj.h" />
     <ClInclude Include="NormalMonster.h" />
     <ClInclude Include="Obj.h" />
     <ClInclude Include="ObjMgr.h" />
@@ -207,7 +207,6 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Player_Bullet.h" />
     <ClInclude Include="Player_front.h" />
-    <ClInclude Include="RecvThread.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShiledMonster.h" />
     <ClInclude Include="SoundMgr.h" />

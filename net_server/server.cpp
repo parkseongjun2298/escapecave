@@ -99,22 +99,17 @@ void Server::InitServer() {
 	int addrlen;
 	HANDLE hThread;
 	int i = 0;
-	// 스레드에서 데이터 수신 비율 출력할 때 다른 스레드가 커서 위치 바꾸지 않도록 제어. 자동 리셋, 신호 상태로 시작
-	hCursorEvent = CreateEvent(NULL, FALSE, TRUE, NULL);
+
 	printf("통신 대기 중");
 	// 스레드 총 3개 만들면 메인함수로 돌아간다.
 	while (i<3) {
-		if (hCursorEvent == NULL) break;
-		// accept()
 		addrlen = sizeof(clientaddr);
 		client_sock[i] = accept(sock, (SOCKADDR*)&clientaddr, &addrlen);
 		if (client_sock[i] == INVALID_SOCKET) {
 			err_display("accept()");
-			SetEvent(hCursorEvent);
 			break;
 		}
 		printf("\r[TCP 서버] 클라이언트 접속: IP 주소=%s, 포트 번호=%d\n", inet_ntoa(clientaddr.sin_addr), ntohs(clientaddr.sin_port));
-		SetEvent(hCursorEvent);
 		// 스레드 생성
 		hThread = CreateThread(NULL, 0, Recv_Thread,
 			(LPVOID)client_sock[i++], 0, NULL);
@@ -122,10 +117,14 @@ void Server::InitServer() {
 		else { CloseHandle(hThread); }
 		printf("%d\n", i);
 	}
+	// 스레드에서 데이터 수신 비율 출력할 때 다른 스레드가 커서 위치 바꾸지 않도록 제어. 자동 리셋, 신호 상태로 시작
+	hSynchro = CreateEvent(NULL, TRUE, TRUE, NULL);
 }
 
 void Server::Update()
 {
+	//클라이언트로부터 키 입력이 와도 오브젝트 업데이트까지 적용 대기시킨다.
+	ResetEvent(hSynchro);
 	OBJECT_LIST::iterator iter_begin = m_ObjectList[OBJID::PLAYER].begin();
 	OBJECT_LIST::iterator iter_end = m_ObjectList[OBJID::PLAYER].end();
 	for (int i = 0; i < OBJID::END; ++i)
@@ -147,10 +146,41 @@ void Server::Update()
 				++iter_begin;
 		}
 	}
+	//클라이언트의 키 입력에 대한 적용을 허용한다.
+	SetEvent(hSynchro);
+}
+
+void Server::Send_ObjectInfo() {
+	datainfo.infoindex = 'b';
+	//틀린 배열 크기 측정
+	for (int i = 0;i < 10;i++)
+		printf("%d", m_ObjectList[i].size());
+	datainfo.datasize =sizeof(m_ObjectList[0].size());
+	
+	// 오브젝트 구조체 길이를 Byte 단위로 담은 통신용 구조체 송신
+	for (int i = 0;i < 3;i++) {
+		retval = send(client_sock[i], (char*)&datainfo, sizeof(DataInfo), 0);
+		if (retval == SOCKET_ERROR) {
+			err_display("send()");
+			return;
+		}
+	}
+	
+	//printf("%d : %d",(int)datainfo.datasize, sizeof(OBJECT_LIST));
+	// 오브젝트 구조체 송신
+	for (int i = 0;i < 0;i++) {
+		retval = send(client_sock[i], (char*)&datainfo, (int)datainfo.datasize, 0);
+		if (retval == SOCKET_ERROR) {
+			err_display("send()");
+			return;
+		}
+
+	}
+	printf("구조체 송신\n");
 }
 
 void Server::Close_Connect() {
-	CloseHandle(hCursorEvent);
+	CloseHandle(hSynchro);
 	// 4. 소켓 닫음
 	closesocket(sock);
 
