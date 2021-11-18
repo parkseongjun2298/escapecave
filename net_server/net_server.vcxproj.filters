@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="소스 파일\00.Main">
+      <UniqueIdentifier>{111adb32-7181-47b4-872c-4dc58b5c854e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Net">
+      <UniqueIdentifier>{3ca4ef0b-b4e0-483f-8e6f-25d0d91d39dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Default">
+      <UniqueIdentifier>{665edaeb-528e-4dfd-afa3-808333e2a6cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Net\RecvThread">
+      <UniqueIdentifier>{793637be-3120-4c00-868d-ce696de234f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Obj">
+      <UniqueIdentifier>{0d905f0e-5144-429b-9640-7f513502c4e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Obj\Monster">
+      <UniqueIdentifier>{3119bbfd-3306-449a-8e38-e58f642abe11}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Server.h">
+      <Filter>소스 파일\01.Net</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>소스 파일\99.Default</Filter>
+    </ClInclude>
+    <ClInclude Include="RecvThread.h">
+      <Filter>소스 파일\01.Net\RecvThread</Filter>
+    </ClInclude>
+    <ClInclude Include="struct.h">
+      <Filter>소스 파일\99.Default</Filter>
+    </ClInclude>
+    <ClInclude Include="enum.h">
+      <Filter>소스 파일\99.Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>소스 파일\02.Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>소스 파일\02.Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="NetShare.h">
+      <Filter>소스 파일\01.Net</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticList.h">
+      <Filter>소스 파일\02.Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Function.h">
+      <Filter>소스 파일\99.Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_head.h">
+      <Filter>소스 파일\02.Obj\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="BossMonster.h">
+      <Filter>소스 파일\02.Obj\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="ShiledMonster.h">
+      <Filter>소스 파일\02.Obj\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="SwirlMonster.h">
+      <Filter>소스 파일\02.Obj\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="TonadoMonster.h">
+      <Filter>소스 파일\02.Obj\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalMonster.h">
+      <Filter>소스 파일\02.Obj\Monster</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Server.cpp">
+      <Filter>소스 파일\01.Net</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>소스 파일\99.Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>소스 파일\00.Main</Filter>
+    </ClCompile>
+    <ClCompile Include="RecvThread.cpp">
+      <Filter>소스 파일\01.Net\RecvThread</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj.cpp">
+      <Filter>소스 파일\02.Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>소스 파일\02.Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Function.cpp">
+      <Filter>소스 파일\99.Default</Filter>
+    </ClCompile>
+    <ClCompile Include="NetShare.cpp">
+      <Filter>소스 파일\01.Net</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_head.cpp">
+      <Filter>소스 파일\02.Obj\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="BossMonster.cpp">
+      <Filter>소스 파일\02.Obj\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="ShiledMonster.cpp">
+      <Filter>소스 파일\02.Obj\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="SwirlMonster.cpp">
+      <Filter>소스 파일\02.Obj\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="TonadoMonster.cpp">
+      <Filter>소스 파일\02.Obj\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalMonster.cpp">
+      <Filter>소스 파일\02.Obj\Monster</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

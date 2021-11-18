@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="99.Default">
+      <UniqueIdentifier>{17e821c0-8dc0-49cf-87ec-620dce09a62f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="00.Main">
+      <UniqueIdentifier>{1ef3848a-fa41-4f9a-8a74-9b3405384a0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98.Headers">
+      <UniqueIdentifier>{d67605a6-7d69-4783-b33c-5c2f71f9498a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Shader_glsl">
+      <UniqueIdentifier>{54dce45f-4ad1-4486-a753-3815f018bd65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj">
+      <UniqueIdentifier>{cc210885-78b2-43cd-a13b-6df3f922939c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.MainGame">
+      <UniqueIdentifier>{79e272f6-519a-433a-80aa-6fcf722f6355}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02.Shader">
+      <UniqueIdentifier>{7fe128e1-4cb5-4fe7-82c4-96a561054ccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\01.Player">
+      <UniqueIdentifier>{56cc7fed-f4fd-4b04-b3e1-e2aa9f4efed4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Manager">
+      <UniqueIdentifier>{5f1a713f-e18e-47a3-9184-45887338657a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Manager\01.TimeManager">
+      <UniqueIdentifier>{ecc0c1c0-a165-4bea-afc9-33fde589ff21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Manager\02.FrameManager">
+      <UniqueIdentifier>{028960b2-e5e7-4ef6-bf29-de69cc6343a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Manager\03.KeyManager">
+      <UniqueIdentifier>{cffc2504-89ff-47ea-b58e-2a32e2961207}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\02.Monster">
+      <UniqueIdentifier>{330cf37a-6a23-4d66-81d9-bc328d2fd1a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\02.Monster\01.NormalMonster">
+      <UniqueIdentifier>{86e133ff-a2fa-4e47-86d5-7c90549ec711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\03.map">
+      <UniqueIdentifier>{a36ca79c-c2f0-4145-9f75-661a7b72bd84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Manager\04.ObjMgr">
+      <UniqueIdentifier>{3c37735a-ba33-4ecd-9092-c830c59e8d4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\01.Player\00.Player_front">
+      <UniqueIdentifier>{9f0ca981-860e-437e-a42b-8458649c683f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\01.Player\01.Player_Bullet">
+      <UniqueIdentifier>{ca63ce02-c659-445d-a06c-dc8933f598c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\02.Monster\99.MonsterBullet">
+      <UniqueIdentifier>{7bfb1ecc-3ed4-47e9-84cb-4d28c46dc122}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Manager\05.CollisionMgr">
+      <UniqueIdentifier>{8a29f163-0565-4460-bae5-71530296d9bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\02.Monster\02.Shiled">
+      <UniqueIdentifier>{04c5a181-18c3-4d03-b7dd-5f8d8c4df066}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\03.map\00.Gate">
+      <UniqueIdentifier>{0ed15584-249f-480f-b75a-be9a0be0142a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\02.Monster\03.SwirlMonster">
+      <UniqueIdentifier>{17a1688c-c161-445f-ab69-488285f8ff7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\04.Item">
+      <UniqueIdentifier>{2820ac16-513c-4133-86a3-b1b29ae35a3e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\01.Player\02.Bomb">
+      <UniqueIdentifier>{d7ee1965-ef26-43e1-9b14-e6e15f32be59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\01.Player\02.Bomb\00.Bomb_Effect">
+      <UniqueIdentifier>{7b0c4c7b-796a-4f3c-a471-76aaf9156c2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\02.Monster\04.TonadoMonster">
+      <UniqueIdentifier>{a215c4eb-34f0-4208-9496-25cf37765796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\02.Monster\05.BossMonster">
+      <UniqueIdentifier>{37c88970-619b-4693-ad72-00f19484f594}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03.Obj\02.Monster\05.BossMonster\00.Bosshead">
+      <UniqueIdentifier>{8c2795f1-ff32-40bc-aa7a-3267414d8f8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="97.Manager\06.Sound">
+      <UniqueIdentifier>{a46c7ce3-8542-424d-acf2-ad04d79694b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="96.Net">
+      <UniqueIdentifier>{0fd6950d-1a66-4a10-9df4-dc41b699ce5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="96.Net\RecvThread">
+      <UniqueIdentifier>{68050320-39df-40ad-9fe5-d2b11e4d9046}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>99.Default</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGL_Framework.cpp">
+      <Filter>00.Main</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGame.cpp">
+      <Filter>01.MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj.cpp">
+      <Filter>03.Obj</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>02.Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>03.Obj\01.Player</Filter>
+    </ClCompile>
+    <ClCompile Include="FrameMgr.cpp">
+      <Filter>97.Manager\02.FrameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeMgr.cpp">
+      <Filter>97.Manager\01.TimeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMgr.cpp">
+      <Filter>97.Manager\03.KeyManager</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalMonster.cpp">
+      <Filter>03.Obj\02.Monster\01.NormalMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>03.Obj\03.map</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMgr.cpp">
+      <Filter>97.Manager\04.ObjMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_front.cpp">
+      <Filter>03.Obj\01.Player\00.Player_front</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_Bullet.cpp">
+      <Filter>03.Obj\01.Player\01.Player_Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterBullet.cpp">
+      <Filter>03.Obj\02.Monster\99.MonsterBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionMgr.cpp">
+      <Filter>97.Manager\05.CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Gate.cpp">
+      <Filter>03.Obj\03.map\00.Gate</Filter>
+    </ClCompile>
+    <ClCompile Include="ShiledMonster.cpp">
+      <Filter>03.Obj\02.Monster\02.Shiled</Filter>
+    </ClCompile>
+    <ClCompile Include="SwirlMonster.cpp">
+      <Filter>03.Obj\02.Monster\03.SwirlMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="Bomb.cpp">
+      <Filter>03.Obj\01.Player\02.Bomb</Filter>
+    </ClCompile>
+    <ClCompile Include="Bomb_Effect.cpp">
+      <Filter>03.Obj\01.Player\02.Bomb\00.Bomb_Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="TonadoMonster.cpp">
+      <Filter>03.Obj\02.Monster\04.TonadoMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="BossMonster.cpp">
+      <Filter>03.Obj\02.Monster\05.BossMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_head.cpp">
+      <Filter>03.Obj\02.Monster\05.BossMonster\00.Bosshead</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundMgr.cpp">
+      <Filter>97.Manager\06.Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="client.cpp">
+      <Filter>96.Net</Filter>
+    </ClCompile>
+    <ClCompile Include="RecvThread.cpp">
+      <Filter>96.Net\RecvThread</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>99.Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>98.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Headers.h">
+      <Filter>98.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Struct.h">
+      <Filter>98.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Function.h">
+      <Filter>98.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGame.h">
+      <Filter>01.MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>03.Obj</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>02.Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="enum.h">
+      <Filter>98.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>03.Obj\01.Player</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameMgr.h">
+      <Filter>97.Manager\02.FrameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeMgr.h">
+      <Filter>97.Manager\01.TimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMgr.h">
+      <Filter>97.Manager\03.KeyManager</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalMonster.h">
+      <Filter>03.Obj\02.Monster\01.NormalMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>03.Obj\03.map</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMgr.h">
+      <Filter>97.Manager\04.ObjMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_front.h">
+      <Filter>03.Obj\01.Player\00.Player_front</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_Bullet.h">
+      <Filter>03.Obj\01.Player\01.Player_Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterBullet.h">
+      <Filter>03.Obj\02.Monster\99.MonsterBullet</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionMgr.h">
+      <Filter>97.Manager\05.CollisionMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Gate.h">
+      <Filter>03.Obj\03.map\00.Gate</Filter>
+    </ClInclude>
+    <ClInclude Include="ShiledMonster.h">
+      <Filter>03.Obj\02.Monster\02.Shiled</Filter>
+    </ClInclude>
+    <ClInclude Include="SwirlMonster.h">
+      <Filter>03.Obj\02.Monster\03.SwirlMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="Bomb.h">
+      <Filter>03.Obj\01.Player\02.Bomb</Filter>
+    </ClInclude>
+    <ClInclude Include="Bomb_Effect.h">
+      <Filter>03.Obj\01.Player\02.Bomb\00.Bomb_Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="TonadoMonster.h">
+      <Filter>03.Obj\02.Monster\04.TonadoMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="BossMonster.h">
+      <Filter>03.Obj\02.Monster\05.BossMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_head.h">
+      <Filter>03.Obj\02.Monster\05.BossMonster\00.Bosshead</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundMgr.h">
+      <Filter>97.Manager\06.Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Functor.h">
+      <Filter>97.Manager\06.Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>96.Net</Filter>
+    </ClInclude>
+    <ClInclude Include="RecvThread.h">
+      <Filter>96.Net\RecvThread</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fragment.glsl">
+      <Filter>97.Shader_glsl</Filter>
+    </None>
+    <None Include="vertex.glsl">
+      <Filter>97.Shader_glsl</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="색상.txt" />
+  </ItemGroup>
+</Project>
