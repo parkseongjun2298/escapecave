@@ -5,6 +5,8 @@
 #include "TimeMgr.h"
 #include "Player_Bullet.h"
 #include "Bomb.h"
+#include "Client.h"
+#include "tmp.h"
 
 CPlayer::CPlayer(GLuint* _shader_program)
 	:CObj(_shader_program)
@@ -38,6 +40,10 @@ int CPlayer::Update()
 	if (m_bDead)
 		DEAD_OBJ;
 
+	object.model_transform.Translate.x = tmp.x;
+	object.model_transform.Translate.y = tmp.y;
+	object.model_transform.Translate.z = tmp.z;
+
 	/*object.model_transform.Translate.x -= m_fSpeed;
 	float delta_time = CTimeMgr::Get_Instance()->Get_DeltaTime();*/
 	m_Camera.cameraPos = object.model_transform.Translate;
@@ -57,24 +63,25 @@ int CPlayer::Update()
 			Double_Bullet();
 
 	}
+	Client client;
 	if(CKeyMgr::Get_Instance()->Key_Pressing(KEY_LEFT))
 	{
-		object.model_transform.Translate.x -= m_fSpeed;
+		client.Send_Input('a');
 		MoveSize.x = -m_fSpeed;
 	}
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_RIGHT))
 	{
-		object.model_transform.Translate.x += m_fSpeed ;
+		client.Send_Input('d');
 		MoveSize.x = m_fSpeed;
 	}
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_UP))
 	{
-		object.model_transform.Translate.z -= m_fSpeed ;
+		client.Send_Input('w');
 		MoveSize.z = -m_fSpeed;
 	}
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_DOWN))
 	{
-		object.model_transform.Translate.z += m_fSpeed ;
+		client.Send_Input('s');
 		MoveSize.z = -m_fSpeed;
 	}
 	if (CKeyMgr::Get_Instance()->Key_Down(KEY_A))
