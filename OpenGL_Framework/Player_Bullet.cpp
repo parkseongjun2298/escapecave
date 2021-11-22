@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Player_Bullet.h"
 #include "ObjMgr.h"
+#include"Client.h"
+
 CPlayer_Bullet::CPlayer_Bullet(GLuint* _shader_program, glm::vec3 _pos, glm::vec3 _color, glm::vec3 _dir)
 	:CObj(_shader_program)
 {

@@ -1,1 +1,3 @@
 C:\Users\su\source\OpenGL_Shader_Framework\net_server\Debug\net_server.exe
+C:\Users\박성준\Desktop\escapecave\net_server\Debug\net_server.exe
+C:\Users\박성준\Desktop\escapecave\net_server\Debug\net_server.pdb

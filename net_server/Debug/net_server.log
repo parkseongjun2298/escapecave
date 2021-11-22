@@ -1,6 +1,10 @@
-﻿  server.cpp
-C:\Users\su\source\OpenGL_Shader_Framework\net_server\server.cpp(13,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'DataInfo' 왼쪽은 무시됩니다.
-C:\Users\su\source\OpenGL_Shader_Framework\net_server\server.cpp(98,18): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\su\source\OpenGL_Shader_Framework\net_server\server.cpp(94,7): warning C4101: 'buf' :참조되지 않은 지역 변수입니다.
-C:\Users\su\source\OpenGL_Shader_Framework\net_server\server.cpp(189,22): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-  net_server.vcxproj -> C:\Users\su\source\OpenGL_Shader_Framework\net_server\Debug\net_server.exe
+﻿  Player.cpp
+C:\Users\박성준\Desktop\escapecave\net_server\struct.h(7,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'DataInfo' 왼쪽은 무시됩니다.
+C:\Users\박성준\Desktop\escapecave\net_server\struct.h(27,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'ObjectInfo' 왼쪽은 무시됩니다.
+C:\Users\박성준\Desktop\escapecave\net_server\Define.h(51,1): warning C4005: 'DECLARE_SINGLETON': 매크로 재정의
+C:\Users\박성준\Desktop\escapecave\net_server\Define.h(32): message : 'DECLARE_SINGLETON'의 이전 정의를 참조하십시오.
+  PlayerBullet.cpp
+C:\Users\박성준\Desktop\escapecave\net_server\struct.h(7,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'DataInfo' 왼쪽은 무시됩니다.
+C:\Users\박성준\Desktop\escapecave\net_server\struct.h(27,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'ObjectInfo' 왼쪽은 무시됩니다.
+  코드를 생성하고 있습니다...
+  net_server.vcxproj -> C:\Users\박성준\Desktop\escapecave\net_server\Debug\net_server.exe

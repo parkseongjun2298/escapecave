@@ -1,3 +1,17 @@
-﻿  OpenGL_Framework.cpp
-C:\Users\박성준\Desktop\escapecave\OpenGL_Framework\Client.h(14,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'DataInfo' 왼쪽은 무시됩니다.
+﻿  Player.cpp
+C:\Users\박성준\Desktop\escapecave\OpenGL_Framework\Client.h(18,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'DataInfo' 왼쪽은 무시됩니다.
+C:\Users\박성준\Desktop\escapecave\OpenGL_Framework\Function.h(32,15): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\OpenGL_Framework\Player.cpp(22): message : 컴파일되는 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하세요.
+          with
+          [
+              T1=const char *,
+              T2=OBJECT,
+              T3=glm::vec3
+          ]
+C:\Users\박성준\Desktop\escapecave\OpenGL_Framework\Function.h(41,13): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\OpenGL_Framework\Function.h(46,4): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\OpenGL_Framework\Function.h(51,4): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\OpenGL_Framework\Function.h(56,4): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\OpenGL_Framework\Function.h(62,18): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\OpenGL_Framework\Function.h(90): warning C4715: 'loadObj<char const *,Object,glm::vec<3,float,0> >': 모든 제어 경로에서 값을 반환하지는 않습니다.
   OpenGL_Framework.vcxproj -> C:\Users\박성준\Desktop\escapecave\Debug\OpenGL_Framework.exe

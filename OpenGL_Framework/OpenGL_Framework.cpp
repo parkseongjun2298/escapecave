@@ -85,11 +85,18 @@ GLvoid drawScene(GLvoid)
 
 	/////// 셰이더
 	maingame.Update_MainGame();
-	maingame.Draw_MainGame();
-	maingame.Late_Update();
+	//클라이언트로부터 키 입력이 와도 오브젝트 업데이트까지 적용 대기시킨다.
+	int retval = WaitForSingleObject(client.hSynchro, INFINITE);
+	if (retval != WAIT_OBJECT_0)
+		exit(1);
+	
 
-	client.Send_Bullet_Info();
-	client.Send_Monster_Bullet_Info();
+	maingame.Draw_MainGame();
+	
+
+	SetEvent(client.hSynchro);
+	// 수신스레드에서 객체 업뎃 할 것이므로 필요없어지는코드
+	maingame.Late_Update();
 
 	glutPostRedisplay();
 
