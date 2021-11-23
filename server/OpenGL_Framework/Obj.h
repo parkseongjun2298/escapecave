@@ -9,6 +9,7 @@ public:
 	CObj(GLuint* _shader_program);
 	~CObj();
 public:
+	
 	virtual void Initialize()=0;
 	virtual int Update()=0;
 	virtual void Late_Update() = 0;
@@ -43,6 +44,9 @@ protected:
 	float m_fSpeed = 0;
 	glm::vec3 Look;
 	bool  m_bDead;
+
+public:
+	glm::vec3 return_Trans();
 };
 
 

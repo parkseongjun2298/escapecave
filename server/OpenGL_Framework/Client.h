@@ -5,7 +5,7 @@
 class CObj;
 typedef struct DataInfo {
 	char infoindex;	// 패킷 타입
-	char datasize;	// 패킷 크기
+	int datasize;	// 패킷 크기
 
 	float m_fx;
 	float m_fy;
@@ -29,6 +29,10 @@ public:
 	CObj* Connect_Player();
 	CObj* Connect_Bullet();
 	CObj* Connect_Monster_Bullet();
+
+	void Send_Object_Info();
+
+
 
 	void Send_Bullet_Info();
 	void Send_Monster_Bullet_Info();

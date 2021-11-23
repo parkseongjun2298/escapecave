@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "ObjMgr.h"
 #include "Obj.h"
+#include "tmp.h"
 #include"CollisionMgr.h"
 
 IMPLEMENT_SINGLETON(CObjectMgr)
@@ -41,8 +42,10 @@ HRESULT CObjectMgr::AddObject(OBJID::OBJ eType, CObj* pObject)
     return S_OK;
 }
 
+//이 함수에서 모든 오브젝트의 좌표값vec3를 추출하여 전역 리스트에 저장한다.
 void CObjectMgr::Update()
 {
+
     for (int i = 0; i < OBJID::END; ++i)
     {
         OBJECT_LIST::iterator iter_begin = m_ObjectList[i].begin();
@@ -52,6 +55,10 @@ void CObjectMgr::Update()
         {
             int iEvent = 0;
             iEvent = (*iter_begin)->Update();
+            // 각 오브젝트의 좌표값을 리스트에 "구분하여" 정렬 저장한다.
+            s_ObjectList[i].push_back((*iter_begin)->return_Trans());
+
+
             Shader->Upadate_Shader((*iter_begin)->Get_vao(), (*iter_begin)->Get_vbo(),(*iter_begin)->Get_normalbuffer(), (*iter_begin)->Get_Object());
             (*iter_begin)->Draw();
             if (DEAD_OBJ == iEvent)
@@ -67,7 +74,6 @@ void CObjectMgr::Update()
     CCollisionMgr::Get_Instance()->Collision_BulletToPlayer(m_ObjectList[OBJID::MONSTER_BULLET], m_ObjectList[OBJID::PLAYER]);
     CCollisionMgr::Get_Instance()->Collision_BulletToBullet(m_ObjectList[OBJID::MONSTER_BULLET], m_ObjectList[OBJID::PLAYER_BULLET]);
     CCollisionMgr::Get_Instance()->Collision_BossToPlayerBullet(m_ObjectList[OBJID::BOSS], m_ObjectList[OBJID::PLAYER_BULLET]);
-    
 }
 
 void CObjectMgr::LateUpdate()

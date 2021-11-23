@@ -2,11 +2,12 @@
 #include "pch.h"
 #include "Client.h"
 #include "RecvThread.h"
+#include "tmp.h"
 
 #pragma comment(lib, "ws2_32.lib")
 #define SERVERIP   "127.0.0.1"
 #define SERVERPORT 9000
-#define BUFSIZE    50
+#define BUFSIZE    5000
 #include "ObjMgr.h"
 #include "Obj.h"
 
@@ -213,6 +214,60 @@ void Client::Send_Player_Info()
 	}
 
 
+}
+
+void Client::Send_Object_Info()
+{
+	char buffer[BUFSIZE] = "";
+	char tmp[10];
+	//0. 모든 오브젝트에서 좌표값vec3를 추출하여 s_ObjectList리스트에 저장했다
+	//1. 출력도 된다.
+	//2. 버퍼에 좌표값을 저장한다.(문자열이 된다.)
+	//하나하나 꺼내서 buffer버퍼에다가 문자열로 저장할 것
+	for (int i = 0; i < OBJID::END; ++i)
+	{
+		printf("%d\n", i);
+		sprintf(tmp, "%d\n", i);
+		strcat(buffer, tmp);
+		SEND_OBJECT_LIST::iterator iter_begin = s_ObjectList[i].begin();
+		SEND_OBJECT_LIST::iterator iter_end = s_ObjectList[i].end();
+
+		for (; iter_begin != iter_end;)
+		{
+			sprintf(tmp, "%d ", int((*iter_begin).x));
+			strcat(buffer, tmp);
+			sprintf(tmp, "%d ", int((*iter_begin).y));
+			strcat(buffer, tmp);
+			sprintf(tmp, "%d\n", int((*iter_begin).z));
+			strcat(buffer, tmp);
+			printf("%0.f | %0.f | %0.f\n", (*iter_begin).x, (*iter_begin).y, (*iter_begin).z);
+			++iter_begin;
+		}
+
+		s_ObjectList[i].clear();
+	}
+	strcat(buffer, "\0");
+
+	//3. 버퍼를 가변길이로 송신한다.
+	datainfo.infoindex = 'b';
+	datainfo.datasize = sizeof(buffer);
+	printf("%d", datainfo.datasize);
+
+	for (int i = 0;i < PLAYERN;i++) {
+		// 통신용 구조체 송신
+		retval = send(client_sock[i], (char*)&datainfo, sizeof(DataInfo), 0);
+		if (retval == SOCKET_ERROR) {
+			err_display("send()");
+			return;
+		}
+		//실제 좌표값 송신
+		retval = send(client_sock[i], buffer, sizeof(buffer), 0);
+		printf("좌표값버퍼송신\n", sizeof(s_ObjectList));
+		if (retval == SOCKET_ERROR) {
+			err_display("send()");
+			return;
+		}
+	}
 }
 
 void Client::Close_Connect() {

@@ -7,7 +7,7 @@
 #pragma comment(lib, "ws2_32.lib")
 #define SERVERIP   "127.0.0.1"
 #define SERVERPORT 9000
-#define BUFSIZE    50
+#define BUFSIZE    5000
 
 SOCKET Client::sock = NULL;
 
@@ -22,11 +22,37 @@ SOCKET Client::sock = NULL;
 
 }*/
 
+
+
+// 데이터 수신 함수
+int recvn(SOCKET s, char* buf, int len, int flags)
+{
+	int received;
+	char* ptr = buf;
+	int left = len;
+
+	while (left > 0) {
+		received = recv(s, ptr, left, flags);
+		if (received == SOCKET_ERROR)
+			return SOCKET_ERROR;
+		else if (received == 0)
+			break;
+		left -= received;
+		ptr += received;
+	}
+
+	return (len - left);
+}
+
 DWORD WINAPI Client::Recv_Thread(LPVOID arg) {
+
+	char buffer[BUFSIZE] = "";
 	SOCKET client_sock = (SOCKET)arg;
 	printf("Therad_initialized\n");
 	DataInfo datainfo;
 	while (1) {
+		datainfo.infoindex = ' ';
+		datainfo.datasize = 0;
 		// 수신하고
 		int retval = recv(Client::sock, (char*)&datainfo, sizeof(DataInfo), 0);
 		if (retval == SOCKET_ERROR)
@@ -34,17 +60,14 @@ DWORD WINAPI Client::Recv_Thread(LPVOID arg) {
 			//err_display("recv()");
 		else if (retval == 0)
 			return 0;
+		SEND_OBJECT_LIST::iterator iter_begin;
 		switch (datainfo.infoindex) {
 		case 'b':
-			//Recv_Bullet_Info();
-			cout << "플레이어총알위치:" << datainfo.m_fx << "," << datainfo.m_fy << "," << datainfo.m_fz << endl;
-
-			break;
-
-		case 'c':
-			//Recv_Bullet_Info();
-			cout << "몬스터총알위치:" << datainfo.m_fx << "," << datainfo.m_fy << "," << datainfo.m_fz << endl;
-
+			//Recv_obj_Info();
+			retval = recvn(Client::sock, buffer, sizeof(buffer), 0);
+			if (retval == SOCKET_ERROR)
+				printf("ㄴㄴ\n");
+			printf("%s\n\n\n", buffer);
 			break;
 
 		case 'd':
