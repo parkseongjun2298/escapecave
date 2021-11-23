@@ -12,7 +12,7 @@
 #include "Obj.h"
 
 
-#define PLAYERN 2
+#define PLAYERN 1
 void Client::err_quit(const char *msg)
 {
 	LPVOID lpMsgBuf;
@@ -226,14 +226,15 @@ void Client::Send_Object_Info()
 	//하나하나 꺼내서 buffer버퍼에다가 문자열로 저장할 것
 	for (int i = 0; i < OBJID::END; ++i)
 	{
-		printf("%d\n", i);
-		sprintf(tmp, "%d\n", i);
-		strcat(buffer, tmp);
+
 		SEND_OBJECT_LIST::iterator iter_begin = s_ObjectList[i].begin();
 		SEND_OBJECT_LIST::iterator iter_end = s_ObjectList[i].end();
 
 		for (; iter_begin != iter_end;)
 		{
+			printf("%d\n", i);
+			sprintf(tmp, "%d\n", i);
+			strcat(buffer, tmp);
 			sprintf(tmp, "%d ", int((*iter_begin).x));
 			strcat(buffer, tmp);
 			sprintf(tmp, "%d ", int((*iter_begin).y));

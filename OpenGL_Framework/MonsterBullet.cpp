@@ -34,7 +34,7 @@ void CMonsterBullet::Initialize()
 
 }
 
-int CMonsterBullet::Update()
+int CMonsterBullet::Update( )
 {
 	if (object.model_transform.Translate.y < -1.f) {
 		m_EffectNum = 1;

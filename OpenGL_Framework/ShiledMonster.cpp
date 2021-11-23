@@ -23,7 +23,7 @@ void CShiledMonster::Initialize()
 
 }
 
-int CShiledMonster::Update()
+int CShiledMonster::Update( )
 {
     if (m_bDead) {
         if (m_CollisionCount < 2) {

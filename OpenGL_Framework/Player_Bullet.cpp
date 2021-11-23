@@ -28,19 +28,10 @@ void CPlayer_Bullet::Initialize()
 
 }
 
-int CPlayer_Bullet::Update()
+int CPlayer_Bullet::Update( )
 {
-	object.model_transform.Rotate.z += 20.f;
-	if (m_bDead) {
-		Add_Effect(2);
-		return DEAD_OBJ;
-	}
-
-	Create_Time += 0.1f;
-	if (Create_Time > 10)
-		return DEAD_OBJ;
-
-	object.model_transform.Translate += m_fSpeed*m_vDir;
+	object.model_transform.Rotate.z += 200.f;
+	//object.model_transform.Translate += m_fSpeed*m_vDir;
 	return 0;
 }
 

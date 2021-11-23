@@ -22,7 +22,76 @@ SOCKET Client::sock = NULL;
 
 }*/
 
+glm::vec3 strtovec3(char* sentense) {
+	glm::vec3 vector{};
+	bool isitx = true;
+	char tmp[2] = "";
+	char xyz[5] = "";
 
+	for (int i = 0; sentense[i] != '\0'; i++) {
+		if (sentense[i] == ' ') {
+			//printf("%s || ", xyz);
+			if (isitx)
+				vector.x = atoi(xyz);
+			else
+				vector.y = atoi(xyz);
+			isitx = !isitx;
+			xyz[0] = '\0';
+		}
+		else {
+			tmp[0] = sentense[i];
+			strcat(xyz, tmp);
+		}
+	}
+	//printf("%s", xyz);
+	vector.z = atoi(xyz);
+	return vector;
+}
+void BuffertoList(char* buffer) {
+	for (int i = 0; i < OBJID::END; ++i)
+	{
+		s_ObjectList[i].clear();
+	}
+	//printf("%s\n\n\n", buffer);
+	char tmp[2] = "";
+	char sentense[20] = "";
+	int enummm;
+	for (int i = 0; buffer[i] != '\0'; i++)
+	{
+		if (buffer[i] == '\n') {
+			if (sentense[2] == '\0') {
+				enummm = atoi(sentense);
+				//printf("여기가 enum값 부분%d",enummm);
+			}
+			else {
+				glm::vec3 vector = strtovec3(sentense);
+				s_ObjectList[enummm].push_back(vector);
+				//printf("\n%0.f,%0.f,%0.f", vector.x, vector.y, vector.z);
+			}
+			//printf("\n");
+			sentense[0] = '\0';
+			sentense[2] = '\0';
+		}
+		else
+		{
+			tmp[0] = buffer[i];
+			strcat(sentense, tmp);
+		}
+	}
+
+	// 오브젝트 리스트의 좌표를 출력하는 루프
+	for (int i = 0; i < OBJID::END; ++i)
+	{
+		SEND_OBJECT_LIST::iterator iter_begin = s_ObjectList[i].begin();
+		SEND_OBJECT_LIST::iterator iter_end = s_ObjectList[i].end();
+
+		for (; iter_begin != iter_end;)
+		{
+			printf("\n%0.f,%0.f,%0.f\n", (*iter_begin).x, (*iter_begin).y, (*iter_begin).z);
+			++iter_begin;
+		}
+	}
+}
 
 // 데이터 수신 함수
 int recvn(SOCKET s, char* buf, int len, int flags)
@@ -67,7 +136,7 @@ DWORD WINAPI Client::Recv_Thread(LPVOID arg) {
 			retval = recvn(Client::sock, buffer, sizeof(buffer), 0);
 			if (retval == SOCKET_ERROR)
 				printf("ㄴㄴ\n");
-			printf("%s\n\n\n", buffer);
+			BuffertoList(buffer);
 			break;
 
 		case 'd':

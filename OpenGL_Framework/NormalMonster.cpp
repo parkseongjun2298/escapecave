@@ -25,7 +25,7 @@ void CNormalMonster::Initialize()
 
 }
 
-int CNormalMonster::Update()
+int CNormalMonster::Update( )
 {
 
 	if (m_bDead) {

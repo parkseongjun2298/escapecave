@@ -89,9 +89,9 @@ void CMainGame::Update_MainGame()
 			break;
 		}
 	}
+	//매니저에게서 어떻게든 m_obj_list 사이즈값 받아와서 생성할거있으면 생성 한 뒤에 업뎃으로 들어가야함
 	CObjectMgr::Get_Instance()->Update();
 }
-
 void CMainGame::Late_Update()
 {
 	CKeyMgr::Get_Instance()->Key_Update();

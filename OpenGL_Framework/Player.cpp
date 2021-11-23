@@ -35,71 +35,44 @@ void CPlayer::Initialize()
 
 }
 
-int CPlayer::Update()
+int CPlayer::Update( )
 {
-	if (m_bDead)
-		DEAD_OBJ;
 
-	object.model_transform.Translate.x = tmp.x;
-	object.model_transform.Translate.y = tmp.y;
-	object.model_transform.Translate.z = tmp.z;
-
-	/*object.model_transform.Translate.x -= m_fSpeed;
-	float delta_time = CTimeMgr::Get_Instance()->Get_DeltaTime();*/
 	m_Camera.cameraPos = object.model_transform.Translate;
 	m_Camera.cameraDirection = object.model_transform.Translate;
 	//m_Camera.cameraDirection.z = min(object.model_transform.Translate.z, -10.f);
 	m_Camera.cameraDirection.y += 10.f;
 	m_Camera.cameraPos.y = 40.f;
 	m_Camera.cameraPos.z += 30.f;
-	glm::vec3 MoveSize{};
-	bullet_time += 0.1f;
-	if (bullet_time > 2.f)
-	{
-		bullet_time = 0;
-		if (m_State == NORMAL_BULLET)
-			Add_Bullet();
-		else
-			Double_Bullet();
 
-	}
 	Client client;
 	if(CKeyMgr::Get_Instance()->Key_Pressing(KEY_LEFT))
 	{
 		client.Send_Input('a');
-		MoveSize.x = -m_fSpeed;
 	}
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_RIGHT))
 	{
 		client.Send_Input('d');
-		MoveSize.x = m_fSpeed;
 	}
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_UP))
 	{
 		client.Send_Input('w');
-		MoveSize.z = -m_fSpeed;
 	}
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_DOWN))
 	{
 		client.Send_Input('s');
-		MoveSize.z = -m_fSpeed;
 	}
 	if (CKeyMgr::Get_Instance()->Key_Down(KEY_A))
 	{
-		Add_Bomb();
+		//Add_Bomb();
 	}
 	if (CKeyMgr::Get_Instance()->Key_Down(KEY_S))
 	{
-		if (m_State == NORMAL_BULLET)
-			m_State = DOUBLE_BULLET;
-		else
-			m_State = NORMAL_BULLET;
+		//if (m_State == NORMAL_BULLET)
+		//	m_State = DOUBLE_BULLET;
+		//else
+		//	m_State = NORMAL_BULLET;
 	}
-	if (object.model_transform.Translate.x <= -20.f)
-		object.model_transform.Translate.x = -20.f;
-	else if (object.model_transform.Translate.x >= 20.f)
-		object.model_transform.Translate.x = 20.f;
-
 	return 0;
 }
 
@@ -193,26 +166,6 @@ void CPlayer::Release()
 
 void CPlayer::Set_ModelTransform()
 {
-}
-
-void CPlayer::Add_Bullet(glm::vec3 _location)
-{
-	CObj* bullet = new CPlayer_Bullet(shader_program, object.model_transform.Translate + _location);
-	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_BULLET, bullet);
-
-}
-
-void CPlayer::Double_Bullet()
-{
-	Add_Bullet({ -0.8f,0.f,0.f });
-	Add_Bullet({ 0.8f,0.f,0.f });
-
-}
-
-void CPlayer::Add_Bomb()
-{
-	CObj* bomb = new CBomb(shader_program, object.model_transform.Translate);
-	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_BULLET, bomb);
 }
 
 void CPlayer::Move_Camera(glm::vec3 _MoveSize)

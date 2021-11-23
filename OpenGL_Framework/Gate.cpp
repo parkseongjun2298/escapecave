@@ -20,7 +20,7 @@ void CGate::Initialize()
 
 }
 
-int CGate::Update()
+int CGate::Update( )
 {
 	// 1스테이지에 할당된 몬스터가 모두 죽으면
 	// 문이 열린다

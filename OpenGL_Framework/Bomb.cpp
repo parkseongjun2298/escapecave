@@ -19,7 +19,7 @@ void CBomb::Initialize()
 
 }
 
-int CBomb::Update()
+int CBomb::Update( )
 {
 	m_Create_Time += 0.1f;
 	if (m_Create_Time > 10.f) {

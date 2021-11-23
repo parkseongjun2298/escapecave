@@ -20,7 +20,7 @@ void CMap::Initialize()
 	loadObj<const char*, OBJECT, glm::vec3>("cube.obj", object, m_color);
 }
 
-int CMap::Update()
+int CMap::Update( )
 {
 	return NO_EVENT;
 }
