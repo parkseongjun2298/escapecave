@@ -37,4 +37,7 @@ public:
 	Camera* m_Camera;
 	OBJECT* m_light;
 	map<string, OBJECT> m_mapObjFile;
+
+public:
+	int* return_objlist_sizes();
 };

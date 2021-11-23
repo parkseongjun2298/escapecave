@@ -66,7 +66,7 @@ void BuffertoList(char* buffer) {
 			else {
 				glm::vec3 vector = strtovec3(sentense);
 				s_ObjectList[enummm].push_back(vector);
-				//printf("\n%0.f,%0.f,%0.f", vector.x, vector.y, vector.z);
+				//printf("%0.f,%0.f,%0.f", vector.x, vector.y, vector.z);
 			}
 			//printf("\n");
 			sentense[0] = '\0';
@@ -80,14 +80,14 @@ void BuffertoList(char* buffer) {
 	}
 
 	// 오브젝트 리스트의 좌표를 출력하는 루프
-	for (int i = 0; i < OBJID::END; ++i)
+	for (int i = OBJID::END; i < OBJID::END; ++i)
 	{
 		SEND_OBJECT_LIST::iterator iter_begin = s_ObjectList[i].begin();
 		SEND_OBJECT_LIST::iterator iter_end = s_ObjectList[i].end();
-
+		printf("enum:%d\n",i);
 		for (; iter_begin != iter_end;)
 		{
-			printf("\n%0.f,%0.f,%0.f\n", (*iter_begin).x, (*iter_begin).y, (*iter_begin).z);
+			printf("%0.f,%0.f,%0.f\n", (*iter_begin).x, (*iter_begin).y, (*iter_begin).z);
 			++iter_begin;
 		}
 	}
@@ -136,7 +136,10 @@ DWORD WINAPI Client::Recv_Thread(LPVOID arg) {
 			retval = recvn(Client::sock, buffer, sizeof(buffer), 0);
 			if (retval == SOCKET_ERROR)
 				printf("ㄴㄴ\n");
+			WaitForSingleObject(hSynchro, INFINITE);
+			ResetEvent(hSynchro);//차단
 			BuffertoList(buffer);
+			SetEvent(hSynchro);	//개방
 			break;
 
 		case 'd':
@@ -156,6 +159,7 @@ DWORD WINAPI Client::Recv_Thread(LPVOID arg) {
 	}
 	return 0;
 };
+
 void Client::err_quit(const char *msg)
 {
 	LPVOID lpMsgBuf;

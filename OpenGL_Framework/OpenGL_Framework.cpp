@@ -2,6 +2,7 @@
 #include "CShader_Func.h"
 #include "MainGame.h"
 #include "Client.h"
+#include "tmp.h"
 // 전역함수
 GLvoid drawScene(GLvoid);
 GLvoid ReShape(int w, int h);
@@ -81,16 +82,11 @@ GLvoid drawScene(GLvoid)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	/////// 셰이더
-	// 수신스레드에서 객체 업뎃 할 것이므로 필요없어지는코드
+	WaitForSingleObject(hSynchro, INFINITE);
+	ResetEvent(hSynchro);//차단
 	maingame.Update_MainGame();
-	//클라이언트로부터 키 입력이 와도 오브젝트 업데이트까지 적용 대기시킨다.
-	int retval = WaitForSingleObject(client.hSynchro, INFINITE);
-	if (retval != WAIT_OBJECT_0)
-		exit(1);
+	SetEvent(hSynchro);	//개방
 	maingame.Draw_MainGame();
-	SetEvent(client.hSynchro);
-	// 수신스레드에서 객체 업뎃 할 것이므로 필요없어지는코드
-	maingame.Late_Update();
 
 	glutPostRedisplay();
 
