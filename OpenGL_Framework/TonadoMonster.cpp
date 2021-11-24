@@ -32,42 +32,6 @@ void CTonadoMonster::Initialize()
 int CTonadoMonster::Update( )
 {
 	object.model_transform.Rotate.y += 10.f;
-	if (m_bDead) {
-		if (Collision_Time < 2.f)
-		{
-			m_bDead = false;
-			Collision_Time++;
-		}
-		else {
-			CSoundMgr::GetInstance()->PlaySound((TCHAR*)L"die.mp3", CSoundMgr::EFFECT);
-			Add_Effect(20);
-			return DEAD_OBJ;
-
-		}
-
-	}
-
-	object.model_transform.Translate.x += m_fSpeed;
-	angle += 0.09f;
-	BulletDir.x = sin(angle);
-	BulletDir.z = -cos(angle);
-	
-
-	if (object.model_transform.Translate.x <= -20.f || object.model_transform.Translate.x >= 20.f)
-		m_fSpeed *= -1;
-
-
-	
-
-	bullet_time += 0.1f;
-	if (bullet_time > 1.f)
-	{
-		bullet_time = 0;
-		Add_Bullet();
-
-	}
-
-	cout << angle << endl;
 	return 0;
 }
 

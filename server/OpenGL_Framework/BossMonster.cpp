@@ -36,7 +36,7 @@ int CBossMonster::Update()
 	object.model_transform.Rotate.y += 2.f;
 	if (m_bDead) {
 
-		if (m_Collision_Time < 200) {
+		if (m_Collision_Time < 50) {
 			m_Collision_Time++;
 			m_bDead = false;
 			Add_Effect(1);
@@ -150,16 +150,16 @@ void CBossMonster::Attack()
 void CBossMonster::Noraml_Attack()
 {
 
-	CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(shader_program, glm::vec3{ -19.f, 0.f, -120.f }));
-	CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(shader_program, glm::vec3{ -19.f, 0.f, -120.f }));
+	CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(shader_program, glm::vec3{ -19.f, 0.f, -120.f }));
+	CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(shader_program, glm::vec3{ -19.f, 0.f, -120.f }));
 
-	CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(shader_program, glm::vec3{ 19.f, 0.f, -120.f }));
-	CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(shader_program, glm::vec3{ 19.f, 0.f, -120.f }));
-	CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(shader_program, glm::vec3{ -19.f, 0.f, -180.f }));
-	CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(shader_program, glm::vec3{ -19.f, 0.f, -180.f }));
+	CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(shader_program, glm::vec3{ 19.f, 0.f, -120.f }));
+	CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(shader_program, glm::vec3{ 19.f, 0.f, -120.f }));
+	CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(shader_program, glm::vec3{ -19.f, 0.f, -180.f }));
+	CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(shader_program, glm::vec3{ -19.f, 0.f, -180.f }));
 
-	CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(shader_program, glm::vec3{ 19.f, 0.f, -180.f }));
-	CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(shader_program, glm::vec3{ 19.f, 0.f, -180.f }));
+	CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(shader_program, glm::vec3{ 19.f, 0.f, -180.f }));
+	CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(shader_program, glm::vec3{ 19.f, 0.f, -180.f }));
 }
 
 void CBossMonster::Sky_Attack()

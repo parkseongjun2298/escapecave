@@ -26,36 +26,7 @@ void CSwirlMonster::Initialize()
 
 int CSwirlMonster::Update( )
 {
-	if (m_bDead) {
-		if (CollisionNum < 1) {
-			CollisionNum++;
-			m_bDead = false;
-		}
-		else {
-			CSoundMgr::GetInstance()->PlaySound((TCHAR*)L"die.mp3", CSoundMgr::EFFECT);
-			Add_Effect(20);
-			return DEAD_OBJ;
-
-		}
-	}
-
-	object.model_transform.Translate.x += m_fSpeed;
 	object.model_transform.Rotate.y += 1.f;
-	if (object.model_transform.Translate.x <= -10.f || object.model_transform.Translate.x >= 10.f)
-		m_fSpeed *= -1;
-
-
-	CPlayer* pPlayer = dynamic_cast<CPlayer*>(CObjectMgr::Get_Instance()->GetPlayer());
-
-	bullet_time += 0.1f;
-	if (bullet_time > 6.f)
-	{
-		bullet_time = 0;
-		Add_Bullet();
-
-	}
-
-	cout << object.model_transform.Rotate.y << endl;
 	return 0;
 }
 

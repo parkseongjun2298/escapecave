@@ -25,6 +25,7 @@ CObj* CObjectMgr::GetPlayer()
 
     return m_ObjectList[OBJID::PLAYER].front();
 }
+/*
 CObj* CObjectMgr::GetMonster()
 {
     if (m_ObjectList[OBJID::MONSTER].empty())
@@ -33,7 +34,7 @@ CObj* CObjectMgr::GetMonster()
     return m_ObjectList[OBJID::MONSTER].front();
 }
 
-
+*/
 HRESULT CObjectMgr::AddObject(OBJID::OBJ eType, CObj* pObject)
 {
     NULL_CHECK_RETURN(pObject, E_FAIL);
@@ -70,7 +71,11 @@ void CObjectMgr::Update()
                 ++iter_begin;
         }
     }
-    CCollisionMgr::Get_Instance()->Collision_BulletToMonster(m_ObjectList[OBJID::PLAYER_BULLET], m_ObjectList[OBJID::MONSTER]);
+    CCollisionMgr::Get_Instance()->Collision_BulletToMonster(m_ObjectList[OBJID::PLAYER_BULLET], m_ObjectList[OBJID::NORMALMONSTER]);
+    CCollisionMgr::Get_Instance()->Collision_BulletToMonster(m_ObjectList[OBJID::PLAYER_BULLET], m_ObjectList[OBJID::SHILEDMONSTER]);
+    CCollisionMgr::Get_Instance()->Collision_BulletToMonster(m_ObjectList[OBJID::PLAYER_BULLET], m_ObjectList[OBJID::SWIRLMONSTER]);
+    CCollisionMgr::Get_Instance()->Collision_BulletToMonster(m_ObjectList[OBJID::PLAYER_BULLET], m_ObjectList[OBJID::TONADOMONSTER]);
+
     CCollisionMgr::Get_Instance()->Collision_BulletToPlayer(m_ObjectList[OBJID::MONSTER_BULLET], m_ObjectList[OBJID::PLAYER]);
     CCollisionMgr::Get_Instance()->Collision_BulletToBullet(m_ObjectList[OBJID::MONSTER_BULLET], m_ObjectList[OBJID::PLAYER_BULLET]);
     CCollisionMgr::Get_Instance()->Collision_BossToPlayerBullet(m_ObjectList[OBJID::BOSS], m_ObjectList[OBJID::PLAYER_BULLET]);

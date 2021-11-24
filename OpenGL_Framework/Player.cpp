@@ -37,7 +37,6 @@ void CPlayer::Initialize()
 
 int CPlayer::Update( )
 {
-
 	m_Camera.cameraPos = object.model_transform.Translate;
 	m_Camera.cameraDirection = object.model_transform.Translate;
 	//m_Camera.cameraDirection.z = min(object.model_transform.Translate.z, -10.f);
@@ -46,6 +45,7 @@ int CPlayer::Update( )
 	m_Camera.cameraPos.z += 30.f;
 
 	Client client;
+	
 	if(CKeyMgr::Get_Instance()->Key_Pressing(KEY_LEFT))
 	{
 		client.Send_Input('a');
@@ -64,14 +64,11 @@ int CPlayer::Update( )
 	}
 	if (CKeyMgr::Get_Instance()->Key_Down(KEY_A))
 	{
-		//Add_Bomb();
+		client.Send_Input('z');
 	}
 	if (CKeyMgr::Get_Instance()->Key_Down(KEY_S))
 	{
-		//if (m_State == NORMAL_BULLET)
-		//	m_State = DOUBLE_BULLET;
-		//else
-		//	m_State = NORMAL_BULLET;
+		client.Send_Input('x');
 	}
 	return 0;
 }

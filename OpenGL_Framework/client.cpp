@@ -26,7 +26,7 @@ glm::vec3 strtovec3(char* sentense) {
 	glm::vec3 vector{};
 	bool isitx = true;
 	char tmp[2] = "";
-	char xyz[5] = "";
+	char xyz[10] = "";
 
 	for (int i = 0; sentense[i] != '\0'; i++) {
 		if (sentense[i] == ' ') {

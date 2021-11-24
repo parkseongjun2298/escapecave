@@ -21,6 +21,7 @@ DWORD WINAPI Recv_Thread(LPVOID arg) {
 		switch (datainfo.infoindex) {
 			//Recv_Input() 함수 역할
 		case 'a':
+			printf("받음\n");
 			just_tmp.key = datainfo.datasize;
 			break;
 		}

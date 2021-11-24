@@ -70,7 +70,7 @@ void CMainGame::Update_MainGame()
 	//
 
 	// 현재 몬스터가 0개면 몬스터 추가하는 방식임
-	if (CObjectMgr::Get_Instance()->Get_Size(OBJID::MONSTER) == 0 && CObjectMgr::Get_Instance()->Get_Size(OBJID::BOSS) == 0) {
+	if (CObjectMgr::Get_Instance()->Get_Size(OBJID::MONSTER_BULLET) == 0 && CObjectMgr::Get_Instance()->Get_Size(OBJID::BOSS) == 0) {
 		switch (m_eNowStage)
 		{
 		case CMainGame::STAGE1:
@@ -116,24 +116,24 @@ void CMainGame::Monster_Stage1()
 		if (CObjectMgr::Get_Instance()->GetPlayer()->Get_Info().z <= 185.f) {
 			Stage_Monster_Wave++;
 
-			CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 160.f }));
-			CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 160.f }));
-			CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 160.f }));
-			CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 160.f }));
+			CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 160.f }));
+			CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 160.f }));
+			CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 160.f }));
+			CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 160.f }));
 		}
 
 	}
 	else if (Stage_Monster_Wave == 1) {
 		Stage_Monster_Wave++;
 
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 110.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 110.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 110.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 110.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -10.f, 0.f, 110.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 10.f, 0.f, 110.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -10.f, 0.f, 110.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 10.f, 0.f, 110.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 110.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 110.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 110.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 110.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -10.f, 0.f, 110.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 10.f, 0.f, 110.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -10.f, 0.f, 110.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 10.f, 0.f, 110.f }));
 	}
 	else if (Stage_Monster_Wave == 2) {
 		// 첫번째 게이트 열림
@@ -155,33 +155,33 @@ void CMainGame::Monster_Stage2()
 {
 	if (Stage_Monster_Wave == 0) {
 		Stage_Monster_Wave++;
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ 9.f, 0.f, 60.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ 9.f, 0.f, 75.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ 9.f, 0.f, 90.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ -9.f, 0.f, 60.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ -9.f, 0.f, 75.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ -9.f, 0.f, 90.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SWIRLMONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ 9.f, 0.f, 60.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SWIRLMONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ 9.f, 0.f, 75.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SWIRLMONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ 9.f, 0.f, 90.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SWIRLMONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ -9.f, 0.f, 60.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SWIRLMONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ -9.f, 0.f, 75.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SWIRLMONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ -9.f, 0.f, 90.f }));
 	}
 	else if (Stage_Monster_Wave == 1) {
 		Stage_Monster_Wave++;
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 0.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 0.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 0.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 0.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -10.f, 0.f, 0.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 10.f, 0.f, 0.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -10.f, 0.f, 0.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 10.f, 0.f, 0.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 0.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 0.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 0.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 0.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -10.f, 0.f, 0.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 10.f, 0.f, 0.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -10.f, 0.f, 0.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 10.f, 0.f, 0.f }));
 
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 40.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 40.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 40.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 40.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 40.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 40.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 40.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 40.f }));
 
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CTonadoMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, -30.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CTonadoMonster(Shader.Get_shaderProgram(), glm::vec3{ 10.f, 0.f, -30.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CTonadoMonster(Shader.Get_shaderProgram(), glm::vec3{ -10.f, 0.f, -20.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CTonadoMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, -20.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::TONADOMONSTER, new CTonadoMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, -30.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::TONADOMONSTER, new CTonadoMonster(Shader.Get_shaderProgram(), glm::vec3{ 10.f, 0.f, -30.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::TONADOMONSTER, new CTonadoMonster(Shader.Get_shaderProgram(), glm::vec3{ -10.f, 0.f, -20.f }));
+		CObjectMgr::Get_Instance()->AddObject(OBJID::TONADOMONSTER, new CTonadoMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, -20.f }));
 
 	}
 	else if (Stage_Monster_Wave == 2) {

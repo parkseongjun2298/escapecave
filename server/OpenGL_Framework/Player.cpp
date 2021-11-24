@@ -73,20 +73,19 @@ int CPlayer::Update()
 	case 'd':
 		object.model_transform.Translate.x += m_fSpeed;
 		break;
-	}
-	just_tmp.key = 0;
-
-	if (CKeyMgr::Get_Instance()->Key_Down(KEY_A))
-	{
+	case 'z':
 		Add_Bomb();
-	}
-	if (CKeyMgr::Get_Instance()->Key_Down(KEY_S))
-	{
+		break;
+	case 'x':
 		if (m_State == NORMAL_BULLET)
 			m_State = DOUBLE_BULLET;
 		else
 			m_State = NORMAL_BULLET;
+		break;
+
 	}
+	just_tmp.key = 0;
+
 	if (object.model_transform.Translate.x <= -20.f)
 		object.model_transform.Translate.x = -20.f;
 	else if (object.model_transform.Translate.x >= 20.f)
@@ -204,7 +203,7 @@ void CPlayer::Double_Bullet()
 void CPlayer::Add_Bomb()
 {
 	CObj* bomb = new CBomb(shader_program, object.model_transform.Translate);
-	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_BULLET, bomb);
+	CObjectMgr::Get_Instance()->AddObject(OBJID::BOMB, bomb);
 }
 
 void CPlayer::Move_Camera(glm::vec3 _MoveSize)
