@@ -22,7 +22,7 @@ void CPlayer_front::Initialize()
 		object.model_transform.Parent = &pPlayer->Get_Object().model_transform;
 }
 
-int CPlayer_front::Update()
+int CPlayer_front::Update( )
 {
 	object.model_transform.Rotate.z += 5.f;
 	return 0;

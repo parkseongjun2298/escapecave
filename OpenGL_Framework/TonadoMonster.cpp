@@ -29,7 +29,7 @@ void CTonadoMonster::Initialize()
 	loadObj<const char*, OBJECT, glm::vec3>("cube.obj", object, {100./255., 0.f, 100./255.});
 }
 
-int CTonadoMonster::Update()
+int CTonadoMonster::Update( )
 {
 	object.model_transform.Rotate.y += 10.f;
 	if (m_bDead) {

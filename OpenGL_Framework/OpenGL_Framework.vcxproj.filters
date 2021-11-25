@@ -94,8 +94,8 @@
     <Filter Include="96.Net">
       <UniqueIdentifier>{0fd6950d-1a66-4a10-9df4-dc41b699ce5b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="96.Net\RecvThread">
-      <UniqueIdentifier>{68050320-39df-40ad-9fe5-d2b11e4d9046}</UniqueIdentifier>
+    <Filter Include="95.NetObj">
+      <UniqueIdentifier>{0f0d8754-c6ce-4329-ba5a-a506a32991f4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -177,8 +177,8 @@
     <ClCompile Include="client.cpp">
       <Filter>96.Net</Filter>
     </ClCompile>
-    <ClCompile Include="RecvThread.cpp">
-      <Filter>96.Net\RecvThread</Filter>
+    <ClCompile Include="tmp.cpp">
+      <Filter>98.Headers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -275,8 +275,11 @@
     <ClInclude Include="Client.h">
       <Filter>96.Net</Filter>
     </ClInclude>
-    <ClInclude Include="RecvThread.h">
-      <Filter>96.Net\RecvThread</Filter>
+    <ClInclude Include="NetObj.h">
+      <Filter>95.NetObj</Filter>
+    </ClInclude>
+    <ClInclude Include="tmp.h">
+      <Filter>98.Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

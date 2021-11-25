@@ -48,7 +48,7 @@ void CBomb_Effect::Initialize()
 	m_vDir = { randomX * 0.01f,randomY * 0.01f, randomZ * 0.01f };
 }
 
-int CBomb_Effect::Update()
+int CBomb_Effect::Update( )
 {
 	m_fCreatetime += 0.1f;
 	if (m_fCreatetime > 5.f)

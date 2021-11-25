@@ -1,13 +1,165 @@
 #include "pch.h"
 #include "Client.h"
-#include "RecvThread.h"
+#include "ObjMgr.h"
+#include "Obj.h"
+#include "tmp.h"
 
 #pragma comment(lib, "ws2_32.lib")
 #define SERVERIP   "127.0.0.1"
 #define SERVERPORT 9000
-#define BUFSIZE    50
+#define BUFSIZE    5000
 
 SOCKET Client::sock = NULL;
+
+/*void Client::Recv_ObjectInfo() {
+	retval = recv(Client::sock, (char*)&datainfo, sizeof(DataInfo), 0);
+
+	if (retval == SOCKET_ERROR)
+		err_display("recv()");
+	else if (retval == 0)
+		return;
+	printf("%c", datainfo.datasize);
+
+}*/
+
+glm::vec3 strtovec3(char* sentense) {
+	glm::vec3 vector{};
+	bool isitx = true;
+	char tmp[2] = "";
+	char xyz[5] = "";
+
+	for (int i = 0; sentense[i] != '\0'; i++) {
+		if (sentense[i] == ' ') {
+			//printf("%s || ", xyz);
+			if (isitx)
+				vector.x = atoi(xyz);
+			else
+				vector.y = atoi(xyz);
+			isitx = !isitx;
+			xyz[0] = '\0';
+		}
+		else {
+			tmp[0] = sentense[i];
+			strcat(xyz, tmp);
+		}
+	}
+	//printf("%s", xyz);
+	vector.z = atoi(xyz);
+	return vector;
+}
+void BuffertoList(char* buffer) {
+	for (int i = 0; i < OBJID::END; ++i)
+	{
+		s_ObjectList[i].clear();
+	}
+	//printf("%s\n\n\n", buffer);
+	char tmp[2] = "";
+	char sentense[20] = "";
+	int enummm;
+	for (int i = 0; buffer[i] != '\0'; i++)
+	{
+		if (buffer[i] == '\n') {
+			if (sentense[2] == '\0') {
+				enummm = atoi(sentense);
+				//printf("여기가 enum값 부분%d",enummm);
+			}
+			else {
+				glm::vec3 vector = strtovec3(sentense);
+				s_ObjectList[enummm].push_back(vector);
+				//printf("%0.f,%0.f,%0.f", vector.x, vector.y, vector.z);
+			}
+			//printf("\n");
+			sentense[0] = '\0';
+			sentense[2] = '\0';
+		}
+		else
+		{
+			tmp[0] = buffer[i];
+			strcat(sentense, tmp);
+		}
+	}
+
+	// 오브젝트 리스트의 좌표를 출력하는 루프
+	for (int i = OBJID::END; i < OBJID::END; ++i)
+	{
+		SEND_OBJECT_LIST::iterator iter_begin = s_ObjectList[i].begin();
+		SEND_OBJECT_LIST::iterator iter_end = s_ObjectList[i].end();
+		printf("enum:%d\n",i);
+		for (; iter_begin != iter_end;)
+		{
+			printf("%0.f,%0.f,%0.f\n", (*iter_begin).x, (*iter_begin).y, (*iter_begin).z);
+			++iter_begin;
+		}
+	}
+}
+
+// 데이터 수신 함수
+int recvn(SOCKET s, char* buf, int len, int flags)
+{
+	int received;
+	char* ptr = buf;
+	int left = len;
+
+	while (left > 0) {
+		received = recv(s, ptr, left, flags);
+		if (received == SOCKET_ERROR)
+			return SOCKET_ERROR;
+		else if (received == 0)
+			break;
+		left -= received;
+		ptr += received;
+	}
+
+	return (len - left);
+}
+
+DWORD WINAPI Client::Recv_Thread(LPVOID arg) {
+
+	char buffer[BUFSIZE] = "";
+	SOCKET client_sock = (SOCKET)arg;
+	printf("Therad_initialized\n");
+	DataInfo datainfo;
+	while (1) {
+		datainfo.infoindex = ' ';
+		datainfo.datasize = 0;
+		// 수신하고
+		int retval = recv(Client::sock, (char*)&datainfo, sizeof(DataInfo), 0);
+		if (retval == SOCKET_ERROR)
+			;
+			//err_display("recv()");
+		else if (retval == 0)
+			return 0;
+		SEND_OBJECT_LIST::iterator iter_begin;
+		switch (datainfo.infoindex) {
+		case 'b':
+			//Recv_obj_Info();
+			retval = recvn(Client::sock, buffer, sizeof(buffer), 0);
+			if (retval == SOCKET_ERROR)
+				printf("ㄴㄴ\n");
+			WaitForSingleObject(hSynchro, INFINITE);
+			ResetEvent(hSynchro);//차단
+			BuffertoList(buffer);
+			SetEvent(hSynchro);	//개방
+			break;
+
+		case 'd':
+			//Recv_Player_Info();
+			tmp.x = datainfo.m_fx;
+			tmp.y = datainfo.m_fy;
+			tmp.z = datainfo.m_fz;
+			break;
+		}
+		// 이벤트 true까지 대기하고
+		//int retval = WaitForSingleObject(hSynchro, INFINITE);
+		//if (retval != WAIT_OBJECT_0) exit(1);
+		// 오브젝트 업뎃 한 뒤에
+		//update();
+		//오브젝트 화면에 그린다.
+		//SetEvent(client.hSynchro);
+	}
+	return 0;
+};
+
 void Client::err_quit(const char *msg)
 {
 	LPVOID lpMsgBuf;
@@ -39,6 +191,9 @@ void Client::err_display(const char *msg)
 void Client::set_datainfo(char a, char b) {
 	datainfo.infoindex = a;
 	datainfo.datasize = b;
+	datainfo.m_fx = 0;
+	datainfo.m_fy = 0;
+	datainfo.m_fz = 0;
 }
 
 void Client::Send_Input(char b) {
@@ -75,7 +230,7 @@ void Client::InitClient() {
 		(LPVOID)Client::sock, 0, NULL);
 	if (thread == NULL) { closesocket(Client::sock); }
 	else { CloseHandle(thread); }
-
+	hSynchro = CreateEvent(NULL, FALSE, TRUE, NULL);
 }
 
 void Client::Recv_Initialize() {
@@ -96,7 +251,7 @@ void Client::Send_GameStart() {
 		err_display("send()");
 		return;
 	}
-	Recv_Initialize();
+	//Recv_Initialize();
 }
 
 void Client::Close_Connect() {
@@ -107,3 +262,75 @@ void Client::Close_Connect() {
 	WSACleanup();
 	exit(1);
 }
+
+CObj* Client::Connect_Bullet()
+{
+	m_ObjectList[OBJID::PLAYER_BULLET] = CObjectMgr::Get_Instance()->m_ObjectList[OBJID::PLAYER_BULLET];
+	if (m_ObjectList[OBJID::PLAYER_BULLET].empty())
+		return nullptr;
+
+	return m_ObjectList[OBJID::PLAYER_BULLET].front();
+}
+
+CObj* Client::Connect_Monster_Bullet()
+{
+	m_ObjectList[OBJID::MONSTER_BULLET] = CObjectMgr::Get_Instance()->m_ObjectList[OBJID::MONSTER_BULLET];
+	if (m_ObjectList[OBJID::MONSTER_BULLET].empty())
+		return nullptr;
+
+	return m_ObjectList[OBJID::MONSTER_BULLET].front();
+}
+
+void Client::Send_Bullet_Info() {
+	datainfo.infoindex = 'b';
+	datainfo.datasize = 'b';
+	CObj* bullet = Connect_Bullet();
+	if (bullet == nullptr)
+		return;
+	else
+	{
+
+		datainfo.m_fx = bullet->Get_Info().x;
+		datainfo.m_fy = bullet->Get_Info().y;
+		datainfo.m_fz = bullet->Get_Info().z;
+
+
+
+		// 통신용 구조체 송신
+		retval = send(sock, (char*)&datainfo, sizeof(DataInfo), 0);
+		if (retval == SOCKET_ERROR) {
+			err_display("send()");
+			return;
+		}
+
+	}
+}
+
+void Client::Send_Monster_Bullet_Info()
+{
+	datainfo.infoindex = 'c';
+	datainfo.datasize = 'c';
+	CObj* bullet = Connect_Monster_Bullet();
+	if (bullet == nullptr)
+		return;
+	else
+	{
+
+		datainfo.m_fx = bullet->Get_Info().x;
+		datainfo.m_fy = bullet->Get_Info().y;
+		datainfo.m_fz = bullet->Get_Info().z;
+
+
+
+		// 통신용 구조체 송신
+		retval = send(sock, (char*)&datainfo, sizeof(DataInfo), 0);
+		if (retval == SOCKET_ERROR) {
+			err_display("send()");
+			return;
+		}
+
+	}
+
+
+}
+

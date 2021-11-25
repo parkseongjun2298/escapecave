@@ -25,7 +25,7 @@ void CBossMonster::Initialize()
 	//CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CBoss_head(shader_program, this));
 }
 
-int CBossMonster::Update()
+int CBossMonster::Update( )
 {
 	m_AttackTime++;
 	if (m_AttackTime > 1000) {

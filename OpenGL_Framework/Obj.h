@@ -43,6 +43,9 @@ protected:
 	float m_fSpeed = 0;
 	glm::vec3 Look;
 	bool  m_bDead;
+
+public:
+	void get_vec3(glm::vec3 vector);
 };
 
 

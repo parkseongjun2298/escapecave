@@ -32,3 +32,7 @@ void CObj::Add_Effect(int num)
 		CObjectMgr::Get_Instance()->AddObject(OBJID::EFFECT, Effect);
 	}
 }
+
+void CObj::get_vec3(glm::vec3 vector) {
+	object.model_transform.Translate = vector;
+}

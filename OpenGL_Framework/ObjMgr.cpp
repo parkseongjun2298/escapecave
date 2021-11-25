@@ -1,8 +1,19 @@
 #include "pch.h"
 #include "ObjMgr.h"
 #include "Obj.h"
+#include "tmp.h"
+#include "enum.h"
 #include"CollisionMgr.h"
 
+#include "NormalMonster.h"
+#include"ShiledMonster.h"
+#include"SwirlMonster.h"
+#include "Gate.h"
+#include "Map.h"
+#include "Player_front.h"
+#include "TonadoMonster.h" 
+#include "Player_Bullet.h"
+#include "BossMonster.h"
 IMPLEMENT_SINGLETON(CObjectMgr)
 
 CObjectMgr::CObjectMgr()
@@ -43,31 +54,101 @@ HRESULT CObjectMgr::AddObject(OBJID::OBJ eType, CObj* pObject)
 
 void CObjectMgr::Update()
 {
+    int send, m;
+    //s_ObjectList[i] 와 m_ObjectList[i] 오브젝트 개수 비교해서 s가 많으면 객체생성, s가 적으면 객체 삭제 해야됨.
     for (int i = 0; i < OBJID::END; ++i)
     {
-        OBJECT_LIST::iterator iter_begin = m_ObjectList[i].begin();
-        OBJECT_LIST::iterator iter_end = m_ObjectList[i].end();
-
-        for (; iter_begin != iter_end;)
+        send = s_ObjectList[i].size();
+        m = m_ObjectList[i].size();
+        //서버에서 같은 종류의 새로운 객체가 생성된 경우
+        if (send > m)
         {
-            int iEvent = 0;
-            iEvent = (*iter_begin)->Update();
-            Shader->Upadate_Shader((*iter_begin)->Get_vao(), (*iter_begin)->Get_vbo(),(*iter_begin)->Get_normalbuffer(), (*iter_begin)->Get_Object());
-            (*iter_begin)->Draw();
-            if (DEAD_OBJ == iEvent)
-            {
+            switch (i) {
+            case OBJID::MAP:
+                for (;m != send;m++) {
+                }
+                break;
+            case OBJID::GATE:
+                for (;m != send;m++) {
+                }
+                break;
+            case OBJID::PLAYER_FRONT:
+                for (;m != send;m++) {
+                }
+                break;
+            case OBJID::PLAYER:
+                for (;m != send;m++) {
+                }
+                break;
+            case OBJID::PLAYER_BULLET:
+                for (;m != send;m++) {
+                    GLuint* shader_program;
+                    CObj* bullet = new CPlayer_Bullet(shader_program, {0,0,0});
+                    CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_BULLET, bullet);
+                }
+                break;
+            case OBJID::MONSTER:
+                for (;m != send;m++) {
+                   CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster((*Shader).Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 160.f }));
+                }
+                break;
+            case OBJID::BOSS:
+                for (;m != send;m++) {
+                }
+                break;
+            case OBJID::MONSTER_BULLET:
+                for (;m != send;m++) {
+                }
+                break;
+            case OBJID::EFFECT:
+                for (;m != send;m++) {
+                }
+                break;
+            case OBJID::UI:
+                for (;m != send;m++) {
+                }
+                break;
+            case OBJID::END:
+                for (;m != send;m++) {
+                }
+                break;
+            }
+            //i값이 뭐냐에 따라 생성해야할 객체가 달라질 것
+        }
+        // 서버에서 같은 종류의 객체가 제거된 경우
+        else if (send < m)
+            for (;m != send;m--) {
+                OBJECT_LIST::iterator iter_begin = m_ObjectList[i].begin();
                 Safe_Delete(*iter_begin);
                 iter_begin = m_ObjectList[i].erase(iter_begin);
             }
-            else
-                ++iter_begin;
+
+
+
+
+
+
+        //이하 부분만 필요함
+        OBJECT_LIST::iterator iter_begin = m_ObjectList[i].begin();
+        OBJECT_LIST::iterator iter_end = m_ObjectList[i].end();
+
+        for (int j = 0; iter_begin != iter_end;j++)
+        {
+            //모든 객체의 업데이트 함수 최소화할 필요 있다
+            //(*iter_begin)->Update();
+
+            //수신한 좌표값 동기화하는 부분
+            SEND_OBJECT_LIST::iterator send_iter_begin = s_ObjectList[i].begin();
+            for (int k = 0; k<j;k++)
+                ++send_iter_begin;
+
+            //좌표값 동기화 후 셰이더로 그림
+            (*iter_begin)->get_vec3((*send_iter_begin));
+            Shader->Upadate_Shader((*iter_begin)->Get_vao(), (*iter_begin)->Get_vbo(),(*iter_begin)->Get_normalbuffer(), (*iter_begin)->Get_Object());
+            (*iter_begin)->Draw();
+            ++iter_begin;
         }
     }
-    CCollisionMgr::Get_Instance()->Collision_BulletToMonster(m_ObjectList[OBJID::PLAYER_BULLET], m_ObjectList[OBJID::MONSTER]);
-    CCollisionMgr::Get_Instance()->Collision_BulletToPlayer(m_ObjectList[OBJID::MONSTER_BULLET], m_ObjectList[OBJID::PLAYER]);
-    CCollisionMgr::Get_Instance()->Collision_BulletToBullet(m_ObjectList[OBJID::MONSTER_BULLET], m_ObjectList[OBJID::PLAYER_BULLET]);
-    CCollisionMgr::Get_Instance()->Collision_BossToPlayerBullet(m_ObjectList[OBJID::BOSS], m_ObjectList[OBJID::PLAYER_BULLET]);
-
 }
 
 void CObjectMgr::LateUpdate()
@@ -104,4 +185,15 @@ void CObjectMgr::Release()
         for_each(m_ObjectList[i].begin(), m_ObjectList[i].end(), Safe_Delete<CObj*>);
         m_ObjectList[i].clear();
     }
+}
+ 
+int* CObjectMgr::return_objlist_sizes() {
+    static int list[OBJID::END];
+
+    for (int i = 0; i < OBJID::END; ++i)
+    {
+        list[i] = m_ObjectList[i].size();
+        //printf("%d", list[i]);
+    }
+    return list;
 }

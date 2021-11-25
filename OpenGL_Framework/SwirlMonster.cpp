@@ -24,7 +24,7 @@ void CSwirlMonster::Initialize()
 	loadObj<const char*, OBJECT, glm::vec3>("cylinder.obj", object, glm::vec3(0.f, 51./255., 0.f));
 }
 
-int CSwirlMonster::Update()
+int CSwirlMonster::Update( )
 {
 	if (m_bDead) {
 		if (CollisionNum < 1) {

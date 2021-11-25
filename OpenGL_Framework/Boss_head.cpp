@@ -19,7 +19,7 @@ void CBoss_head::Initialize()
 	object.model_transform.Scale *= 1.5f;
 }
 
-int CBoss_head::Update()
+int CBoss_head::Update( )
 {
 	object.model_transform.Rotate.y += 5.f;
 	return 0;

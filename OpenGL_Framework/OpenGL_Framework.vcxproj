@@ -24,6 +24,7 @@
     <ProjectGuid>{6b59355f-cbcf-4221-8cfa-7a34c67c4055}</ProjectGuid>
     <RootNamespace>OpenGLFramework</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <ProjectName>OpenGL_Framework</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -174,12 +175,12 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Player_Bullet.cpp" />
     <ClCompile Include="Player_front.cpp" />
-    <ClCompile Include="RecvThread.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShiledMonster.cpp" />
     <ClCompile Include="SoundMgr.cpp" />
     <ClCompile Include="SwirlMonster.cpp" />
     <ClCompile Include="TimeMgr.cpp" />
+    <ClCompile Include="tmp.cpp" />
     <ClCompile Include="TonadoMonster.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +201,7 @@
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MonsterBullet.h" />
+    <ClInclude Include="NetObj.h" />
     <ClInclude Include="NormalMonster.h" />
     <ClInclude Include="Obj.h" />
     <ClInclude Include="ObjMgr.h" />
@@ -207,13 +209,13 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Player_Bullet.h" />
     <ClInclude Include="Player_front.h" />
-    <ClInclude Include="RecvThread.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShiledMonster.h" />
     <ClInclude Include="SoundMgr.h" />
     <ClInclude Include="Struct.h" />
     <ClInclude Include="SwirlMonster.h" />
     <ClInclude Include="TimeMgr.h" />
+    <ClInclude Include="tmp.h" />
     <ClInclude Include="TonadoMonster.h" />
   </ItemGroup>
   <ItemGroup>

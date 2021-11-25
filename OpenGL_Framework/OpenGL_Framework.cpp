@@ -2,6 +2,7 @@
 #include "CShader_Func.h"
 #include "MainGame.h"
 #include "Client.h"
+#include "tmp.h"
 // 전역함수
 GLvoid drawScene(GLvoid);
 GLvoid ReShape(int w, int h);
@@ -14,15 +15,15 @@ GLvoid Timer(int value);
 
 // 셰이더 클래스 변수
 CMainGame maingame;
+Client client;
 
 glm::vec3 background = {0.0,0.0,0.0};
 
-
+//좌표 받는 쪽
 int main(int argc, char** argv)
 {
-	Client client;
-	client.InitClient();	// 클라이언트로써 서버와 연결하는 함수
-	client.Send_GameStart();	// 서버에게 게임 시작 요청
+	client.InitClient();	// 서버와 연결하는 함수
+	client.Recv_Initialize();	// 서버에게서 게임 시작 받는다
 	
 	srand(unsigned int(time(NULL)));
 
@@ -81,9 +82,11 @@ GLvoid drawScene(GLvoid)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	/////// 셰이더
+	WaitForSingleObject(hSynchro, INFINITE);
+	ResetEvent(hSynchro);//차단
 	maingame.Update_MainGame();
+	SetEvent(hSynchro);	//개방
 	maingame.Draw_MainGame();
-	maingame.Late_Update();
 
 	glutPostRedisplay();
 
