@@ -37,13 +37,13 @@ DWORD WINAPI Client::Recv_Thread(LPVOID arg) {
 		switch (datainfo.infoindex) {
 		case 'b':
 			//Recv_Bullet_Info();
-			cout << "플레이어총알위치:" << datainfo.m_fx << "," << datainfo.m_fy << "," << datainfo.m_fz << endl;
+			//cout << "플레이어총알위치:" << datainfo.m_fx << "," << datainfo.m_fy << "," << datainfo.m_fz << endl;
 
 			break;
 
 		case 'c':
 			//Recv_Bullet_Info();
-			cout << "몬스터총알위치:" << datainfo.m_fx << "," << datainfo.m_fy << "," << datainfo.m_fz << endl;
+			//cout << "몬스터총알위치:" << datainfo.m_fx << "," << datainfo.m_fy << "," << datainfo.m_fz << endl;
 
 			break;
 

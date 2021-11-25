@@ -180,6 +180,12 @@
     <ClCompile Include="tmp.cpp">
       <Filter>98.Headers</Filter>
     </ClCompile>
+    <ClCompile Include="Player_front2.cpp">
+      <Filter>03.Obj\01.Player\00.Player_front</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_front3.cpp">
+      <Filter>03.Obj\01.Player\00.Player_front</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -280,6 +286,12 @@
     </ClInclude>
     <ClInclude Include="tmp.h">
       <Filter>98.Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_front2.h">
+      <Filter>03.Obj\01.Player\00.Player_front</Filter>
+    </ClInclude>
+    <ClInclude Include="Player_front3.h">
+      <Filter>03.Obj\01.Player\00.Player_front</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
