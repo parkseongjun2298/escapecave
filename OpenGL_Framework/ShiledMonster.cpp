@@ -25,27 +25,7 @@ void CShiledMonster::Initialize()
 
 int CShiledMonster::Update( )
 {
-    if (m_bDead) {
-        if (m_CollisionCount < 2) {
-            m_CollisionCount++;
-            m_bDead = false;
-        }
-        else {
-            CSoundMgr::GetInstance()->PlaySound((TCHAR*)L"die.mp3", CSoundMgr::EFFECT);
-            Add_Effect(20);
-            return DEAD_OBJ;
-
-        }
-
-    }
-    object.model_transform.Translate.x += m_fSpeed;
-
-    if (object.model_transform.Translate.x <= -20.f || object.model_transform.Translate.x >= 20.f)
-        m_fSpeed *= -1;
-
-
     return 0;
-
 }
 
 void CShiledMonster::Late_Update()

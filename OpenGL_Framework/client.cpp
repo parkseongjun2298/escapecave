@@ -26,7 +26,7 @@ glm::vec3 strtovec3(char* sentense) {
 	glm::vec3 vector{};
 	bool isitx = true;
 	char tmp[2] = "";
-	char xyz[5] = "";
+	char xyz[10] = "";
 
 	for (int i = 0; sentense[i] != '\0'; i++) {
 		if (sentense[i] == ' ') {
@@ -148,6 +148,14 @@ DWORD WINAPI Client::Recv_Thread(LPVOID arg) {
 			tmp.y = datainfo.m_fy;
 			tmp.z = datainfo.m_fz;
 			break;
+
+		case 'x':
+			printf("패배");
+			break;
+
+		case 'z':
+			printf("승리");
+			break;
 		}
 		// 이벤트 true까지 대기하고
 		//int retval = WaitForSingleObject(hSynchro, INFINITE);
@@ -241,6 +249,10 @@ void Client::Recv_Initialize() {
 	else if (retval == 0)
 		return;
 	printf("오브젝트 초기화 요청 수신\n");
+}
+
+void Client::Recv_GameOver()
+{
 }
 
 void Client::Send_GameStart() {

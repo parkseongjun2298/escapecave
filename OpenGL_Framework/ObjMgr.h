@@ -40,4 +40,5 @@ public:
 
 public:
 	int* return_objlist_sizes();
+	void Del_Obj(int id, int num);
 };

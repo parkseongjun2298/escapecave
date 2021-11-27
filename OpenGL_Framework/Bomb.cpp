@@ -22,15 +22,6 @@ void CBomb::Initialize()
 int CBomb::Update( )
 {
 	m_Create_Time += 0.1f;
-	if (m_Create_Time > 10.f) {
-		Add_Bullet(); 
-		Add_Effect(60);
-		CSoundMgr::GetInstance()->PlaySound((TCHAR*)L"bomb.wav", CSoundMgr::PLAYER);
-
-		return DEAD_OBJ;
-	}
-		
-
 
 	if(m_bScaleBigger)
 		object.model_transform.Scale *= 1.1f;

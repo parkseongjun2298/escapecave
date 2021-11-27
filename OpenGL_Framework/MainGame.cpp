@@ -3,6 +3,8 @@
 #include "Player.h"
 #include "tmp.h"
 
+#include "Bomb.h"
+#include "Player_Bullet.h"
 #include "NormalMonster.h"
 #include"ShiledMonster.h"
 #include"SwirlMonster.h"
@@ -15,6 +17,8 @@
 #include "CollisionMgr.h"
 #include "TonadoMonster.h"
 #include "BossMonster.h"
+#include "MonsterBullet.h"
+#include "Bomb_Effect.h"
 
 void CMainGame::Initialize_MainGame()
 {
@@ -60,31 +64,36 @@ void CMainGame::Initialize_MainGame()
 
 void CMainGame::Update_MainGame()
 {
-	int tmp[OBJID::END];
+	int sent_list_size[OBJID::END];
 	int* list = (CObjectMgr::Get_Instance()->return_objlist_sizes());
 
+	//서버로부터 데이터 못 받은 경우는 업데이트 안 한다.
+	if (s_ObjectList[0].size() == 0)
+		return;
 	//매니저에게서 어떻게든 m_obj_list 사이즈값 받아와서 생성할거있으면 생성 한 뒤에 업뎃으로 들어가야함
 	for (int i = 0; i < OBJID::END; ++i)
 	{
-		tmp[i] = s_ObjectList[i].size();
-		printf("%d:%d", tmp[i], list[i]);
-		if (tmp[i] > list[i])
+		sent_list_size[i] = s_ObjectList[i].size();
+		printf("%d:%d", sent_list_size[i], list[i]);
+		if (sent_list_size[i] > list[i])
 		{
-			printf("오브젝트추가하는함수(매니저쪽함수)동작\n");
+			printf("오브젝트추가하는함수(메인게임쪽함수)동작\n");
+			New_Obj(i, sent_list_size[i] - list[i]);
+
 		}
-		else if (tmp[i] < list[i])
+		else if (sent_list_size[i] < list[i])
 		{
 			printf("오브젝트제거하는함수(매니저쪽함수)동작\n");
+			CObjectMgr::Get_Instance()->Del_Obj(i, list[i] - sent_list_size[i]);
+
 		}
 		else
 		{
 			printf("변화없음\n");
 		}
 	}
-	if (tmp[0] == 0)
-		return;
 	printf("끝\n");
-	//CObjectMgr::Get_Instance()->Update();
+	CObjectMgr::Get_Instance()->Update();
 
 }
 void CMainGame::Late_Update()
@@ -107,92 +116,12 @@ void CMainGame::Release_MainGame()
 
 void CMainGame::Monster_Stage1()
 {
-	if (Stage_Monster_Wave == 0) {
-		if (CObjectMgr::Get_Instance()->GetPlayer()->Get_Info().z <= 185.f) {
-			Stage_Monster_Wave++;
-
-			CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 160.f }));
-			CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 160.f }));
-			CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 160.f }));
-			CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 160.f }));
-		}
-
-	}
-	else if (Stage_Monster_Wave == 1) {
-		Stage_Monster_Wave++;
-
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 110.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 110.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 110.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 110.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -10.f, 0.f, 110.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 10.f, 0.f, 110.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -10.f, 0.f, 110.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 10.f, 0.f, 110.f }));
-	}
-	else if (Stage_Monster_Wave == 2) {
-		// 첫번째 게이트 열림
-		// 리스트의 맨마지막 게이트 연다.
-		Stage_Monster_Wave++;
-		dynamic_cast<CGate*>(CObjectMgr::Get_Instance()->Get_Gate_Back())->Set_Open();
-	}
-	else if (Stage_Monster_Wave == 3) {
-		if (CObjectMgr::Get_Instance()->Get_Size(OBJID::GATE) == 2) {
-			// 문이 다열림
-			// 다음 스테이지로 이동
-			m_eNowStage = STAGE2;
-			Stage_Monster_Wave = 0;
-		}
-	}
+	
 }
 
 void CMainGame::Monster_Stage2()
 {
-	if (Stage_Monster_Wave == 0) {
-		Stage_Monster_Wave++;
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ 9.f, 0.f, 60.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ 9.f, 0.f, 75.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ 9.f, 0.f, 90.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ -9.f, 0.f, 60.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ -9.f, 0.f, 75.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ -9.f, 0.f, 90.f }));
-	}
-	else if (Stage_Monster_Wave == 1) {
-		Stage_Monster_Wave++;
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 0.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 0.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 0.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 0.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -10.f, 0.f, 0.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 10.f, 0.f, 0.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -10.f, 0.f, 0.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 10.f, 0.f, 0.f }));
-
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 40.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 40.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 40.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, 40.f }));
-
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CTonadoMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, -30.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CTonadoMonster(Shader.Get_shaderProgram(), glm::vec3{ 10.f, 0.f, -30.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CTonadoMonster(Shader.Get_shaderProgram(), glm::vec3{ -10.f, 0.f, -20.f }));
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CTonadoMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, -20.f }));
-
-	}
-	else if (Stage_Monster_Wave == 2) {
-		// 번째 게이트 열림
-		// 리스트의 맨마지막 게이트 연다.
-		Stage_Monster_Wave++;
-		dynamic_cast<CGate*>(CObjectMgr::Get_Instance()->Get_Gate_Back())->Set_Open();
-	}
-	else if (Stage_Monster_Wave == 3) {
-		if (CObjectMgr::Get_Instance()->Get_Size(OBJID::GATE) == 1) {
-			// 문이 다열림
-			// 다음 스테이지로 이동
-			m_eNowStage = STAGE3;
-			Stage_Monster_Wave = 0;
-		}
-	}
+	
 }
 
 void CMainGame::Monster_Stage3()
@@ -218,6 +147,92 @@ void CMainGame::Monster_Stage3()
 
 }
 
+void CMainGame::New_Obj(int id, int num) {
+	//서버에서 같은 종류의 새로운 객체가 생성된 경우
+	//id에 해당하는 오브젝트를 num개 생성
+	switch (id) {
+	case OBJID::MAP:
+		for (int i = 0;i < num;i++) {
+			printf("id:%d객체 생성 부분 없음!", id);
+		}
+		break;
+	case OBJID::GATE:
+		for (int i = 0;i < num;i++) {
+			printf("id:%d객체 생성 부분 없음!", id);
+		}
+		break;
+	case OBJID::PLAYER_FRONT:
+		for (int i = 0;i < num;i++) {
+			printf("id:%d객체 생성 부분 없음!", id);
+		}
+		break;
+	case OBJID::PLAYER:
+		for (int i = 0;i < num;i++) {
+			printf("id:%d객체 생성 부분 없음!", id);
+		}
+		break;
+	case OBJID::PLAYER_BULLET:
+		for (int i = 0;i < num;i++) {
+			CObj* bullet = new CPlayer_Bullet(Shader.Get_shaderProgram(), { 0,0,0 });
+			CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_BULLET, bullet);
+		}
+		break;
+	case OBJID::BOMB:
+		for (int i = 0;i < num;i++) {
+			CObj* bomb = new CBomb(Shader.Get_shaderProgram(), {});
+			CObjectMgr::Get_Instance()->AddObject(OBJID::BOMB, bomb);
+		}
+		break;
+	case OBJID::NORMALMONSTER:
+		for (int i = 0;i < num;i++) {
+			CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 160.f }));
+		}
+		break;
+	case OBJID::SHILEDMONSTER:
+		for (int i = 0;i < num;i++) {
+			CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 0.f }));
+		}
+		break;
+	case OBJID::SWIRLMONSTER:
+		for (int i = 0;i < num;i++) {
+			CObjectMgr::Get_Instance()->AddObject(OBJID::SWIRLMONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ -9.f, 0.f, 90.f }));
+		}
+		break;
+	case OBJID::TONADOMONSTER:
+		for (int i = 0;i < num;i++) {
+
+			CObjectMgr::Get_Instance()->AddObject(OBJID::TONADOMONSTER, new CTonadoMonster(Shader.Get_shaderProgram(), glm::vec3{ 19.f, 0.f, -30.f }));
+		}
+		break;
+	case OBJID::BOSS:
+		for (int i = 0;i < num;i++) {
+			CObjectMgr::Get_Instance()->AddObject(OBJID::BOSS, new CBossMonster(Shader.Get_shaderProgram()));
+		}
+		break;
+	case OBJID::MONSTER_BULLET:
+		for (int i = 0;i < num;i++) {
+			CMonsterBullet* bullet = new CMonsterBullet(Shader.Get_shaderProgram(), { 0,0,0 }, { 0,0,0 }, { 1.f,102. / 255.,102. / 255. });
+			CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER_BULLET, bullet);
+		}
+		break;
+	case OBJID::EFFECT:
+		for (int i = 0;i < num;i++) {
+			CObj* Effect = new CBomb_Effect(Shader.Get_shaderProgram(), {});
+			CObjectMgr::Get_Instance()->AddObject(OBJID::EFFECT, Effect);
+		}
+		break;
+	case OBJID::UI:
+		for (int i = 0;i < num;i++) {
+			printf("id:%d객체 생성 부분 없음!", id);
+		}
+		break;
+	case OBJID::END:
+		for (int i = 0;i < num;i++) {
+			printf("id:%d객체 생성 부분 없음!", id);
+		}
+		break;
+	}
+};
 //void CMainGame::Add_Object(OBJID::OBJ _objID)
 //{
 //	CObj* pObj = nullptr;

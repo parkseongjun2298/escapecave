@@ -32,6 +32,8 @@ private:
 private:
 	int Stage_Monster_Wave = 0;
 	STAGE m_eNowStage = STAGE1;
+public:
+	void New_Obj(int id, int num);
 };
 
 #endif // !__MAINGAME_H__

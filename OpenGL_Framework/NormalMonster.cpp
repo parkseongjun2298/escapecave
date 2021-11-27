@@ -28,34 +28,7 @@ void CNormalMonster::Initialize()
 int CNormalMonster::Update( )
 {
 
-	if (m_bDead) {
-		CSoundMgr::GetInstance()->PlaySound((TCHAR*)L"die.mp3", CSoundMgr::EFFECT);
-		Add_Effect(20);
-		return DEAD_OBJ;
-
-	}
-
-	object.model_transform.Translate.x += m_fSpeed;
-	if (object.model_transform.Translate.x <= -20.f || object.model_transform.Translate.x >= 20.f)
-		m_fSpeed *= -1;
-		
-	
-	CPlayer* pPlayer = dynamic_cast<CPlayer*>(CObjectMgr::Get_Instance()->GetPlayer());
-	BulletDir = pPlayer->Get_Info() - object.model_transform.Translate;
-	vector_normalize(BulletDir);
-	bullet_time += 0.1f;
-	if (bullet_time > 3.f)
-	{
-		bullet_time = 0;
-		Add_Bullet();
-
-	}
-	
-	
 	return 0;
-	
-
-
 	
 }
 

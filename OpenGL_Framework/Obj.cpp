@@ -34,5 +34,10 @@ void CObj::Add_Effect(int num)
 }
 
 void CObj::get_vec3(glm::vec3 vector) {
-	object.model_transform.Translate = vector;
+	//편의를 위하여 열배 곱했던걸 되돌린다.
+	glm::vec3 tmp = vector;
+	tmp.x /= 10;
+	tmp.y /= 10;
+	tmp.z /= 10;
+	object.model_transform.Translate = tmp;
 }

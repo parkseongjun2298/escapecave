@@ -35,13 +35,6 @@ CObj* CObjectMgr::GetPlayer()
 
     return m_ObjectList[OBJID::PLAYER].front();
 }
-CObj* CObjectMgr::GetMonster()
-{
-    if (m_ObjectList[OBJID::MONSTER].empty())
-        return nullptr;
-
-    return m_ObjectList[OBJID::MONSTER].front();
-}
 
 
 HRESULT CObjectMgr::AddObject(OBJID::OBJ eType, CObj* pObject)
@@ -54,80 +47,8 @@ HRESULT CObjectMgr::AddObject(OBJID::OBJ eType, CObj* pObject)
 
 void CObjectMgr::Update()
 {
-    int send, m;
-    //s_ObjectList[i] 와 m_ObjectList[i] 오브젝트 개수 비교해서 s가 많으면 객체생성, s가 적으면 객체 삭제 해야됨.
     for (int i = 0; i < OBJID::END; ++i)
     {
-        send = s_ObjectList[i].size();
-        m = m_ObjectList[i].size();
-        //서버에서 같은 종류의 새로운 객체가 생성된 경우
-        if (send > m)
-        {
-            switch (i) {
-            case OBJID::MAP:
-                for (;m != send;m++) {
-                }
-                break;
-            case OBJID::GATE:
-                for (;m != send;m++) {
-                }
-                break;
-            case OBJID::PLAYER_FRONT:
-                for (;m != send;m++) {
-                }
-                break;
-            case OBJID::PLAYER:
-                for (;m != send;m++) {
-                }
-                break;
-            case OBJID::PLAYER_BULLET:
-                for (;m != send;m++) {
-                    GLuint* shader_program;
-                    CObj* bullet = new CPlayer_Bullet(shader_program, {0,0,0});
-                    CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_BULLET, bullet);
-                }
-                break;
-            case OBJID::MONSTER:
-                for (;m != send;m++) {
-                   CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CNormalMonster((*Shader).Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 160.f }));
-                }
-                break;
-            case OBJID::BOSS:
-                for (;m != send;m++) {
-                }
-                break;
-            case OBJID::MONSTER_BULLET:
-                for (;m != send;m++) {
-                }
-                break;
-            case OBJID::EFFECT:
-                for (;m != send;m++) {
-                }
-                break;
-            case OBJID::UI:
-                for (;m != send;m++) {
-                }
-                break;
-            case OBJID::END:
-                for (;m != send;m++) {
-                }
-                break;
-            }
-            //i값이 뭐냐에 따라 생성해야할 객체가 달라질 것
-        }
-        // 서버에서 같은 종류의 객체가 제거된 경우
-        else if (send < m)
-            for (;m != send;m--) {
-                OBJECT_LIST::iterator iter_begin = m_ObjectList[i].begin();
-                Safe_Delete(*iter_begin);
-                iter_begin = m_ObjectList[i].erase(iter_begin);
-            }
-
-
-
-
-
-
         //이하 부분만 필요함
         OBJECT_LIST::iterator iter_begin = m_ObjectList[i].begin();
         OBJECT_LIST::iterator iter_end = m_ObjectList[i].end();
@@ -135,7 +56,7 @@ void CObjectMgr::Update()
         for (int j = 0; iter_begin != iter_end;j++)
         {
             //모든 객체의 업데이트 함수 최소화할 필요 있다
-            //(*iter_begin)->Update();
+            (*iter_begin)->Update();
 
             //수신한 좌표값 동기화하는 부분
             SEND_OBJECT_LIST::iterator send_iter_begin = s_ObjectList[i].begin();
@@ -196,4 +117,15 @@ int* CObjectMgr::return_objlist_sizes() {
         //printf("%d", list[i]);
     }
     return list;
+}
+
+void CObjectMgr::Del_Obj(int id, int num)
+{
+ // 서버에서 같은 종류의 객체가 제거된 경우
+ for (int i = 0;i < num;i++)
+ {
+      OBJECT_LIST::iterator iter_begin = m_ObjectList[id].begin();
+      Safe_Delete(*iter_begin);
+     iter_begin = m_ObjectList[id].erase(iter_begin);
+ }
 }
