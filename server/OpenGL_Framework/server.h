@@ -6,14 +6,9 @@ class CObj;
 typedef struct DataInfo {
 	char infoindex;	// 패킷 타입
 	int datasize;	// 패킷 크기
-
-	float m_fx;
-	float m_fy;
-	float m_fz;
-
 };
 
-class Client
+class Server
 {
 	SOCKET client_sock[3];
 	int retval;
@@ -24,19 +19,9 @@ class Client
 	void err_display(const char *msg);
 	
 public:
-	void InitClient();
+	void InitServer();
 	void Send_GameStart();
-	CObj* Connect_Player();
-	CObj* Connect_Bullet();
-	CObj* Connect_Monster_Bullet();
-
 	void Send_Object_Info();
-
-
-
-	void Send_Bullet_Info();
-	void Send_Monster_Bullet_Info();
-	void Send_Player_Info();
 	void Close_Connect();
 
 

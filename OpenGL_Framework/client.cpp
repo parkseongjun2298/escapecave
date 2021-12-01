@@ -143,10 +143,7 @@ DWORD WINAPI Client::Recv_Thread(LPVOID arg) {
 			break;
 
 		case 'd':
-			//Recv_Player_Info();
-			tmp.x = datainfo.m_fx;
-			tmp.y = datainfo.m_fy;
-			tmp.z = datainfo.m_fz;
+			printf("?\n");
 			break;
 		}
 		// 이벤트 true까지 대기하고
@@ -191,9 +188,6 @@ void Client::err_display(const char *msg)
 void Client::set_datainfo(char a, char b) {
 	datainfo.infoindex = a;
 	datainfo.datasize = b;
-	datainfo.m_fx = 0;
-	datainfo.m_fy = 0;
-	datainfo.m_fz = 0;
 }
 
 void Client::Send_Input(char b) {
@@ -263,76 +257,5 @@ void Client::Close_Connect() {
 	// 5. 윈속 종료
 	WSACleanup();
 	exit(1);
-}
-
-CObj* Client::Connect_Bullet()
-{
-	m_ObjectList[OBJID::PLAYER_BULLET] = CObjectMgr::Get_Instance()->m_ObjectList[OBJID::PLAYER_BULLET];
-	if (m_ObjectList[OBJID::PLAYER_BULLET].empty())
-		return nullptr;
-
-	return m_ObjectList[OBJID::PLAYER_BULLET].front();
-}
-
-CObj* Client::Connect_Monster_Bullet()
-{
-	m_ObjectList[OBJID::MONSTER_BULLET] = CObjectMgr::Get_Instance()->m_ObjectList[OBJID::MONSTER_BULLET];
-	if (m_ObjectList[OBJID::MONSTER_BULLET].empty())
-		return nullptr;
-
-	return m_ObjectList[OBJID::MONSTER_BULLET].front();
-}
-
-void Client::Send_Bullet_Info() {
-	datainfo.infoindex = 'b';
-	datainfo.datasize = 'b';
-	CObj* bullet = Connect_Bullet();
-	if (bullet == nullptr)
-		return;
-	else
-	{
-
-		datainfo.m_fx = bullet->Get_Info().x;
-		datainfo.m_fy = bullet->Get_Info().y;
-		datainfo.m_fz = bullet->Get_Info().z;
-
-
-
-		// 통신용 구조체 송신
-		retval = send(sock, (char*)&datainfo, sizeof(DataInfo), 0);
-		if (retval == SOCKET_ERROR) {
-			err_display("send()");
-			return;
-		}
-
-	}
-}
-
-void Client::Send_Monster_Bullet_Info()
-{
-	datainfo.infoindex = 'c';
-	datainfo.datasize = 'c';
-	CObj* bullet = Connect_Monster_Bullet();
-	if (bullet == nullptr)
-		return;
-	else
-	{
-
-		datainfo.m_fx = bullet->Get_Info().x;
-		datainfo.m_fy = bullet->Get_Info().y;
-		datainfo.m_fz = bullet->Get_Info().z;
-
-
-
-		// 통신용 구조체 송신
-		retval = send(sock, (char*)&datainfo, sizeof(DataInfo), 0);
-		if (retval == SOCKET_ERROR) {
-			err_display("send()");
-			return;
-		}
-
-	}
-
-
 }
 

@@ -65,7 +65,7 @@ void CObjectMgr::Update()
 
 
             Shader->Upadate_Shader((*iter_begin)->Get_vao(), (*iter_begin)->Get_vbo(),(*iter_begin)->Get_normalbuffer(), (*iter_begin)->Get_Object());
-            (*iter_begin)->Draw();
+            //(*iter_begin)->Draw();
             if (DEAD_OBJ == iEvent)
             {
                 Safe_Delete(*iter_begin);

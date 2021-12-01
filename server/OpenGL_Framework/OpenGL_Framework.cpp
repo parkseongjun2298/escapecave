@@ -19,11 +19,11 @@ CMainGame maingame;
 glm::vec3 background = {0.0,0.0,0.0};
 
 //좌표 보내는 쪽
-Client client;
+Server client;
 int main(int argc, char** argv)
 {
 	
-	client.InitClient();	// 클라이언트로써 서버와 연결하는 함수
+	client.InitServer();	// 클라이언트로써 서버와 연결하는 함수
 	client.Send_GameStart();	// 서버에게 게임 시작 요청
 	
 
@@ -43,7 +43,7 @@ int main(int argc, char** argv)
 
 
 	glewExperimental = GL_TRUE;		// GLEW 초기화
-
+	
 	if (glewInit() != GLEW_OK) // glew 초기화
 	{
 		std::cerr << "Unable to initialize GLEW" << std::endl;

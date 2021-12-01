@@ -5,7 +5,7 @@
 #include "tmp.h"
 
 #pragma comment(lib, "ws2_32.lib")
-#define SERVERIP   "127.0.0.1"
+#define SERVERIP   "192.168.35.46"
 #define SERVERPORT 9000
 #define BUFSIZE    5000
 #include "ObjMgr.h"
@@ -13,7 +13,7 @@
 
 
 #define PLAYERN 3
-void Client::err_quit(const char *msg)
+void Server::err_quit(const char *msg)
 {
 	LPVOID lpMsgBuf;
 	FormatMessage(
@@ -27,7 +27,7 @@ void Client::err_quit(const char *msg)
 }
 
 // 소켓 함수 오류 출력
-void Client::err_display(const char *msg)
+void Server::err_display(const char *msg)
 {
 	LPVOID lpMsgBuf;
 	FormatMessage(
@@ -42,7 +42,7 @@ void Client::err_display(const char *msg)
 }
 
 
-void Client::InitClient() {
+void Server::InitServer() {
 	// 1. 윈속 초기화
 	WSADATA wsa;
 
@@ -89,7 +89,7 @@ void Client::InitClient() {
 	//hSynchro = CreateEvent(NULL, TRUE, TRUE, NULL);
 }
 
-void Client::Send_GameStart() {
+void Server::Send_GameStart() {
 	datainfo.infoindex = 'a';
 
 
@@ -104,120 +104,8 @@ void Client::Send_GameStart() {
 	}
 }
 
-CObj* Client::Connect_Player()
-{
-	m_ObjectList[OBJID::PLAYER] = CObjectMgr::Get_Instance()->m_ObjectList[OBJID::PLAYER];
-	if (m_ObjectList[OBJID::PLAYER].empty())
-		return nullptr;
 
-	return m_ObjectList[OBJID::PLAYER].front();
-}
-
-CObj* Client::Connect_Bullet()
-{
-	m_ObjectList[OBJID::PLAYER_BULLET] = CObjectMgr::Get_Instance()->m_ObjectList[OBJID::PLAYER_BULLET];
-	if (m_ObjectList[OBJID::PLAYER_BULLET].empty())
-		return nullptr;
-
-	return m_ObjectList[OBJID::PLAYER_BULLET].front();
-}
-
-CObj* Client::Connect_Monster_Bullet()
-{
-	m_ObjectList[OBJID::MONSTER_BULLET] = CObjectMgr::Get_Instance()->m_ObjectList[OBJID::MONSTER_BULLET];
-	if (m_ObjectList[OBJID::MONSTER_BULLET].empty())
-		return nullptr;
-
-	return m_ObjectList[OBJID::MONSTER_BULLET].front();
-}
-
-void Client::Send_Bullet_Info() {
-	datainfo.infoindex = 'b';
-	datainfo.datasize = 'b';
-	CObj* bullet = Connect_Bullet();
-	if (bullet == nullptr)
-		return;
-	else
-	{
-
-		datainfo.m_fx = bullet->Get_Info().x;
-		datainfo.m_fy = bullet->Get_Info().y;
-		datainfo.m_fz = bullet->Get_Info().z;
-
-
-
-		for (int i = 0;i < PLAYERN;i++) {
-			retval = send(client_sock[i], (char*)&datainfo, sizeof(DataInfo), 0);
-			if (retval == SOCKET_ERROR) {
-				err_display("send()");
-				return;
-			}
-		}
-
-	}
-}
-
-void Client::Send_Monster_Bullet_Info()
-{
-	datainfo.infoindex = 'c';
-	datainfo.datasize = 'c';
-	CObj* bullet = Connect_Monster_Bullet();
-	if (bullet == nullptr)
-		return;
-	else
-	{
-
-		datainfo.m_fx = bullet->Get_Info().x;
-		datainfo.m_fy = bullet->Get_Info().y;
-		datainfo.m_fz = bullet->Get_Info().z;
-
-
-
-		// 통신용 구조체 송신
-		for (int i = 0;i < PLAYERN;i++) {
-			retval = send(client_sock[i], (char*)&datainfo, sizeof(DataInfo), 0);
-			if (retval == SOCKET_ERROR) {
-				err_display("send()");
-				return;
-			}
-		}
-
-	}
-
-
-}
-
-void Client::Send_Player_Info()
-{
-	datainfo.infoindex = 'd';
-	datainfo.datasize = 'd';
-	CObj* player = Connect_Player();
-	if (player == nullptr)
-		return;
-	else
-	{
-
-		datainfo.m_fx = player->Get_Info().x;
-		datainfo.m_fy = player->Get_Info().y;
-		datainfo.m_fz = player->Get_Info().z;
-
-
-
-		// 통신용 구조체 송신
-		for (int i = 0;i < PLAYERN;i++) {
-			retval = send(client_sock[i], (char*)&datainfo, sizeof(DataInfo), 0);
-			if (retval == SOCKET_ERROR) {
-				err_display("send()");
-				return;
-			}
-		}
-
-	}
-
-
-}
-
-void Client::Send_Object_Info()
+void Server::Send_Object_Info()
 {
 	char buffer[BUFSIZE] = "";
 	char tmp[10];
@@ -272,7 +160,7 @@ void Client::Send_Object_Info()
 	}
 }
 
-void Client::Close_Connect() {
+void Server::Close_Connect() {
 	// 4. 소켓 닫음
 	closesocket(recv_socket);
 
