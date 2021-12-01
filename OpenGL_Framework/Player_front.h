@@ -3,7 +3,7 @@
 class CPlayer_front : public CObj
 {
 public:
-	CPlayer_front(GLuint* _shader_program);
+	CPlayer_front(GLuint* _shader_program, int n);
 	~CPlayer_front();
 
 public:

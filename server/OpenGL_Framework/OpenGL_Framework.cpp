@@ -1,7 +1,7 @@
 ﻿#include "pch.h"
 #include "CShader_Func.h"
 #include "MainGame.h"
-#include "Client.h"
+#include "server.h"
 #include "tmp.h"
 // 전역함수
 GLvoid drawScene(GLvoid);

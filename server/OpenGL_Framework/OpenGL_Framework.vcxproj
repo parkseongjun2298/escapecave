@@ -153,7 +153,7 @@
     <ClCompile Include="Bomb_Effect.cpp" />
     <ClCompile Include="BossMonster.cpp" />
     <ClCompile Include="Boss_head.cpp" />
-    <ClCompile Include="client.cpp" />
+    <ClCompile Include="server.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="FrameMgr.cpp" />
     <ClCompile Include="Gate.cpp" />
@@ -188,7 +188,7 @@
     <ClInclude Include="Bomb_Effect.h" />
     <ClInclude Include="BossMonster.h" />
     <ClInclude Include="Boss_head.h" />
-    <ClInclude Include="Client.h" />
+    <ClInclude Include="server.h" />
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="enum.h" />

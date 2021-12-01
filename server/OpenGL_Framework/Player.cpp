@@ -7,9 +7,10 @@
 #include "Bomb.h"
 #include "tmp.h"
 
-CPlayer::CPlayer(GLuint* _shader_program, float n)
+CPlayer::CPlayer(GLuint* _shader_program, int n)
 	:CObj(_shader_program)
 {
+	//플레이어에 번호 지정0, 1, 2
 	num = n;
 	Initialize();
 	m_light.model_transform.Translate = { 0.f,20.f, -250.f };
@@ -31,7 +32,7 @@ void CPlayer::Initialize()
 	m_fSpeed = 0.3f;
 	bullet_time = 0.f;
 	m_State = NORMAL_BULLET;
-	object.model_transform.Translate.x = num;
+	object.model_transform.Translate.x = num * 10.0;
 	object.model_transform.Translate.z = 190.f;
 
 }
@@ -60,7 +61,7 @@ int CPlayer::Update()
 			Double_Bullet();
 
 	}
-	switch (just_tmp.key) {
+	switch (just_tmp[num].key) {
 	case 'w':
 		object.model_transform.Translate.z -= m_fSpeed;
 		break;
@@ -84,7 +85,7 @@ int CPlayer::Update()
 		break;
 
 	}
-	just_tmp.key = 0;
+	just_tmp[num].key = 0;
 
 	if (object.model_transform.Translate.x <= -20.f)
 		object.model_transform.Translate.x = -20.f;

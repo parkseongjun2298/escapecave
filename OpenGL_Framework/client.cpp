@@ -234,12 +234,14 @@ void Client::InitClient() {
 }
 
 void Client::Recv_Initialize() {
+	// 플레이어 번호 할당받는다.
 	retval = recv(Client::sock, (char*)&datainfo, sizeof(DataInfo), 0);
-	printf("a");
+
 	if (retval == SOCKET_ERROR)
 		err_display("recv()");
 	else if (retval == 0)
 		return;
+	num = datainfo.datasize;
 	printf("오브젝트 초기화 요청 수신\n");
 }
 

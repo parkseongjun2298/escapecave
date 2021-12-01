@@ -7,6 +7,7 @@ class Thread
 {
 	HANDLE thread;
 public:
+	static int num;
 	SOCKET sock;
 	Thread(SOCKET recv_socket);
 };

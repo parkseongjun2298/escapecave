@@ -39,8 +39,8 @@ int CNormalMonster::Update()
 	if (object.model_transform.Translate.x <= -20.f || object.model_transform.Translate.x >= 20.f)
 		m_fSpeed *= -1;
 		
-	
-	CPlayer* pPlayer = dynamic_cast<CPlayer*>(CObjectMgr::Get_Instance()->GetPlayer());
+	//랜덤 걸어야 함
+	CPlayer* pPlayer = dynamic_cast<CPlayer*>(CObjectMgr::Get_Instance()->GetPlayer(0));
 	BulletDir = pPlayer->Get_Info() - object.model_transform.Translate;
 	vector_normalize(BulletDir);
 	bullet_time += 0.1f;

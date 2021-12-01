@@ -44,8 +44,8 @@ int CSwirlMonster::Update()
 	if (object.model_transform.Translate.x <= -10.f || object.model_transform.Translate.x >= 10.f)
 		m_fSpeed *= -1;
 
-
-	CPlayer* pPlayer = dynamic_cast<CPlayer*>(CObjectMgr::Get_Instance()->GetPlayer());
+	//·£´ý
+	CPlayer* pPlayer = dynamic_cast<CPlayer*>(CObjectMgr::Get_Instance()->GetPlayer(0));
 
 	bullet_time += 0.1f;
 	if (bullet_time > 6.f)

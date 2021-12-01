@@ -44,5 +44,6 @@ public:
 
 	typedef list<CObj*>   OBJECT_LIST;
 	OBJECT_LIST   m_ObjectList[OBJID::END];
+	int num;
 };
 #endif // !__MAINGAME_H__

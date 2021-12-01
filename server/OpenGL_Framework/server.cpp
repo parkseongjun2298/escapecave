@@ -1,6 +1,6 @@
 #define _WINSOCK_DEPRECATED_NO_WARNINGS // 최신 VC++ 컴파일 시 경고 방지
 #include "pch.h"
-#include "Client.h"
+#include "server.h"
 #include "RecvThread.h"
 #include "tmp.h"
 
@@ -12,7 +12,7 @@
 #include "Obj.h"
 
 
-#define PLAYERN 1
+#define PLAYERN 3
 void Client::err_quit(const char *msg)
 {
 	LPVOID lpMsgBuf;
@@ -91,10 +91,11 @@ void Client::InitClient() {
 
 void Client::Send_GameStart() {
 	datainfo.infoindex = 'a';
-	datainfo.datasize = 'a';
+
 
 	// 통신용 구조체 송신
 	for (int i=0;i< PLAYERN;i++) {
+		datainfo.datasize = i;
 		retval = send(client_sock[i], (char*)&datainfo, sizeof(DataInfo), 0);
 		if (retval == SOCKET_ERROR) {
 			err_display("send()");
