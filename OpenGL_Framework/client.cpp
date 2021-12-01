@@ -53,6 +53,18 @@ DWORD WINAPI Client::Recv_Thread(LPVOID arg) {
 			tmp.y = datainfo.m_fy;
 			tmp.z = datainfo.m_fz;
 			break;
+		case 'e':
+			//Recv_Player_Info();
+			tmp.x = datainfo.m_fx;
+			tmp.y = datainfo.m_fy;
+			tmp.z = datainfo.m_fz;
+			break;
+		case 'f':
+			//Recv_Player_Info();
+			tmp.x = datainfo.m_fx;
+			tmp.y = datainfo.m_fy;
+			tmp.z = datainfo.m_fz;
+			break;
 		}
 		// 이벤트 true까지 대기하고
 		//int retval = WaitForSingleObject(hSynchro, INFINITE);

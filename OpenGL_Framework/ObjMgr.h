@@ -11,6 +11,8 @@ private:
 public:
 
 	CObj* GetPlayer();
+	CObj* GetPlayer2();
+	CObj* GetPlayer3();
 	CObj* GetMonster();
 
 public:

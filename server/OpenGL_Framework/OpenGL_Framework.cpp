@@ -96,6 +96,8 @@ GLvoid drawScene(GLvoid)
 	client.Send_Bullet_Info();
 	client.Send_Monster_Bullet_Info();
 	client.Send_Player_Info();
+	client.Send_Player_Info2();
+	client.Send_Player_Info3();
 
 	glutPostRedisplay();
 

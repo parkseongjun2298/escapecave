@@ -174,6 +174,8 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Player_Bullet.cpp" />
     <ClCompile Include="Player_front.cpp" />
+    <ClCompile Include="Player_front2.cpp" />
+    <ClCompile Include="Player_front3.cpp" />
     <ClCompile Include="RecvThread.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShiledMonster.cpp" />
@@ -208,6 +210,8 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Player_Bullet.h" />
     <ClInclude Include="Player_front.h" />
+    <ClInclude Include="Player_front2.h" />
+    <ClInclude Include="Player_front3.h" />
     <ClInclude Include="RecvThread.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShiledMonster.h" />

@@ -27,12 +27,17 @@ public:
 	void InitClient();
 	void Send_GameStart();
 	CObj* Connect_Player();
+		CObj* Connect_Player2();
+		CObj* Connect_Player3();
+
 	CObj* Connect_Bullet();
 	CObj* Connect_Monster_Bullet();
 
 	void Send_Bullet_Info();
 	void Send_Monster_Bullet_Info();
 	void Send_Player_Info();
+	void Send_Player_Info2();
+	void Send_Player_Info3();
 	void Close_Connect();
 
 

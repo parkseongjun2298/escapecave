@@ -1,3 +1,3 @@
 #include "pch.h"
 #include "tmp.h"
-Tmp tmp = {0,0,190.f};
+Tmp tmp = {10,0,190.f};

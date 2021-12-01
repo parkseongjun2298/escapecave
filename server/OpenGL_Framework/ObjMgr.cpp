@@ -24,6 +24,20 @@ CObj* CObjectMgr::GetPlayer()
 
     return m_ObjectList[OBJID::PLAYER].front();
 }
+CObj* CObjectMgr::GetPlayer2()
+{
+    if (m_ObjectList[OBJID::PLAYER2].empty())
+        return nullptr;
+
+    return m_ObjectList[OBJID::PLAYER2].front();
+}
+CObj* CObjectMgr::GetPlayer3()
+{
+    if (m_ObjectList[OBJID::PLAYER3].empty())
+        return nullptr;
+
+    return m_ObjectList[OBJID::PLAYER3].front();
+}
 CObj* CObjectMgr::GetMonster()
 {
     if (m_ObjectList[OBJID::MONSTER].empty())

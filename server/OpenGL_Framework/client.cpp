@@ -110,6 +110,23 @@ CObj* Client::Connect_Player()
 
 	return m_ObjectList[OBJID::PLAYER].front();
 }
+CObj* Client::Connect_Player2()
+{
+	m_ObjectList[OBJID::PLAYER2] = CObjectMgr::Get_Instance()->m_ObjectList[OBJID::PLAYER2];
+	if (m_ObjectList[OBJID::PLAYER2].empty())
+		return nullptr;
+
+	return m_ObjectList[OBJID::PLAYER2].front();
+}
+
+CObj* Client::Connect_Player3()
+{
+	m_ObjectList[OBJID::PLAYER3] = CObjectMgr::Get_Instance()->m_ObjectList[OBJID::PLAYER3];
+	if (m_ObjectList[OBJID::PLAYER3].empty())
+		return nullptr;
+
+	return m_ObjectList[OBJID::PLAYER3].front();
+}
 
 CObj* Client::Connect_Bullet()
 {
@@ -185,13 +202,18 @@ void Client::Send_Monster_Bullet_Info()
 
 }
 
+
+
 void Client::Send_Player_Info()
 {
 	datainfo.infoindex = 'd';
 	datainfo.datasize = 'd';
 	CObj* player = Connect_Player();
+	
+
 	if (player == nullptr)
 		return;
+
 	else
 	{
 
@@ -199,10 +221,87 @@ void Client::Send_Player_Info()
 		datainfo.m_fy = player->Get_Info().y;
 		datainfo.m_fz = player->Get_Info().z;
 
+		
+
 
 
 		// 통신용 구조체 송신
-		for (int i = 0;i < PLAYERN;i++) {
+		for (int i = 0; i < PLAYERN; i++) {
+			retval = send(client_sock[i], (char*)&datainfo, sizeof(DataInfo), 0);
+			if (retval == SOCKET_ERROR) {
+				err_display("send()");
+				return;
+			}
+		}
+
+	}
+
+
+}
+
+
+void Client::Send_Player_Info2()
+{
+	datainfo.infoindex = 'e';
+	datainfo.datasize = 'e';
+	
+	CObj* player2 = Connect_Player2();
+	
+
+	
+	if (player2 == nullptr)
+		return;
+	
+	else
+	{
+
+		
+
+		datainfo.m_fx = player2->Get_Info().x;
+		datainfo.m_fy = player2->Get_Info().y;
+		datainfo.m_fz = player2->Get_Info().z;
+
+		
+
+
+
+		// 통신용 구조체 송신
+		for (int i = 0; i < PLAYERN; i++) {
+			retval = send(client_sock[i], (char*)&datainfo, sizeof(DataInfo), 0);
+			if (retval == SOCKET_ERROR) {
+				err_display("send()");
+				return;
+			}
+		}
+
+	}
+
+
+}
+
+void Client::Send_Player_Info3()
+{
+	datainfo.infoindex = 'f';
+	datainfo.datasize = 'f';
+	
+	CObj* player3 = Connect_Player3();
+
+
+	if (player3 == nullptr)
+		return;
+	else
+	{
+
+	
+
+		datainfo.m_fx = player3->Get_Info().x;
+		datainfo.m_fy = player3->Get_Info().y;
+		datainfo.m_fz = player3->Get_Info().z;
+
+
+
+		// 통신용 구조체 송신
+		for (int i = 0; i < PLAYERN; i++) {
 			retval = send(client_sock[i], (char*)&datainfo, sizeof(DataInfo), 0);
 			if (retval == SOCKET_ERROR) {
 				err_display("send()");

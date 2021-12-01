@@ -10,6 +10,8 @@
 #include "Obj.h"
 #include "ObjMgr.h"
 #include "Player_front.h"
+#include "Player_front2.h"
+#include "Player_front3.h"
 #include "KeyMgr.h"
 #include "CollisionMgr.h"
 #include "TonadoMonster.h"
@@ -33,6 +35,23 @@ void CMainGame::Initialize_MainGame()
 	CObjectMgr::Get_Instance()->Set_Camera(camera);
 	
 	CObjectMgr::Get_Instance()->Set_Light(dynamic_cast<CPlayer*>(player)->Get_Light());
+
+
+	CPlayer* player2 = new CPlayer(Shader.Get_shaderProgram(),10); //10.f, 0.f, 190.f
+	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER2, player2);
+	CObj* pPlayer_front2 = new CPlayer_front2(Shader.Get_shaderProgram());
+	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_FRONT, pPlayer_front2);
+	Camera* camera2 = dynamic_cast<CPlayer*>(player2)->Get_Camera();
+	CObjectMgr::Get_Instance()->Set_Camera(camera2);
+	CObjectMgr::Get_Instance()->Set_Light(dynamic_cast<CPlayer*>(player2)->Get_Light());
+
+	CPlayer* player3 = new CPlayer(Shader.Get_shaderProgram(),-10);//-10.f, 0.f, 190.f
+	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER3, player3);
+	CObj* pPlayer_front3 = new CPlayer_front3(Shader.Get_shaderProgram());
+	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_FRONT, pPlayer_front3);
+	Camera* camera3 = dynamic_cast<CPlayer*>(player3)->Get_Camera();
+	CObjectMgr::Get_Instance()->Set_Camera(camera3);
+	CObjectMgr::Get_Instance()->Set_Light(dynamic_cast<CPlayer*>(player3)->Get_Light());
 
 	//Monster
 	
