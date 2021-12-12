@@ -1,6 +1,6 @@
 #pragma once
-#define WINCX 1400
-#define WINCY 800
+#define WINCX 10
+#define WINCY 10
 
 
 // ≈∏¿Ã∏”

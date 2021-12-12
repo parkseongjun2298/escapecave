@@ -21,6 +21,7 @@ public:
 
 public:
 	STAGE Get_NowStage() { return m_eNowStage; }
+	int Stage_Monster_Wave = 0;
 private:
 	void Monster_Stage1();
 	void Monster_Stage2();
@@ -30,7 +31,7 @@ private:
 	CShader Shader;
 
 private:
-	int Stage_Monster_Wave = 0;
+
 	STAGE m_eNowStage = STAGE1;
 };
 

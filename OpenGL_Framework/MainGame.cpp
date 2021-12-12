@@ -20,7 +20,7 @@
 #include "MonsterBullet.h"
 #include "Bomb_Effect.h"
 
-void CMainGame::Initialize_MainGame()
+void CMainGame::Initialize_MainGame(int num)
 {
 	Shader.Initialize_Shader();
 	CObjectMgr::Get_Instance()->Set_Shader(&Shader);
@@ -28,20 +28,38 @@ void CMainGame::Initialize_MainGame()
 
 	//CObjectMgr::Get_Instance()->AddObject(OBJID::MAP, new CMap(Shader.Get_shaderProgram(), glm::vec3{ 0.f, 40.f, -150.f }, glm::vec3{ 100.f, 10.f, 100.f }));
 	//CObjectMgr::Get_Instance()->AddObject(OBJID::MAP, new CMap(Shader.Get_shaderProgram(), glm::vec3{ 0.f, -40.f, -150.f }, glm::vec3{ 100.f, 10.f,100.f }));
-	
-	CPlayer* player = new CPlayer(Shader.Get_shaderProgram());
-	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER, player);
-	CObj* pPlayer_front = new CPlayer_front(Shader.Get_shaderProgram());
+
+	CPlayer* player0 = new CPlayer(Shader.Get_shaderProgram(), 0);
+	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER, player0);
+	CPlayer* player1 = new CPlayer(Shader.Get_shaderProgram(), 1);
+	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER, player1);
+	CPlayer* player2 = new CPlayer(Shader.Get_shaderProgram(), 2);
+	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER, player2);
+
+	CObj* pPlayer_front = new CPlayer_front(Shader.Get_shaderProgram(), 0);
+	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_FRONT, pPlayer_front);
+	pPlayer_front = new CPlayer_front(Shader.Get_shaderProgram(), 1);
+	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_FRONT, pPlayer_front);
+	pPlayer_front = new CPlayer_front(Shader.Get_shaderProgram(), 2);
 	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_FRONT, pPlayer_front);
 
-	Camera* camera = dynamic_cast<CPlayer*>(player)->Get_Camera();
+	Camera* camera = dynamic_cast<CPlayer*>(player0)->Get_Camera();
+	switch (num)
+	{
+	case 0:
+		CObjectMgr::Get_Instance()->Set_Light(dynamic_cast<CPlayer*>(player0)->Get_Light());
+		break;
+	case 1:
+		camera = dynamic_cast<CPlayer*>(player1)->Get_Camera();
+		CObjectMgr::Get_Instance()->Set_Light(dynamic_cast<CPlayer*>(player1)->Get_Light());
+		break;
+	case 2:
+		camera = dynamic_cast<CPlayer*>(player2)->Get_Camera();
+		CObjectMgr::Get_Instance()->Set_Light(dynamic_cast<CPlayer*>(player2)->Get_Light());
+		break;
+	}
 	CObjectMgr::Get_Instance()->Set_Camera(camera);
-	
-	CObjectMgr::Get_Instance()->Set_Light(dynamic_cast<CPlayer*>(player)->Get_Light());
-
 	//Monster
-	
-
 	//CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER, new CSwirlMonster(Shader.Get_shaderProgram(), glm::vec3{ 0.9f, 0.f, -1.f }));
 
 	// Map
@@ -74,25 +92,25 @@ void CMainGame::Update_MainGame()
 	for (int i = 0; i < OBJID::END; ++i)
 	{
 		sent_list_size[i] = s_ObjectList[i].size();
-		printf("%d:%d", sent_list_size[i], list[i]);
+		//printf("%d:%d", sent_list_size[i], list[i]);
 		if (sent_list_size[i] > list[i])
 		{
-			printf("오브젝트추가하는함수(메인게임쪽함수)동작\n");
+			//printf("오브젝트추가하는함수(메인게임쪽함수)동작\n");
 			New_Obj(i, sent_list_size[i] - list[i]);
 
 		}
 		else if (sent_list_size[i] < list[i])
 		{
-			printf("오브젝트제거하는함수(매니저쪽함수)동작\n");
+			//printf("오브젝트제거하는함수(매니저쪽함수)동작\n");
 			CObjectMgr::Get_Instance()->Del_Obj(i, list[i] - sent_list_size[i]);
 
 		}
 		else
 		{
-			printf("변화없음\n");
+			//printf("변화없음\n");
 		}
 	}
-	printf("끝\n");
+	//printf("끝\n");
 	CObjectMgr::Get_Instance()->Update();
 
 }

@@ -83,7 +83,7 @@ void CCollisionMgr::Collision_GateToMonsterBullet(list<CObj*> pGate, list<CObj*>
 			{
 				
 				Bullet->Set_Dead();
-				cout << "面倒:" << endl;
+				//cout << "面倒:" << endl;
 			}
 
 
@@ -108,7 +108,7 @@ void CCollisionMgr::Collision_GateToPlayerBullet(list<CObj*> pGate, list<CObj*> 
 			{
 
 				Bullet->Set_Dead();
-				cout << "面倒:" << endl;
+				//cout << "面倒:" << endl;
 			}
 
 
@@ -162,7 +162,7 @@ void CCollisionMgr::Collision_BossToPlayerBullet(list<CObj*> pListBoss, list<COb
 			{
 				Bullet->Set_Dead();
 				Boss->Set_Dead();
-				cout << "面倒:" << endl;
+				//cout << "面倒:" << endl;
 			}
 
 

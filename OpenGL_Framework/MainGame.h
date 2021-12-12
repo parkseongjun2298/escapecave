@@ -13,7 +13,7 @@ public:
 	~CMainGame() {}
 
 public:
-	void Initialize_MainGame();
+	void Initialize_MainGame(int num);
 	void Update_MainGame();
 	void Late_Update();
 	void Draw_MainGame();

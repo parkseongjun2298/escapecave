@@ -174,7 +174,7 @@
     <ClCompile Include="SoundMgr.cpp">
       <Filter>97.Manager\06.Sound</Filter>
     </ClCompile>
-    <ClCompile Include="client.cpp">
+    <ClCompile Include="server.cpp">
       <Filter>96.Net</Filter>
     </ClCompile>
     <ClCompile Include="RecvThread.cpp">
@@ -275,7 +275,7 @@
     <ClInclude Include="Functor.h">
       <Filter>97.Manager\06.Sound</Filter>
     </ClInclude>
-    <ClInclude Include="Client.h">
+    <ClInclude Include="server.h">
       <Filter>96.Net</Filter>
     </ClInclude>
     <ClInclude Include="RecvThread.h">

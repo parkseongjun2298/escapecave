@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "MainGame.h"
 #include "Player.h"
+#include "server.h"
 
 #include "NormalMonster.h"
 #include"ShiledMonster.h"
@@ -26,7 +27,16 @@ void CMainGame::Initialize_MainGame()
 	
 	CPlayer* player = new CPlayer(Shader.Get_shaderProgram(),0);
 	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER, player);
-	CObj* pPlayer_front = new CPlayer_front(Shader.Get_shaderProgram());
+	player = new CPlayer(Shader.Get_shaderProgram(), 1);
+	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER, player);
+	player = new CPlayer(Shader.Get_shaderProgram(), 2);
+	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER, player);
+
+	CObj* pPlayer_front = new CPlayer_front(Shader.Get_shaderProgram(),0);
+	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_FRONT, pPlayer_front);
+	pPlayer_front = new CPlayer_front(Shader.Get_shaderProgram(), 1);
+	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_FRONT, pPlayer_front);
+	pPlayer_front = new CPlayer_front(Shader.Get_shaderProgram(), 2);
 	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_FRONT, pPlayer_front);
 
 	Camera* camera = dynamic_cast<CPlayer*>(player)->Get_Camera();
@@ -68,7 +78,6 @@ void CMainGame::Update_MainGame()
 
 	//	}
 	//
-
 	// 현재 몬스터가 0개면 몬스터 추가하는 방식임
 	if (CObjectMgr::Get_Instance()->Get_Size(OBJID::MONSTER_BULLET) == 0 && CObjectMgr::Get_Instance()->Get_Size(OBJID::BOSS) == 0) {
 		switch (m_eNowStage)
@@ -113,7 +122,7 @@ void CMainGame::Release_MainGame()
 void CMainGame::Monster_Stage1()
 {
 	if (Stage_Monster_Wave == 0) {
-		if (CObjectMgr::Get_Instance()->GetPlayer()->Get_Info().z <= 185.f) {
+		if (CObjectMgr::Get_Instance()->GetPlayer(0)->Get_Info().z <= 185.f) {
 			Stage_Monster_Wave++;
 
 			CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(Shader.Get_shaderProgram(), glm::vec3{ -19.f, 0.f, 160.f }));

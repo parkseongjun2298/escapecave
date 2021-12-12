@@ -7,9 +7,10 @@
 #include "Bomb.h"
 #include "tmp.h"
 
-CPlayer::CPlayer(GLuint* _shader_program, float n)
+CPlayer::CPlayer(GLuint* _shader_program, int n)
 	:CObj(_shader_program)
 {
+	//플레이어에 번호 지정0, 1, 2
 	num = n;
 	Initialize();
 	m_light.model_transform.Translate = { 0.f,20.f, -250.f };
@@ -31,7 +32,7 @@ void CPlayer::Initialize()
 	m_fSpeed = 0.3f;
 	bullet_time = 0.f;
 	m_State = NORMAL_BULLET;
-	object.model_transform.Translate.x = num;
+	object.model_transform.Translate.x = num * 10.0;
 	object.model_transform.Translate.z = 190.f;
 
 }
@@ -60,31 +61,30 @@ int CPlayer::Update()
 			Double_Bullet();
 
 	}
-	switch (just_tmp.key) {
-	case 'w':
-		object.model_transform.Translate.z -= m_fSpeed;
-		break;
-	case 'a':
+	if (just_tmp[num].key[0] == 'a') // case 'a':
 		object.model_transform.Translate.x -= m_fSpeed;
-		break;
-	case 's':
-		object.model_transform.Translate.z += m_fSpeed;
-		break;
-	case 'd':
+
+	if (just_tmp[num].key[1] == 'd') // case 'd':
 		object.model_transform.Translate.x += m_fSpeed;
-		break;
-	case 'z':
+
+	if (just_tmp[num].key[2] == 'w') // case 'w':
+		object.model_transform.Translate.z -= m_fSpeed;
+
+	if (just_tmp[num].key[3] == 's') // case 's':
+		object.model_transform.Translate.z += m_fSpeed;
+
+	if (just_tmp[num].key[4] == 'z')
 		Add_Bomb();
-		break;
-	case 'x':
+
+	if (just_tmp[num].key[5] == 'x') {
 		if (m_State == NORMAL_BULLET)
 			m_State = DOUBLE_BULLET;
 		else
 			m_State = NORMAL_BULLET;
-		break;
-
 	}
-	just_tmp.key = 0;
+
+	for (int i = 0; i < 6; i++)
+		just_tmp[num].key[i] = ' ';
 
 	if (object.model_transform.Translate.x <= -20.f)
 		object.model_transform.Translate.x = -20.f;

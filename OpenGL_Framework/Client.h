@@ -11,12 +11,7 @@ class CObj;
 typedef struct DataInfo {
 	char infoindex;	// 패킷 타입
 	int datasize;	// 패킷 크기
-
-	float m_fx;
-	float m_fy;
-	float m_fz;
 };
-
 class Client
 {
 
@@ -30,19 +25,18 @@ class Client
 	static DWORD WINAPI Recv_Thread(LPVOID arg);
 
 public:
-	//static OBJECT_LIST m_ObjectList[OBJID::END];
-	CObj* Connect_Bullet();
-	CObj* Connect_Monster_Bullet();
-	void Send_Bullet_Info();
-	void Send_Monster_Bullet_Info();
 	void set_datainfo(char a, char b);
 	void Send_Input(char b);
 	void InitClient();
 	void Send_GameStart();
 	void Recv_Initialize();
 	void Close_Connect();
+	void Send_Keyin(char* key);
+
+
 
 	typedef list<CObj*>   OBJECT_LIST;
 	OBJECT_LIST   m_ObjectList[OBJID::END];
+	int num;
 };
 #endif // !__MAINGAME_H__

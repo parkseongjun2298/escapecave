@@ -137,7 +137,7 @@ void CBossMonster::Attack()
 		Noraml_Attack();
 		break;
 	case CBossMonster::SKY:
-		Sky_Attack();
+		//Sky_Attack();
 		break;
 	case CBossMonster::BULLET36:
 		bullet36_Attack();

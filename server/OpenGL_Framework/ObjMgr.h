@@ -10,7 +10,7 @@ private:
 	~CObjectMgr();
 public:
 
-	CObj* GetPlayer();
+	CObj* GetPlayer(int n);
 	CObj* GetMonster();
 
 public:

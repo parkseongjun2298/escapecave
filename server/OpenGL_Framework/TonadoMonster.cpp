@@ -67,7 +67,7 @@ int CTonadoMonster::Update()
 
 	}
 
-	cout << angle << endl;
+	//cout << angle << endl;
 	return 0;
 }
 

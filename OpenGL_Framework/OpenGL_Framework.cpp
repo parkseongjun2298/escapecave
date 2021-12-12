@@ -49,7 +49,7 @@ int main(int argc, char** argv)
 	else
 		std::cout << "GLEW Initialized\n";
 	////////////셰이더 관련////////////////////////
-	maingame.Initialize_MainGame();
+	maingame.Initialize_MainGame(client.num);
 
 	//////////////////////////////////////////////
 

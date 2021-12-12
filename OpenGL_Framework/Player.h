@@ -5,7 +5,7 @@ class CPlayer : public CObj
 {
 	enum STATE {NORMAL_BULLET, DOUBLE_BULLET, STATE_END};
 public:
-	CPlayer(GLuint* _shader_program);
+	CPlayer(GLuint* _shader_program, int n);
 	~CPlayer();
 
 public:
@@ -17,11 +17,6 @@ public:
 	virtual void Release() override;
 	virtual void Set_ModelTransform() override;
 
-private:
-	void Add_Bullet(glm::vec3 _location = {});
-	void Double_Bullet();
-	void Add_Bomb();
-	void Move_Camera(glm::vec3 _MoveSize);
 public:
 	CAMERA_DESC* Get_Camera() { return &m_Camera; }
 	OBJECT* Get_Light() { return &m_light; }
@@ -32,4 +27,8 @@ private:
 	OBJECT m_front;
 	float bullet_time;
 	STATE m_State = NORMAL_BULLET;
+	char Keyin[6] = "";
+public:
+	int num;
+	static int p_num;
 };

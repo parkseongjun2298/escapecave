@@ -8,9 +8,11 @@
 #include "Client.h"
 #include "tmp.h"
 
-CPlayer::CPlayer(GLuint* _shader_program)
+CPlayer::CPlayer(GLuint* _shader_program, int n)
 	:CObj(_shader_program)
 {
+	//플레이어에 번호 지정0, 1, 2
+	num = n;
 	Initialize();
 	m_light.model_transform.Translate = { 0.f,20.f, -250.f };
 }
@@ -31,13 +33,16 @@ void CPlayer::Initialize()
 	m_fSpeed = 0.3f;
 	bullet_time = 0.f;
 	m_State = NORMAL_BULLET;
+	object.model_transform.Translate.x = num * 10.0;
 	object.model_transform.Translate.z = 190.f;
 
 }
 
 int CPlayer::Update( )
 {
+	//카메라의 소실점
 	m_Camera.cameraPos = object.model_transform.Translate;
+	//카메라 좌표
 	m_Camera.cameraDirection = object.model_transform.Translate;
 	//m_Camera.cameraDirection.z = min(object.model_transform.Translate.z, -10.f);
 	m_Camera.cameraDirection.y += 10.f;
@@ -45,31 +50,68 @@ int CPlayer::Update( )
 	m_Camera.cameraPos.z += 30.f;
 
 	Client client;
-	
-	if(CKeyMgr::Get_Instance()->Key_Pressing(KEY_LEFT))
+	int cnt = 0;
+	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_LEFT))
 	{
-		client.Send_Input('a');
+		// 이부분 수정 필요
+		//client.Send_Input('a');
+		Keyin[0] = 'a';
 	}
+	else
+		Keyin[0] = ' ';
+
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_RIGHT))
 	{
-		client.Send_Input('d');
+		//client.Send_Input('d');
+		Keyin[1] = 'd';
 	}
+	else
+		Keyin[1] = ' ';
+
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_UP))
 	{
-		client.Send_Input('w');
+		//client.Send_Input('w');
+		Keyin[2] = 'w';
 	}
+	else
+		Keyin[2] = ' ';
+
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_DOWN))
 	{
-		client.Send_Input('s');
+		//client.Send_Input('s');
+		Keyin[3] = 's';
 	}
+	else
+		Keyin[3] = ' ';
+
 	if (CKeyMgr::Get_Instance()->Key_Down(KEY_A))
 	{
-		client.Send_Input('z');
+		//client.Send_Input('z');
+		Keyin[4] = 'z';
 	}
+	else
+		Keyin[4] = ' ';
+
 	if (CKeyMgr::Get_Instance()->Key_Down(KEY_S))
 	{
-		client.Send_Input('x');
+		//client.Send_Input('x');
+		Keyin[5] = 'x';
 	}
+	else
+		Keyin[5] = ' ';
+
+	Keyin[6] = '\0';
+
+	for (int i = 0; i < 6; i++)
+	{
+		if (Keyin[i] != ' ')
+			cnt++;
+	}
+	if (cnt != 0)
+		client.Send_Keyin(Keyin);
+	else
+		cnt = 0;
+
 	return 0;
 }
 
@@ -94,7 +136,8 @@ void CPlayer::Draw()
 	glm::mat4 view_Rotate = glm::mat4(1.f);
 	view_Rotate = glm::rotate(view_Rotate, glm::radians(0.f), glm::vec3(0.0, 1.0, 0.0));
 
-	view = view_Rotate * glm::lookAt(m_Camera.cameraPos, m_Camera.cameraDirection, m_Camera.cameraUp);
+	CAMERA_DESC camera = CObjectMgr::Get_Instance()->Get_Camera();
+	view = view_Rotate * glm::lookAt(camera.cameraPos, camera.cameraDirection, camera.cameraUp);
 	glUniformMatrix4fv(viewLocation, 1, GL_FALSE, &view[0][0]);
 	// ============================= 뷰 변환 ============================================
 
@@ -138,7 +181,7 @@ void CPlayer::Draw()
 	Result = Parent * RevolutionX * RevolutionY * RevolutionZ * Translate * RotateX * RotateY * RotateZ * Scale;
 
 
-	// 조명
+	// 조명. 여기 고쳐야 카메라 고쳐질 듯
 	int lightPosLocation = glGetUniformLocation(*shader_program, "lightPos"); //--- lightPos 값 전달: (0.0, 0.0, 5.0);
 	glUniform3f(lightPosLocation, m_light.model_transform.Translate.x, m_light.model_transform.Translate.y, m_light.model_transform.Translate.z);
 	unsigned int LightColorLocation = glGetUniformLocation(*shader_program, "lightColor");
@@ -163,10 +206,4 @@ void CPlayer::Release()
 
 void CPlayer::Set_ModelTransform()
 {
-}
-
-void CPlayer::Move_Camera(glm::vec3 _MoveSize)
-{
-	m_Camera.cameraPos += _MoveSize;
-	m_Camera.cameraDirection += _MoveSize;
 }

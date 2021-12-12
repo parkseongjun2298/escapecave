@@ -28,15 +28,17 @@ CObjectMgr::~CObjectMgr()
     Release();
 }
 
-CObj* CObjectMgr::GetPlayer()
+CObj* CObjectMgr::GetPlayer(int n)
 {
     if (m_ObjectList[OBJID::PLAYER].empty())
         return nullptr;
 
-    return m_ObjectList[OBJID::PLAYER].front();
+
+    OBJECT_LIST::iterator iter_begin = m_ObjectList[OBJID::PLAYER].begin();
+    for (int i = 0;i < n;i++)
+        ++iter_begin;
+    return *(iter_begin);
 }
-
-
 HRESULT CObjectMgr::AddObject(OBJID::OBJ eType, CObj* pObject)
 {
     NULL_CHECK_RETURN(pObject, E_FAIL);

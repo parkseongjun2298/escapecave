@@ -2,10 +2,26 @@
 #include "Player_front.h"
 #include "ObjMgr.h"
 #include "Player.h"
-CPlayer_front::CPlayer_front(GLuint* _shader_program)
+CPlayer_front::CPlayer_front(GLuint* _shader_program, int n)
 	:CObj(_shader_program)
 {
-	Initialize();
+	//아마 모양 색깔 부분
+	switch (n) {
+	case 0:
+		loadObj<const char*, OBJECT, glm::vec3>("diamond.obj", object, glm::vec3(0.4, 0.4, 1.0));
+		break;
+	case 1:
+		loadObj<const char*, OBJECT, glm::vec3>("diamond.obj", object, glm::vec3(0.4, 1.0, 0.4));
+		break;
+	case 2:
+		loadObj<const char*, OBJECT, glm::vec3>("diamond.obj", object, glm::vec3(1.0, 0.4, 0.4));
+		break;
+	}
+	object.model_transform.Translate.z -= 0.5f;
+	object.model_transform.Scale = { 0.6f,0.6f,1.0f };
+	CObj* pPlayer = CObjectMgr::Get_Instance()->GetPlayer(n);
+	if (pPlayer)
+		object.model_transform.Parent = &pPlayer->Get_Object().model_transform;
 }
 
 CPlayer_front::~CPlayer_front()
@@ -14,12 +30,7 @@ CPlayer_front::~CPlayer_front()
 
 void CPlayer_front::Initialize()
 {
-	loadObj<const char*, OBJECT, glm::vec3>("diamond.obj", object, glm::vec3(0.4, 0.4, 1.0));
-	object.model_transform.Translate.z -= 0.5f;
-	object.model_transform.Scale = { 0.6f,0.6f,1.0f };
-	CObj* pPlayer = CObjectMgr::Get_Instance()->GetPlayer();
-	if(pPlayer)
-		object.model_transform.Parent = &pPlayer->Get_Object().model_transform;
+
 }
 
 int CPlayer_front::Update( )

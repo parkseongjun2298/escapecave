@@ -5,7 +5,7 @@ class CPlayer : public CObj
 {
 	enum STATE {NORMAL_BULLET, DOUBLE_BULLET, STATE_END};
 public:
-	CPlayer(GLuint* _shader_program, float n);
+	CPlayer(GLuint* _shader_program, int n);
 	~CPlayer();
 
 public:
@@ -29,8 +29,9 @@ private:
 	CAMERA_DESC m_Camera;
 	OBJECT m_light;
 private:
-	float num;
+	int num;
 	OBJECT m_front;
 	float bullet_time;
 	STATE m_State = NORMAL_BULLET;
+public:
 };
