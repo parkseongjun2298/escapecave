@@ -1,27 +1,16 @@
-﻿  ObjMgr.cpp
-c:\users\su\source\escapecave-kw\escapecave\server\opengl_framework\function.h(32): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: 'fopen' 선언을 참조하십시오.
-  c:\users\su\source\escapecave-kw\escapecave\server\opengl_framework\objmgr.cpp(109): note: 컴파일 중인 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하십시오.
-          with
-          [
-              T1=const char *,
-              T2=OBJECT,
-              T3=glm::vec3
-          ]
-c:\users\su\source\escapecave-kw\escapecave\server\opengl_framework\function.h(41): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1197): note: 'fscanf' 선언을 참조하십시오.
-c:\users\su\source\escapecave-kw\escapecave\server\opengl_framework\function.h(46): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1197): note: 'fscanf' 선언을 참조하십시오.
-c:\users\su\source\escapecave-kw\escapecave\server\opengl_framework\function.h(51): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1197): note: 'fscanf' 선언을 참조하십시오.
-c:\users\su\source\escapecave-kw\escapecave\server\opengl_framework\function.h(56): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1197): note: 'fscanf' 선언을 참조하십시오.
-c:\users\su\source\escapecave-kw\escapecave\server\opengl_framework\function.h(62): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1197): note: 'fscanf' 선언을 참조하십시오.
-  OpenGL_Framework.cpp
-c:\users\su\source\escapecave-kw\escapecave\server\opengl_framework\server.h(9): warning C4091: 'typedef ': 변수를 선언하지 않으면 'DataInfo' 왼쪽은 무시됩니다.
-  RecvThread.cpp
-c:\users\su\source\escapecave-kw\escapecave\server\opengl_framework\server.h(9): warning C4091: 'typedef ': 변수를 선언하지 않으면 'DataInfo' 왼쪽은 무시됩니다.
-  코드를 생성하고 있습니다...
-c:\users\su\source\escapecave-kw\escapecave\server\opengl_framework\function.h(90): warning C4715: 'loadObj<char const *,Object,glm::vec<3,float,0> >': 모든 제어 경로에서 값을 반환하지는 않습니다.
-  OpenGL_Framework.vcxproj -> C:\Users\su\source\escapecave-kw\escapecave\server\Debug\OpenGL_Framework.exe
+﻿  server.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(1): warning C4603: '_WINSOCK_DEPRECATED_NO_WARNINGS': 매크로가 정의되지 않았거나 미리 컴파일된 헤더 사용 후와 정의가 다릅니다.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(1): message : 여기에서 정의하지 않고 미리 컴파일된 헤더에 매크로 추가
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(2): message : 미리 컴파일된 헤더 사용
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.h(9,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'DataInfo' 왼쪽은 무시됩니다.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(73,9): warning C4101: 'hThread' :참조되지 않은 지역 변수입니다.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(147,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(148,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(149,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(150,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(151,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(152,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(153,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(154,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(161,2): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  OpenGL_Framework.vcxproj -> C:\Users\박성준\Desktop\escapecave\server\Debug\OpenGL_Framework.exe

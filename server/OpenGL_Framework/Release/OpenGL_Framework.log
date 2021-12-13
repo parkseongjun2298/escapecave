@@ -1,0 +1,234 @@
+﻿  pch.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\pch.h(29,1): warning C4005: 'WIN32_LEAN_AND_MEAN': 매크로 재정의
+C:\Program Files (x86)\Windows Kits\8.1\Include\um\gl\freeglut_std.h(58): message : 'WIN32_LEAN_AND_MEAN'의 이전 정의를 참조하십시오.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Define.h(51,1): warning C4005: 'DECLARE_SINGLETON': 매크로 재정의
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Define.h(32): message : 'DECLARE_SINGLETON'의 이전 정의를 참조하십시오.
+  Bomb.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(32,15): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Bomb.cpp(18): message : 컴파일되는 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하세요.
+          with
+          [
+              T1=const char *,
+              T2=OBJECT,
+              T3=glm::vec3
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(41,13): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(46,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(51,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(56,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(62,18): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Bomb_Effect.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Bomb_Effect.cpp(12,43): warning C4244: '=': 'int'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Bomb_Effect.cpp(13,43): warning C4244: '=': 'int'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Bomb_Effect.cpp(14,43): warning C4244: '=': 'int'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+  BossMonster.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(32,15): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\BossMonster.cpp(22): message : 컴파일되는 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하세요.
+          with
+          [
+              T1=const char *,
+              T2=OBJECT,
+              T3=glm::vec3
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(41,13): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(46,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(51,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(56,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(62,18): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Boss_head.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(32,15): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Boss_head.cpp(17): message : 컴파일되는 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하세요.
+          with
+          [
+              T1=const char *,
+              T2=OBJECT,
+              T3=glm::vec3
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(41,13): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(46,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(51,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(56,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(62,18): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  server.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(1): warning C4603: '_WINSOCK_DEPRECATED_NO_WARNINGS': 매크로가 정의되지 않았거나 미리 컴파일된 헤더 사용 후와 정의가 다릅니다.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(1): message : 여기에서 정의하지 않고 미리 컴파일된 헤더에 매크로 추가
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(2): message : 미리 컴파일된 헤더 사용
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.h(9,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'DataInfo' 왼쪽은 무시됩니다.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(25,55): error C2664: 'int MessageBoxW(HWND,LPCWSTR,LPCWSTR,UINT)': 인수 3을(를) 'const char *'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(25,38): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\8.1\Include\um\winuser.h(8697,1): message : 'MessageBoxW' 선언을 참조하십시오.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(148,4): error C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(150,4): error C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(152,4): error C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(154,4): error C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(161,2): error C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(147,4): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(149,4): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(151,4): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(153,4): error C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  CollisionMgr.cpp
+  FrameMgr.cpp
+  Gate.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(32,15): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Gate.cpp(17): message : 컴파일되는 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하세요.
+          with
+          [
+              T1=const char *,
+              T2=OBJECT,
+              T3=glm::vec3
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(41,13): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(46,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(51,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(56,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(62,18): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  KeyMgr.cpp
+  MainGame.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.h(9,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'DataInfo' 왼쪽은 무시됩니다.
+  Map.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(32,15): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Map.cpp(20): message : 컴파일되는 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하세요.
+          with
+          [
+              T1=const char *,
+              T2=OBJECT,
+              T3=glm::vec3
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(41,13): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(46,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(51,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(56,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(62,18): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  MonsterBullet.cpp
+  NormalMonster.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(32,15): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\NormalMonster.cpp(24): message : 컴파일되는 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하세요.
+          with
+          [
+              T1=const char *,
+              T2=OBJECT,
+              T3=glm::vec3
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(41,13): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(46,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(51,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(56,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(62,18): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Obj.cpp
+  ObjMgr.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(32,15): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\ObjMgr.cpp(109): message : 컴파일되는 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하세요.
+          with
+          [
+              T1=const char *,
+              T2=OBJECT,
+              T3=glm::vec3
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(41,13): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(46,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(51,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(56,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(62,18): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  OpenGL_Framework.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.h(9,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'DataInfo' 왼쪽은 무시됩니다.
+  Player.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Player.cpp(35,43): warning C4244: '=': 'double'에서 'T'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              T=float
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(32,15): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Player.cpp(25): message : 컴파일되는 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하세요.
+          with
+          [
+              T1=const char *,
+              T2=OBJECT,
+              T3=glm::vec3
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(41,13): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(46,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(51,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(56,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(62,18): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Player_Bullet.cpp
+  Player_front.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(32,15): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Player_front.cpp(11): message : 컴파일되는 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하세요.
+          with
+          [
+              T1=const char *,
+              T2=OBJECT,
+              T3=glm::vec3
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(41,13): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(46,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(51,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(56,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(62,18): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  RecvThread.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.h(9,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'DataInfo' 왼쪽은 무시됩니다.
+  컴파일하고 있습니다...
+  Shader.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(11,9): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Shader.cpp(29): message : 컴파일되는 함수 템플릿 인스턴스화 'char *filetobuf<const char[12]>(T (&))'에 대한 참조를 확인하세요.
+          with
+          [
+              T=const char [12]
+          ]
+  ShiledMonster.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(32,15): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\ShiledMonster.cpp(21): message : 컴파일되는 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하세요.
+          with
+          [
+              T1=const char *,
+              T2=OBJECT,
+              T3=glm::vec3
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(41,13): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(46,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(51,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(56,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(62,18): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  SoundMgr.cpp
+  SwirlMonster.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(32,15): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\SwirlMonster.cpp(24): message : 컴파일되는 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하세요.
+          with
+          [
+              T1=const char *,
+              T2=OBJECT,
+              T3=glm::vec3
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(41,13): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(46,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(51,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(56,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(62,18): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  TimeMgr.cpp
+  tmp.cpp
+  TonadoMonster.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(32,15): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\TonadoMonster.cpp(29): message : 컴파일되는 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하세요.
+          with
+          [
+              T1=const char *,
+              T2=OBJECT,
+              T3=glm::vec3
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(41,13): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(46,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(51,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(56,4): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(62,18): error C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.

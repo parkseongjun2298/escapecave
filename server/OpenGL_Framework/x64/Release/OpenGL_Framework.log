@@ -1,0 +1,32 @@
+﻿  Bomb.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Bomb.cpp(118,54): warning C4267: '인수': 'size_t'에서 'GLsizei'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(32,15): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Bomb.cpp(18): message : 컴파일되는 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하세요.
+          with
+          [
+              T1=const char *,
+              T2=OBJECT,
+              T3=glm::vec3
+          ]
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(41,13): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(46,4): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(51,4): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(56,4): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\Function.h(62,18): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  server.cpp
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(1): warning C4603: '_WINSOCK_DEPRECATED_NO_WARNINGS': 매크로가 정의되지 않았거나 미리 컴파일된 헤더 사용 후와 정의가 다릅니다.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(1): message : 여기에서 정의하지 않고 미리 컴파일된 헤더에 매크로 추가
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(2): message : 미리 컴파일된 헤더 사용
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.h(9,2): warning C4091: 'typedef ': 변수를 선언하지 않으면 'DataInfo' 왼쪽은 무시됩니다.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(73,9): warning C4101: 'hThread' :참조되지 않은 지역 변수입니다.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(148,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(150,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(152,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(154,4): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(161,2): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(147,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(149,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(151,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\박성준\Desktop\escapecave\server\OpenGL_Framework\server.cpp(153,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  CollisionMgr.cpp
+LINK : fatal error LNK1104: 'freeglut.lib' 파일을 열 수 없습니다.

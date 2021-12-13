@@ -44,6 +44,8 @@ DWORD WINAPI Recv_Thread(LPVOID arg) {
 		case 'a':
 			//printf("¹ÞÀ½\n");
 
+			(Mouse_tmp[num]).key = datainfo.datasize;
+
 			retval = recvn(sock, buf, sizeof(buf), 0);
 			
 			for (int i = 0; i <6; i++)

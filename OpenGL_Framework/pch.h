@@ -14,9 +14,9 @@
 #include <gl/freeglut_ext.h>
 
 // 좌표계 변환 적용할때, 아래의 헤더파일 추가
-#include <glm/glm.hpp>
-#include <glm/ext.hpp>
-#include <glm/gtc/matrix_transform.hpp>
+#include <glm/glm/glm.hpp>
+#include <glm/glm/ext.hpp>
+#include <glm/glm/gtc/matrix_transform.hpp>
 
 #include <iostream>
 #include <time.h>

@@ -9,7 +9,7 @@ uniform vec3 lightColor;
 uniform vec3 lightPos;
 uniform vec3 viewPos;
 
-out vec4 gl_FragColor; //--- 색상 출력
+out vec4 FragColor; //--- 색상 출력
 
 void main(void) 
 {

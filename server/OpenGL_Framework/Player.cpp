@@ -51,7 +51,7 @@ int CPlayer::Update()
 	m_Camera.cameraPos.y = 40.f;
 	m_Camera.cameraPos.z += 30.f;
 	glm::vec3 MoveSize{};
-	bullet_time += 0.1f;
+	/*bullet_time += 0.1f;
 	if (bullet_time > 2.f)
 	{
 		bullet_time = 0;
@@ -60,7 +60,21 @@ int CPlayer::Update()
 		else
 			Double_Bullet();
 
+	}*/
+	switch (Mouse_tmp[num].key)
+	{
+	case 'p':
+		if (m_State == NORMAL_BULLET)
+			Add_Bullet();
+		if (m_State == DOUBLE_BULLET)
+			Double_Bullet();
+		break;
+
 	}
+	Mouse_tmp[num].key = 0;
+
+
+
 	if (just_tmp[num].key[0] == 'a') // case 'a':
 		object.model_transform.Translate.x -= m_fSpeed;
 
