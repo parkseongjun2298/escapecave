@@ -77,6 +77,7 @@ int CPlayer::Update()
 		Add_Bomb();
 
 	if (just_tmp[num].key[5] == 'x') {
+		printf("¹Ù²ã");
 		if (m_State == NORMAL_BULLET)
 			m_State = DOUBLE_BULLET;
 		else
@@ -188,6 +189,7 @@ void CPlayer::Set_ModelTransform()
 
 void CPlayer::Add_Bullet(glm::vec3 _location)
 {
+
 	CObj* bullet = new CPlayer_Bullet(shader_program, object.model_transform.Translate + _location);
 	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_BULLET, bullet);
 

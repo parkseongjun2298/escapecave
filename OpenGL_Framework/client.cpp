@@ -272,7 +272,6 @@ void Client::Close_Connect() {
 
 void Client::Send_Keyin(char* key)
 {
-	printf("е╟ют╥б");
 	char buffer[10] = "";
 
 	strcpy(buffer, key);

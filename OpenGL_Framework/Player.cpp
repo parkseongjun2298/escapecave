@@ -53,7 +53,7 @@ int CPlayer::Update( )
 	int cnt = 0;
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_LEFT))
 	{
-		// 이부분 수정 필요
+		printf("LEFT\n");
 		//client.Send_Input('a');
 		Keyin[0] = 'a';
 	}
@@ -62,6 +62,7 @@ int CPlayer::Update( )
 
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_RIGHT))
 	{
+		printf("RIGHT\n");
 		//client.Send_Input('d');
 		Keyin[1] = 'd';
 	}
@@ -70,6 +71,7 @@ int CPlayer::Update( )
 
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_UP))
 	{
+		printf("UP\n");
 		//client.Send_Input('w');
 		Keyin[2] = 'w';
 	}
@@ -78,22 +80,25 @@ int CPlayer::Update( )
 
 	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_DOWN))
 	{
+		printf("DOWN\n");
 		//client.Send_Input('s');
 		Keyin[3] = 's';
 	}
 	else
 		Keyin[3] = ' ';
 
-	if (CKeyMgr::Get_Instance()->Key_Down(KEY_A))
+	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_A))
 	{
+		printf("A\n");
 		//client.Send_Input('z');
 		Keyin[4] = 'z';
 	}
 	else
 		Keyin[4] = ' ';
 
-	if (CKeyMgr::Get_Instance()->Key_Down(KEY_S))
+	if (CKeyMgr::Get_Instance()->Key_Pressing(KEY_S))
 	{
+		printf("S\n");
 		//client.Send_Input('x');
 		Keyin[5] = 'x';
 	}

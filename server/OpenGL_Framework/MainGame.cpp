@@ -79,7 +79,8 @@ void CMainGame::Update_MainGame()
 	//	}
 	//
 	// 현재 몬스터가 0개면 몬스터 추가하는 방식임
-	if (CObjectMgr::Get_Instance()->Get_Size(OBJID::MONSTER_BULLET) == 0 && CObjectMgr::Get_Instance()->Get_Size(OBJID::BOSS) == 0) {
+	//(((
+	if (CObjectMgr::Get_Instance()->Get_Size(OBJID::NORMALMONSTER) + CObjectMgr::Get_Instance()->Get_Size(OBJID::SHILEDMONSTER) + CObjectMgr::Get_Instance()->Get_Size(OBJID::SWIRLMONSTER) + CObjectMgr::Get_Instance()->Get_Size(OBJID::TONADOMONSTER) == 0 && CObjectMgr::Get_Instance()->Get_Size(OBJID::BOSS) == 0) {
 		switch (m_eNowStage)
 		{
 		case CMainGame::STAGE1:

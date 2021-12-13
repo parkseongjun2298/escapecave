@@ -5,6 +5,7 @@
 #include "ShiledMonster.h"
 #include "MonsterBullet.h"
 #include "TonadoMonster.h"
+#include"SwirlMonster.h"
 CBossMonster::CBossMonster(GLuint* _shader_program)
 	:CObj(_shader_program)
 {
@@ -137,7 +138,7 @@ void CBossMonster::Attack()
 		Noraml_Attack();
 		break;
 	case CBossMonster::SKY:
-		//Sky_Attack();
+		Sky_Attack();
 		break;
 	case CBossMonster::BULLET36:
 		bullet36_Attack();
@@ -160,18 +161,20 @@ void CBossMonster::Noraml_Attack()
 
 	CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(shader_program, glm::vec3{ 19.f, 0.f, -180.f }));
 	CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(shader_program, glm::vec3{ 19.f, 0.f, -180.f }));
+	m_AttackTime = 600;
 }
 
 void CBossMonster::Sky_Attack()
 {
-	for (int i = 0; i < 100; ++i) {
-		int randomX = rand() % 40 - 20;
-		int randomY = rand() % 20 + 30;
-		int randomZ = rand() % 100 - 180;
-		glm::vec3 pos = { (float)randomX,(float)randomY, (float)randomZ };
-		CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER_BULLET, new CMonsterBullet(shader_program, pos, { 0.f,-2.f,0.f }, { 102. / 255.,51. / 255.,0. }));
-	}
-	m_AttackTime = 500;
+
+	CObjectMgr::Get_Instance()->AddObject(OBJID::SWIRLMONSTER, new CSwirlMonster(shader_program, glm::vec3{ -19.f, 0.f, -120.f }));
+
+	CObjectMgr::Get_Instance()->AddObject(OBJID::SWIRLMONSTER, new CSwirlMonster(shader_program, glm::vec3{ 19.f, 0.f, -120.f }));
+
+	CObjectMgr::Get_Instance()->AddObject(OBJID::TONADOMONSTER, new CTonadoMonster(shader_program, glm::vec3{ -19.f, 0.f, -180.f }));
+
+	CObjectMgr::Get_Instance()->AddObject(OBJID::TONADOMONSTER, new CTonadoMonster(shader_program, glm::vec3{ 19.f, 0.f, -180.f }));
+	m_AttackTime = 300;
 }
 
 void CBossMonster::bullet36_Attack()
@@ -182,6 +185,6 @@ void CBossMonster::bullet36_Attack()
 	pos.z += 20.f;
 
 	CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER_BULLET, new CTonadoMonster(shader_program, pos));
-	m_AttackTime = 500;
+	m_AttackTime = 900;
 
 }

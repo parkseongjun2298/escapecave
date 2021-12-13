@@ -1,24 +1,4 @@
-﻿  CollisionMgr.cpp
-  TonadoMonster.cpp
-c:\users\pplil\desktop\escapecave-kw\escapecave-kw\server\opengl_framework\function.h(32): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.19041.0\ucrt\stdio.h(213): note: 'fopen' 선언을 참조하십시오.
-  c:\users\pplil\desktop\escapecave-kw\escapecave-kw\server\opengl_framework\tonadomonster.cpp(29): note: 컴파일 중인 함수 템플릿 인스턴스화 'bool loadObj<const char*,OBJECT,glm::vec3>(T1,T2 &,T3)'에 대한 참조를 확인하십시오.
-          with
-          [
-              T1=const char *,
-              T2=OBJECT,
-              T3=glm::vec3
-          ]
-c:\users\pplil\desktop\escapecave-kw\escapecave-kw\server\opengl_framework\function.h(41): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.19041.0\ucrt\stdio.h(1199): note: 'fscanf' 선언을 참조하십시오.
-c:\users\pplil\desktop\escapecave-kw\escapecave-kw\server\opengl_framework\function.h(46): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.19041.0\ucrt\stdio.h(1199): note: 'fscanf' 선언을 참조하십시오.
-c:\users\pplil\desktop\escapecave-kw\escapecave-kw\server\opengl_framework\function.h(51): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.19041.0\ucrt\stdio.h(1199): note: 'fscanf' 선언을 참조하십시오.
-c:\users\pplil\desktop\escapecave-kw\escapecave-kw\server\opengl_framework\function.h(56): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.19041.0\ucrt\stdio.h(1199): note: 'fscanf' 선언을 참조하십시오.
-c:\users\pplil\desktop\escapecave-kw\escapecave-kw\server\opengl_framework\function.h(62): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.19041.0\ucrt\stdio.h(1199): note: 'fscanf' 선언을 참조하십시오.
-  코드를 생성하고 있습니다...
-c:\users\pplil\desktop\escapecave-kw\escapecave-kw\server\opengl_framework\function.h(90): warning C4715: 'loadObj<char const *,Object,glm::vec<3,float,0> >': 모든 제어 경로에서 값을 반환하지는 않습니다.
-  OpenGL_Framework.vcxproj -> C:\Users\pplil\Desktop\escapecave-kw\escapecave-kw\server\Debug\OpenGL_Framework.exe
+﻿  MainGame.cpp
+c:\users\su\source\escapecave-kw\escapecave\server\opengl_framework\server.h(9): warning C4091: 'typedef ': 변수를 선언하지 않으면 'DataInfo' 왼쪽은 무시됩니다.
+c:\users\su\source\escapecave-kw\escapecave\server\opengl_framework\objmgr.h(25): warning C4172: 지역 변수 또는 임시의 주소를 반환하고 있습니다.
+  OpenGL_Framework.vcxproj -> C:\Users\su\source\escapecave-kw\escapecave\server\Debug\OpenGL_Framework.exe
