@@ -136,7 +136,7 @@ DWORD WINAPI Client::Recv_Thread(LPVOID arg) {
 			//Recv_obj_Info();
 			retval = recvn(Client::sock, buffer, sizeof(buffer), 0);
 			if (retval == SOCKET_ERROR)
-				printf("ㄴㄴ\n");
+				printf("소켓에러\n");
 			WaitForSingleObject(hSynchro, INFINITE);
 			ResetEvent(hSynchro);//차단
 			BuffertoList(buffer);

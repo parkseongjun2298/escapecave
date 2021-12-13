@@ -161,7 +161,7 @@ void CBossMonster::Noraml_Attack()
 
 	CObjectMgr::Get_Instance()->AddObject(OBJID::NORMALMONSTER, new CNormalMonster(shader_program, glm::vec3{ 19.f, 0.f, -180.f }));
 	CObjectMgr::Get_Instance()->AddObject(OBJID::SHILEDMONSTER, new CShiledMonster(shader_program, glm::vec3{ 19.f, 0.f, -180.f }));
-	m_AttackTime = 600;
+	m_AttackTime = 500;
 }
 
 void CBossMonster::Sky_Attack()
@@ -185,6 +185,6 @@ void CBossMonster::bullet36_Attack()
 	pos.z += 20.f;
 
 	CObjectMgr::Get_Instance()->AddObject(OBJID::MONSTER_BULLET, new CTonadoMonster(shader_program, pos));
-	m_AttackTime = 900;
+	m_AttackTime = 500;
 
 }

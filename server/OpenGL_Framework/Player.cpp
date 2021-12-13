@@ -77,7 +77,6 @@ int CPlayer::Update()
 		Add_Bomb();
 
 	if (just_tmp[num].key[5] == 'x') {
-		printf("¹Ù²ã");
 		if (m_State == NORMAL_BULLET)
 			m_State = DOUBLE_BULLET;
 		else

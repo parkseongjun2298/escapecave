@@ -38,9 +38,7 @@ DWORD WINAPI Recv_Thread(LPVOID arg) {
 		//err_display("recv()");
 		//else if (retval == 0)
 			//break;
-		//retval = WaitForSingleObject(hSynchro, INFINITE);
-		//if (retval != WAIT_OBJECT_0)
-			//break;
+		retval = WaitForSingleObject(hSynchro, INFINITE);
 		switch (datainfo.infoindex) {
 			//Recv_Input() 함수 역할
 		case 'a':
@@ -57,7 +55,7 @@ DWORD WINAPI Recv_Thread(LPVOID arg) {
 
 			break;
 		}
-		//ResetEvent(hSynchro);	//클라이언트로부터 키 입력이 와도 오브젝트 업데이트까지 적용 대기시킨다.
+		ResetEvent(hSynchro);	//클라이언트로부터 키 입력이 와도 오브젝트 업데이트까지 적용 대기시킨다.
 	}
 	return 0;
 };

@@ -86,10 +86,7 @@ GLvoid drawScene(GLvoid)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	/////// 셰이더
-	ResetEvent(hSynchro);	//클라이언트로부터 키 입력이 와도 오브젝트 업데이트까지 적용 대기시킨다.
 	maingame.Update_MainGame();
-
-	SetEvent(hSynchro);	//클라이언트의 키 입력에 대한 적용을 허용한다.
 	maingame.Draw_MainGame();
 	maingame.Late_Update();
 
