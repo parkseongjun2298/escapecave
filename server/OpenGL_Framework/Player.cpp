@@ -11,6 +11,7 @@ CPlayer::CPlayer(GLuint* _shader_program, int n)
 	:CObj(_shader_program)
 {
 	//플레이어에 번호 지정0, 1, 2
+	m_CollisionCount = 0;
 	num = n;
 	Initialize();
 	m_light.model_transform.Translate = { 0.f,20.f, -250.f };
@@ -39,8 +40,17 @@ void CPlayer::Initialize()
 
 int CPlayer::Update()
 {
-	if (m_bDead)
-		DEAD_OBJ;
+	if (m_bDead) {
+		if (m_CollisionCount < 15) {
+			m_CollisionCount++;
+			m_bDead = false;
+		}
+		else {
+			CSoundMgr::GetInstance()->PlaySound((TCHAR*)L"die.mp3", CSoundMgr::EFFECT);
+			Add_Effect(20);
+			return DEAD_OBJ;
+		}
+	}
 
 	/*object.model_transform.Translate.x -= m_fSpeed;
 	float delta_time = CTimeMgr::Get_Instance()->Get_DeltaTime();*/
@@ -51,16 +61,19 @@ int CPlayer::Update()
 	m_Camera.cameraPos.y = 40.f;
 	m_Camera.cameraPos.z += 30.f;
 	glm::vec3 MoveSize{};
-	bullet_time += 0.1f;
-	if (bullet_time > 2.f)
+
+	switch (Mouse_tmp[num].key)
 	{
-		bullet_time = 0;
+	case 'p':
 		if (m_State == NORMAL_BULLET)
 			Add_Bullet();
-		else
+		if (m_State == DOUBLE_BULLET)
 			Double_Bullet();
+		break;
 
 	}
+	Mouse_tmp[num].key = 0;
+
 	if (just_tmp[num].key[0] == 'a') // case 'a':
 		object.model_transform.Translate.x -= m_fSpeed;
 
@@ -73,8 +86,16 @@ int CPlayer::Update()
 	if (just_tmp[num].key[3] == 's') // case 's':
 		object.model_transform.Translate.z += m_fSpeed;
 
-	if (just_tmp[num].key[4] == 'z')
-		Add_Bomb();
+	bullet_time += 0.1f;
+
+	if (just_tmp[num].key[4] == 'z') {
+		if (bullet_time > 30.f)
+		{
+			Add_Bomb();
+			bullet_time = 0;
+		}
+	}
+
 
 	if (just_tmp[num].key[5] == 'x') {
 		if (m_State == NORMAL_BULLET)

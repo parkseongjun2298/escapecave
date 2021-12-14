@@ -58,6 +58,7 @@ void CCollisionMgr::Collision_BulletToPlayer(list<CObj*> pListBullet, list<CObj*
 			{
 				
 				Bullet->Set_Dead();
+				Player->Set_Dead();
 				//cout << "Ãæµ¹:" << endl;
 			}
 

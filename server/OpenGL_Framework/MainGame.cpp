@@ -100,6 +100,8 @@ void CMainGame::Update_MainGame()
 		}
 	}
 	CObjectMgr::Get_Instance()->Update();
+	if (CObjectMgr::Get_Instance()->Get_Size(OBJID::PLAYER) == 0)
+		m_eNowStage = CMainGame::STAGE_END;
 }
 
 void CMainGame::Late_Update()

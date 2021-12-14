@@ -29,6 +29,7 @@ private:
 	CAMERA_DESC m_Camera;
 	OBJECT m_light;
 private:
+	int m_CollisionCount;
 	int num;
 	OBJECT m_front;
 	float bullet_time;

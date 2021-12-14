@@ -99,6 +99,8 @@ GLvoid ReShape(int w, int h)
 }
 GLvoid Mouse(int button, int state, int x, int y)
 {
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+		client.Send_Input('p');
 	return GLvoid();
 }
 

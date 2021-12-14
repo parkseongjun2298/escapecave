@@ -121,48 +121,5 @@ void CBomb::Set_ModelTransform()
 
 void CBomb::Add_Bullet()
 {
-	// 위
-	glm::vec3 dir = { 0.f,0.f,-1.f };
-	CObj* bullet = new CPlayer_Bullet(shader_program, object.model_transform.Translate, { 0.0, 51.0 / 255.0, 204.0 / 225. }, dir);
-	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_BULLET, bullet);
-	// 오 대각선 위
-	dir = { 1.f,0.f,-1.f };
-	vector_normalize(dir);
-	bullet = new CPlayer_Bullet(shader_program, object.model_transform.Translate, { 0.0, 51.0 / 255.0, 204.0 / 225. }, dir);
-	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_BULLET, bullet);
-	// 오
-	dir = { 1.f,0.f,0.f };
-	vector_normalize(dir);
-	bullet = new CPlayer_Bullet(shader_program, object.model_transform.Translate, { 0.0, 51.0 / 255.0, 204.0 / 225. }, dir);
-	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_BULLET, bullet);
-	// 오 대각선 아래
-	dir = { 1.f,0.f,1.f };
-	vector_normalize(dir);
-	bullet = new CPlayer_Bullet(shader_program, object.model_transform.Translate, { 0.0, 51.0 / 255.0, 204.0 / 225. }, dir);
-	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_BULLET, bullet);
-
-	// 아래
-	dir = { 0.f,0.f,1.f };
-	vector_normalize(dir);
-	bullet = new CPlayer_Bullet(shader_program, object.model_transform.Translate, { 0.0, 51.0 / 255.0, 204.0 / 225. }, dir);
-	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_BULLET, bullet);
-
-	// 왼 아래
-	dir = { -1.f,0.f,1.f };
-	vector_normalize(dir);
-	bullet = new CPlayer_Bullet(shader_program, object.model_transform.Translate, { 0.0, 51.0 / 255.0, 204.0 / 225. }, dir);
-	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_BULLET, bullet);
-
-	// 왼
-	dir = { -1.f,0.f,0.f };
-	vector_normalize(dir);
-	bullet = new CPlayer_Bullet(shader_program, object.model_transform.Translate, { 0.0, 51.0 / 255.0, 204.0 / 225. }, dir);
-	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_BULLET, bullet);
-
-	// 왼 위
-	dir = { -1.f,0.f,-1.f };
-	vector_normalize(dir);
-	bullet = new CPlayer_Bullet(shader_program, object.model_transform.Translate, { 0.0, 51.0 / 255.0, 204.0 / 225. }, dir);
-	CObjectMgr::Get_Instance()->AddObject(OBJID::PLAYER_BULLET, bullet);
 }
 

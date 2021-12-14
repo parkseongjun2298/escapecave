@@ -43,16 +43,17 @@ DWORD WINAPI Recv_Thread(LPVOID arg) {
 			//Recv_Input() 함수 역할
 		case 'a':
 			//printf("받음\n");
-
-			retval = recvn(sock, buf, sizeof(buf), 0);
-			
-			for (int i = 0; i <6; i++)
-			{
-				just_tmp[num].key[i] = buf[i];
+			if (datainfo.datasize == 'p')//마우스 클릭(공격)
+				(Mouse_tmp[num]).key = datainfo.datasize;
+			else {//키보드 입력(이동)
+				retval = recvn(sock, buf, sizeof(buf), 0);
+				for (int i = 0; i < 6; i++)
+				{
+					just_tmp[num].key[i] = buf[i];
+				}
+				just_tmp[num].key[6] = '\0';
+				//printf("%s", just_tmp[num].key);
 			}
-			just_tmp[num].key[6] = '\0';
-			//printf("%s", just_tmp[num].key);
-
 			break;
 		}
 		LeaveCriticalSection(&cs);	//클라이언트로부터 키 입력이 와도 오브젝트 업데이트까지 적용 대기시킨다.
