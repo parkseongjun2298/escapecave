@@ -54,7 +54,7 @@ void CObjectMgr::Update()
     for (int i = 0; i < OBJID::END; ++i)
     {
         if (i == OBJID::PLAYER)
-            ResetEvent(hSynchro);	//클라이언트로부터 키 입력이 와도 오브젝트 업데이트까지 적용 대기시킨다.
+            EnterCriticalSection(&cs);	//클라이언트로부터 키 입력이 와도 오브젝트 업데이트까지 적용 대기시킨다.
 
         OBJECT_LIST::iterator iter_begin = m_ObjectList[i].begin();
         OBJECT_LIST::iterator iter_end = m_ObjectList[i].end();
@@ -77,7 +77,8 @@ void CObjectMgr::Update()
             else
                 ++iter_begin;
         }
-        SetEvent(hSynchro);	//클라이언트의 키 입력에 대한 적용을 허용한다.
+        if (i == OBJID::PLAYER)
+            LeaveCriticalSection(&cs);	//클라이언트의 키 입력에 대한 적용을 허용한다.
     }
     CCollisionMgr::Get_Instance()->Collision_BulletToMonster(m_ObjectList[OBJID::PLAYER_BULLET], m_ObjectList[OBJID::NORMALMONSTER]);
     CCollisionMgr::Get_Instance()->Collision_BulletToMonster(m_ObjectList[OBJID::PLAYER_BULLET], m_ObjectList[OBJID::SHILEDMONSTER]);

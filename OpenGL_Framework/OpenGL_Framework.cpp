@@ -22,6 +22,7 @@ glm::vec3 background = {0.0,0.0,0.0};
 //좌표 받는 쪽
 int main(int argc, char** argv)
 {
+	InitializeCriticalSection(&cs);
 	client.InitClient();	// 서버와 연결하는 함수
 	client.Recv_Initialize();	// 서버에게서 게임 시작 받는다
 	
@@ -64,7 +65,8 @@ int main(int argc, char** argv)
 
 	glutMainLoop(); // 이벤트 처리 시작 중요!!!!!!! 종료하라는 명령어 들어올때까지 실행한다
 	//glutLeaveMainLoop(); // 이벤트 프로세싱을 종료(프로그램 종료)
-
+	DeleteCriticalSection(&cs);
+	client.Close_Connect();
 }
 GLvoid Brighter()
 {
@@ -81,11 +83,9 @@ GLvoid drawScene(GLvoid)
 	glClearColor(background.x, background.y, background.z, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	/////// 셰이더
-	WaitForSingleObject(hSynchro, INFINITE);
-	ResetEvent(hSynchro);//차단
+	EnterCriticalSection(&cs);
 	maingame.Update_MainGame();
-	SetEvent(hSynchro);	//개방
+	LeaveCriticalSection(&cs);	//클라이언트의 키 입력에 대한 적용을 허용한다.
 	maingame.Draw_MainGame();
 
 	glutPostRedisplay();

@@ -3,7 +3,7 @@
 struct Just_tmp {
 	char key[6];
 };
-extern HANDLE hSynchro;
+extern CRITICAL_SECTION cs;
 
 extern Just_tmp just_tmp[3];
 

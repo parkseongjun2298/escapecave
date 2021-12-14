@@ -19,12 +19,12 @@ CMainGame maingame;
 glm::vec3 background = {0.0,0.0,0.0};
 
 //좌표 보내는 쪽
-Server client;
+Server server;
 int main(int argc, char** argv)
 {
-	
-	client.InitServer();	// 클라이언트로써 서버와 연결하는 함수
-	client.Send_GameStart();	// 서버에게 게임 시작 요청
+	InitializeCriticalSection(&cs);
+	server.InitServer();	// 클라이언트로써 서버와 연결하는 함수
+	server.Send_GameStart();	// 서버에게 게임 시작 요청
 	
 
 
@@ -68,6 +68,8 @@ int main(int argc, char** argv)
 	glutMainLoop(); // 이벤트 처리 시작 중요!!!!!!! 종료하라는 명령어 들어올때까지 실행한다
 	//glutLeaveMainLoop(); // 이벤트 프로세싱을 종료(프로그램 종료)
 
+	DeleteCriticalSection(&cs);
+	server.Close_Connect();
 
 }
 GLvoid Brighter()
@@ -91,7 +93,7 @@ GLvoid drawScene(GLvoid)
 	maingame.Late_Update();
 
 	//client.Send_GameOver();
-	client.Send_Object_Info();
+	server.Send_Object_Info();
 	glutPostRedisplay();
 
 	glutSwapBuffers();

@@ -137,10 +137,9 @@ DWORD WINAPI Client::Recv_Thread(LPVOID arg) {
 			retval = recvn(Client::sock, buffer, sizeof(buffer), 0);
 			if (retval == SOCKET_ERROR)
 				printf("소켓에러\n");
-			WaitForSingleObject(hSynchro, INFINITE);
-			ResetEvent(hSynchro);//차단
+			EnterCriticalSection(&cs);
 			BuffertoList(buffer);
-			SetEvent(hSynchro);	//개방
+			LeaveCriticalSection(&cs);
 			break;
 
 		case 'd':
@@ -193,7 +192,7 @@ void Client::err_display(const char *msg)
 	printf("[%s] %s", msg, (char *)lpMsgBuf);
 	LocalFree(lpMsgBuf);
 
-	printf("\n",msg);
+	printf("%s\n",msg);
 }
 
 void Client::set_datainfo(char a, char b) {
@@ -235,7 +234,6 @@ void Client::InitClient() {
 		(LPVOID)Client::sock, 0, NULL);
 	if (thread == NULL) { closesocket(Client::sock); }
 	else { CloseHandle(thread); }
-	hSynchro = CreateEvent(NULL, FALSE, TRUE, NULL);
 }
 
 void Client::Recv_Initialize() {

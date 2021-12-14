@@ -2,6 +2,5 @@
 #include "tmp.h"
 
 Just_tmp just_tmp[3];
-// 수동 리셋, 신호 상태로 시작
-HANDLE hSynchro = CreateEvent(NULL, FALSE, TRUE, NULL);
+CRITICAL_SECTION cs;	//임계영역
 SEND_OBJECT_LIST s_ObjectList[OBJID::END];
